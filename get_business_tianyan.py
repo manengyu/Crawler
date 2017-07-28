@@ -49,8 +49,8 @@ def connect_database(db_nick='yuqing'):
     elif db_nick == 'wdzj_website_21':
         while True:
             try:
-                conn = MySQLdb.connect(host='121.199.43.216', user='wdzj_website', passwd='wdzj3721WebSite',
-                                       db='wdzj_website_2', port=13307, charset='utf8')
+                conn = MySQLdb.connect(host='', user='', passwd='',
+                                       db='', port=13307, charset='utf8')
             except MySQLdb.Error, e:
                 print "Mysql Error %d: %s" % (e.args[0], e.args[1])
             if isinstance(conn, MySQLdb.connections.Connection):
