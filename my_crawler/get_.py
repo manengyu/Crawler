@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+﻿# -*- coding: utf8 -*-
 import urllib
 import urllib2
 import requests
@@ -10,6 +10,7 @@ import xlwt
 import chardet
 import MySQLdb
 import pandas as pd
+import logging
 import json
 import lxml.html
 import sys
@@ -88,7 +89,7 @@ def get_info():
 
 # 测试函数
 if __name__ == "__main__":
-    print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    logging.warning("current:%s",time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     conn_yuqing_be = connect_database(db_nick='yuqing')
     cur_be = conn_yuqing_be.cursor()
     r = requests.session()
