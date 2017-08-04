@@ -1,0 +1,5 @@
+python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
+注意
+.replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
+replace()返回新对象
+

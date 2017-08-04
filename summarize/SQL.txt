@@ -1,0 +1,10 @@
+#SQLÔöÉ¾¸Ä²éÓï¾ä£º
+insert_sql = "INSERT INTO _ (, , , , , , ) VALUES ('" +  + "','" ++ "','" +  + "','" +  + "','" +  + "','" + + "','" +  + "')"
+delete_sql = "DELETE * FROM _ WHERE _='" + i + "'"
+delete_sql = "UPDATE _ SET _='" +  + "' WHERE _='" +  + "'"
+select_sql = "SELECT * FROM _ WHERE _='" + i + "'ORDER BY _ DESC LIMIT 1"
+²éÑ¯Ä³×Ö¶Î·ÇÖØ¸´¼ÇÂ¼
+SELECT DISTINCT ×Ö¶Î FROM ±í
+²éÑ¯Ä³×Ö¶ÎÖØ¸´¼ÇÂ¼
+SELECT * FROM ±í WHERE ×Ö¶Î IN (SELECT ×Ö¶Î FROM ±í GROUP BY ×Ö¶Î HAVING COUNT(×Ö¶Î) > 1)
+
