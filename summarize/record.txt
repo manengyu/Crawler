@@ -2,4 +2,15 @@ python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
 注意
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
 replace()返回新对象
+requests请求时数值中逗号已被移除
+crond:(5参或6参或7参)
+秒 分 时 日 月 周 年
+5参无秒年，6参无年,?表示不设置值无关紧要只能在月周中使用
+*/5 * * * * 命令 >> /a.log 2>&1  # 每五钟执行一次,日志全输出到a.log
+04,34 * * * *  # 第小时的04和34分钟执行
+0 06 * * *  #第天上午6点执行
+/dev/null 表示空设备文件
+0 表示stdin标准输入
+1 表示stdout标准输出
+2 表示stderr标准错误
 
