@@ -131,7 +131,7 @@ def main(sheet, file_path, user_name):
 
 # 测试函数
 if __name__ == "__main__":
-    main(u'Sheet1', ur'D:\cncepgf\workspace\抽查\抽查平台名单07.24-07.28.xlsx', u"马能宇")  # 工作表 文件所在路径 名字
+    main(u'Sheet1', ur'D:\cncepgf\workspace\抽查\抽查平台名单07.07-07.28.xlsx', u"马能宇")  # 工作表 文件所在路径 名字
 
 
 

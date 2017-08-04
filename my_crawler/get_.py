@@ -122,8 +122,8 @@ def get_info():
         for j in lxml.html.fromstring(r.get(url_page).text).xpath('//*[@id="runinfotbody"]/tr/td[8]/a/@href'):
             climb_hujing(conn_yuqing, cur, '' + j)
 
-# 测试函数
-if __name__ == "__main__":
+
+def main():
     logging.warning("current:%s",time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     conn_yuqing_be = connect_database(db_nick='yuqing')
     cur_be = conn_yuqing_be.cursor()
@@ -158,6 +158,12 @@ if __name__ == "__main__":
     cur_be.close()
     conn_yuqing_be.close()
     print "climb finish"
+
+
+# 测试函数
+if __name__ == "__main__":
+    main()
+    
 
 
 
