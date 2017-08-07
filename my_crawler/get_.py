@@ -41,6 +41,23 @@ def connect_database(db_nick='yuqing'):
     return conn
 
 
+def initLogging(logFilename):
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='LINE %(lineno)-4d  %(levelname)-8s %(message)s',
+        datefmt='%m-%d %H:%M',
+        filename=logFilename,
+        filemode='w')
+    # define a Handler which writes INFO messages or higher to the sys.stderr
+    console = logging.StreamHandler()
+    console.setLevel(logging.DEBUG)
+    # set a format which is simpler for console use
+    formatter = logging.Formatter('LINE %(lineno)-4d : %(levelname)-8s %(message)s')
+    # tell the handler to use this format
+    console.setFormatter(formatter)
+    logging.getLogger('').addHandler(console)
+
+
 def insert_WDZJ_PLAT_COMPANY_IC_DATA21(conn, cur, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
     UPDATE_DATE = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     insert_sql = "INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA ( COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA," \
@@ -124,7 +141,8 @@ def get_info():
 
 
 def main():
-    logging.warning("current:%s",time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    initLogging('get_.log')
+    logging.info("current:%s",time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     conn_yuqing_be = connect_database(db_nick='yuqing')
     cur_be = conn_yuqing_be.cursor()
     r = requests.session()

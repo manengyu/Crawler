@@ -1,0 +1,6 @@
+安装：
+http://pypi.python.org/packages/source/S/Scrapy/Scrapy-0.14.4.tar.gz
+开始：
+scrapy startproject name  # 新建一个scrapy项目在当前目录下
+scrapy crawl name # name为Spider中的name
+>scrapy crawl name -o items.json -t json  # 保存为json格式

@@ -3,6 +3,7 @@ python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
 replace()返回新对象
 requests请求时数值中逗号已被移除
+
 crond:(5参或6参或7参)
 秒 分 时 日 月 周 年
 5参无秒年，6参无年,?表示不设置值无关紧要只能在月周中使用
@@ -13,4 +14,6 @@ crond:(5参或6参或7参)
 0 表示stdin标准输入
 1 表示stdout标准输出
 2 表示stderr标准错误
+
+日志一共分成5个等级，从低到高分别是：DEBUG INFO WARNING ERROR CRITICAL
 
