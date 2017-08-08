@@ -13,3 +13,4 @@ SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 DOWNLOAD_DELAY = 0.25   #设置下载间隔为250ms
+COOKIES_ENABLED = True

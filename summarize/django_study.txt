@@ -1,0 +1,7 @@
+安装：
+pip install Django
+或https://www.djangoproject.com/download/
+开始：
+django-admin.py startproject name
+cd name
+python manage.py runserver
