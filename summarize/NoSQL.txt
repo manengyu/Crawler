@@ -1,0 +1,10 @@
+MongoDB
+数据保存在磁盘，经常读取的数据会加载到内存
+
+Redis
+数据存在内存，可定时向磁盘写入数据
+
+MemCache
+安装：http://blog.csdn.net/barrydiu/article/details/3936270
+设置主从服务器：http://www.cnblogs.com/yuanermen/archive/2011/05/19/2051153.html
+数据存在内存
