@@ -3,8 +3,20 @@ MongoDB
 
 Redis
 数据存在内存，可定时向磁盘写入数据
+安装：https://github.com/MSOpenTech/redis/releases
+win启动redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
+设置键值对SET myKey abc
+取出键值对GET myKey
+命令：DEL/DUMP/EXIST key
+设置过期时间EXPIRE key seconds（EXPIREAT key 时间戳），PEXPIRE/PEXPIRE毫秒为单位
+移除key过期时间PERSIST key
+剩余过期时间TTL key秒为单位（PTTL key毫秒）
+MOVE key db
+RENAME key newkey
+TYPE key(key所储值类型)
+ 
 
 MemCache
+数据存在内存
 安装：http://blog.csdn.net/barrydiu/article/details/3936270
 设置主从服务器：http://www.cnblogs.com/yuanermen/archive/2011/05/19/2051153.html
-数据存在内存
