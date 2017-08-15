@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+ï»¿# -*- coding: utf8 -*-
 
 from scrapy.spider import BaseSpider
 from scrapy.http import Request
@@ -11,9 +11,9 @@ sys.setdefaultencoding("utf-8")
 
 
 class DmozSpider(BaseSpider):
-    name = ''
-    allowed_domains = ['']
-    start_urls = [
+	name = ''
+	allowed_domains = ['']
+	start_urls = [
         '',
         ''
     ]
@@ -30,8 +30,8 @@ class DmozSpider(BaseSpider):
 		try:
 			url_head = ''
 			for url in self.start_urls:
-				yield self.make_requests_from_url(url)  # Ä¬ÈÏ»Øµ÷parse·½·¨
-    def parse(self, response):
+				yield self.make_requests_from_url(url)  # é»˜è®¤è°ƒç”¨parseæ–¹æ³•
+	def parse(self, response):
 		hxs = HtmlXPathSelector(response)
 		for sel in hxs.xpath('//ul/li'):
 				item = DmozItem()
@@ -42,7 +42,7 @@ class DmozSpider(BaseSpider):
 		movie_link = hxs.xpath('').extract()
 		if movie_link:
 			yield Request(movie_link[0], callback=self.parse_item)
-        #filename = response.url.split('/')[-2]
+		#filename = response.url.split('/')[-2]
         #open(filename, 'wb').write(response.info)
 	def parse_item(self, response):
 		hxs = HtmlXPathSelector(response)

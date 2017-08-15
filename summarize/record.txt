@@ -21,3 +21,12 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 迭代器拥有next或__next__和__iter__方法特殊对象，定义方式：一（），二yield此时属于生成器
 编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
+linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
+
+git远程仓库至本地
+方法一
+git clone http://....git
+方法二
+git init
+git remote add origin http://...git
+git pull origin master
