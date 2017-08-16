@@ -20,37 +20,37 @@ sys.setdefaultencoding("utf-8")
 
 
 # 连接数据库
-def connect_database(db_nick='yuqing'):
+def connect_database(db_nick='ma'):
     conn = ''
     if db_nick == 'zhangrz':
         try:
-            conn = MySQLdb.connect(host='192.168.8.195', user='wdzj_many', passwd='wdzj_many',
-                                   db='zhangrz', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.8.195', user='yu', passwd='yu',
+                                   db='zhang', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'yuqing':
+    elif db_nick == 'ma':
         try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='wdzj_many', passwd='wdzj_many',
-                                   db='yuqing', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
+                                   db='ma', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'yuqing_b':
+    elif db_nick == 'ma_b':
         try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='wdzj_many', passwd='wdzj_many',
-                                   db='yuqing_b', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
+                                   db='ma_b', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
     elif db_nick == 'wdzj_website_2':
         try:
             conn = MySQLdb.connect(host='192.168.15.200', user='root', passwd='root',
-                                   db='wdzj_website_2', port=3309, charset='utf8')
+                                   db='db_2', port=, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'wdzj_website_21':
+    elif db_nick == 'db_21':
         while True:
             try:
                 conn = MySQLdb.connect(host='', user='', passwd='',
-                                       db='', port=13307, charset='utf8')
+                                       db='', port=, charset='utf8')
             except MySQLdb.Error, e:
                 print "Mysql Error %d: %s" % (e.args[0], e.args[1])
             if isinstance(conn, MySQLdb.connections.Connection):
@@ -60,9 +60,9 @@ def connect_database(db_nick='yuqing'):
     return conn
 
 
-def insert_WDZJ_PLAT_COMPANY_IC_DATA(conn, cur, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
+def insert_GONG_PLAT_COMPANY_IC_DATA(conn, cur, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
     UPDATE_DATE = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    insert_sql = "INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA ( COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA," \
+    insert_sql = "INSERT INTO GONG_PLAT_COMPANY_IC_DATA ( COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA," \
                  " PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL, UPDATE_DATE) VALUES ('" + COMPANY_NAME + "','" +\
                  IC_DATA + "','" + SHAREHOLDER_DATA + "','" + PRINCIPAL_DATA + "','" + INVESTMENT_ABROAD + "','" +\
                  SOURCE_URL + "','" + UPDATE_DATE + "')"
@@ -74,9 +74,9 @@ def insert_WDZJ_PLAT_COMPANY_IC_DATA(conn, cur, COMPANY_NAME, IC_DATA, SHAREHOLD
         pass
 
 
-def insert_WDZJ_PLAT_COMPANY_IC_DATA21(conn21, cur21, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
+def insert_GONG_PLAT_COMPANY_IC_DATA21(conn21, cur21, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
     UPDATE_DATE = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    insert_sql = "INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA ( COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA," \
+    insert_sql = "INSERT INTO GONG_PLAT_COMPANY_IC_DATA ( COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA," \
                  " PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL, UPDATE_DATE) VALUES ('" + COMPANY_NAME + "','" +\
                  IC_DATA + "','" + SHAREHOLDER_DATA + "','" + PRINCIPAL_DATA + "','" + INVESTMENT_ABROAD + "','" +\
                  SOURCE_URL + "','" + UPDATE_DATE + "')"
@@ -93,7 +93,7 @@ def insert_business_info(conn, cur, credit_code, name, tax_no, no, org_no, oper_
                          belong_industry, address, scope):
     day_date = str(time.strftime('%Y-%m-%d', time.localtime(time.time())))
     create_time = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    insert_sql = "INSERT INTO yuqing.business_info (credit_code, name, tax_no, no, org_no, oper_name, regist_capi," \
+    insert_sql = "INSERT INTO ma.business_info (credit_code, name, tax_no, no, org_no, oper_name, regist_capi," \
                  " status, start_date, econ_kind, bus_people, term, belong_org, check_date, eng_name, belong_area," \
                  " belong_industry, address, scope) VALUES ('" + credit_code + "','" + name + "','" + tax_no + "','" +\
                  no + "','" + org_no + "','" + oper_name + "','" + regist_capi + "','" + status + "','" + start_date +\
@@ -105,7 +105,7 @@ def insert_business_info(conn, cur, credit_code, name, tax_no, no, org_no, oper_
 
 
 def insert_business_shareholder(conn, cur, credit_code, stock_name, stock_percent, should_capi, should_date, stock_type):
-    insert_sql = "INSERT INTO yuqing.business_shareholder (credit_code, stock_name, stock_percent, should_capi, " \
+    insert_sql = "INSERT INTO ma.business_shareholder (credit_code, stock_name, stock_percent, should_capi, " \
                  "should_date, stock_type) VALUES ('" + credit_code + "','" + stock_name + "','" + stock_percent +\
                  "','" + str(should_capi) + "','" + str(should_date) + "','" + str(stock_type) + "')"
     cur.execute(insert_sql)
@@ -113,14 +113,14 @@ def insert_business_shareholder(conn, cur, credit_code, stock_name, stock_percen
 
 
 def insert_business_managers(conn, cur, credit_code, name, post):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, name, post) VALUES ('" + credit_code +\
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, name, post) VALUES ('" + credit_code +\
                  "','" + str(name) + "','" + str(post) + "')"
     cur.execute(insert_sql)
     conn.commit()
 
 
 def insert_business_judgementdoc(conn, cur, credit_code, case_name, pub_date, case_no, case_identity, court):
-    insert_sql = "INSERT INTO yuqing.business_judgementdoc (credit_code, case_name, pub_date, case_no, case_identity, " \
+    insert_sql = "INSERT INTO ma.business_judgementdoc (credit_code, case_name, pub_date, case_no, case_identity, " \
                  "court) VALUES ('" + credit_code + "','" + case_name + "','" + pub_date + "','" + case_no + "','" +\
                  str(case_identity) + "','" + str(court) + "')"
     cur.execute(insert_sql)
@@ -128,14 +128,14 @@ def insert_business_judgementdoc(conn, cur, credit_code, case_name, pub_date, ca
 
 
 def insert_business_court_announcement(conn, cur, credit_code, publish_date, type, party, content):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, publish_date, type, party, content) VALUES ('" +\
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, publish_date, type, party, content) VALUES ('" +\
                  credit_code + "','" +publish_date + "','" + type + "','" + party + "','" + content + "')"
     cur.execute(insert_sql)
     conn.commit()
 
 
 def insert_business_enforced(conn, cur, credit_code, name, register_date, court, subject):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, name, register_date, court, subject) VALUES ('" +\
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, name, register_date, court, subject) VALUES ('" +\
                  credit_code + "','" + name + "','" + register_date + "','" + court + "','" + subject + "')"
     cur.execute(insert_sql)
     conn.commit()
@@ -143,7 +143,7 @@ def insert_business_enforced(conn, cur, credit_code, name, register_date, court,
 
 def insert_begincourt_announcement(conn, cur, credit_code, begin_date, cause, accuser, accused, case_no, area,
                                    schedule_date, department, judge, court, court_ting):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, begin_date, cause, accuser, accused, case_no, " \
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, begin_date, cause, accuser, accused, case_no, " \
                  "area, schedule_date, department, judge, court, court_ting) VALUES ('" + credit_code + "','" +\
                  begin_date + "','" + cause + "','" + accuser + "','" + accused + "','" + case_no + "','" + area +\
                  "','" + schedule_date + "','" + department + "','" + judge + "','" + court + "','" + court_ting + "')"
@@ -152,7 +152,7 @@ def insert_begincourt_announcement(conn, cur, credit_code, begin_date, cause, ac
 
 
 def insert_penalty_industry(conn, cur, credit_code, reference_no, type, content, decision_org, decision_date):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, reference_no, type, content, decision_org," \
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, reference_no, type, content, decision_org," \
                  " decision_date) VALUES ('" + credit_code + "','" +  reference_no, type, content +\
                  "','" + decision_org + "','" + decision_date + "')"
     cur.execute(insert_sql)
@@ -160,21 +160,21 @@ def insert_penalty_industry(conn, cur, credit_code, reference_no, type, content,
 
 
 def insert_penalty_china(conn, cur, credit_code, name, area, decision_date):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, name, area, decision_date) VALUES ('" +\
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, name, area, decision_date) VALUES ('" +\
                  credit_code + "','" +  name + "','" +  area + "','" + decision_date + "')"
     cur.execute(insert_sql)
     conn.commit()
 
 
 def insert_abnormal(conn, cur, credit_code, in_date, out_date, decision_org, out_org, in_cause, out_cause):
-    insert_sql = "INSERT INTO yuqing.business_managers (credit_code, in_date, out_date, decision_org, out_org," \
+    insert_sql = "INSERT INTO ma.business_managers (credit_code, in_date, out_date, decision_org, out_org," \
                  " in_cause, out_cause) VALUES ('" + credit_code + "','" + in_date + "','" + out_date + "','" +\
                  decision_org + "','" + out_org + "','" + in_cause + "','" + out_cause + "')"
     cur.execute(insert_sql)
     conn.commit()
 
 
-def climb_info(conn_yuqing, cur, content, r):
+def climb_info(conn_ma, cur, content, r):
     try:
         credit_code = re.findall("统一信用代码：<span><span.*?class=\"c8\"></span>(.+?)<", content)[0].strip().replace("未公开", "-")
         print credit_code
@@ -208,7 +208,7 @@ def climb_info(conn_yuqing, cur, content, r):
             return credit_code, {"统一社会信誉代码：": credit_code,"注册号：": no,"组织机构代码：": org_no,
                                  "经营状态：":status,"法定代表人：":oper_name,"注册资本：":regist_capi,"公司类型：":econ_kind,"成立日期：":start_date,"营业期限：":term,\
              "登记机关：":belong_org,"发照日期：":check_date,"所属行业：":belong_industry,"企业地址：":address,"经营范围：":scope}
-            # insert_business_info(conn_yuqing, cur, credit_code, name, tax_no, no, org_no, oper_name, regist_capi, status,
+            # insert_business_info(conn_ma, cur, credit_code, name, tax_no, no, org_no, oper_name, regist_capi, status,
             #                      start_date, econ_kind, bus_people, term, belong_org, check_date, eng_name, belong_area,
             #                      belong_industry, address, scope)
         except:
@@ -219,7 +219,7 @@ def climb_info(conn_yuqing, cur, content, r):
         return False
 
 
-def climb_shareholder(conn_yuqing, cur, content, r):
+def climb_shareholder(conn_ma, cur, content, r):
     stock_name = re.findall("class=\"in-block vertival-middle overflow-width\" title=\"(.+?)\"", content)
     # should_capi = re.findall("([\d.-]+)\s*<br/> </td> <td class=\"text-center\">", content)
     # should_date = re.findall("<br/> </td> <td class=\"text-center\">\s*(.*?)\s*<", content)
@@ -247,14 +247,14 @@ def climb_shareholder(conn_yuqing, cur, content, r):
             else:
                 re_dic[stock_name[nu]] = capi_date[nu][0].replace(",", "").replace("未公开", "-") + "|" + capi_date[nu][1].replace("未公开", "-") + "|" + stock_percent[nu].replace("未公开", "-")
             re_dic[stock_name[nu]] = re_dic[stock_name[nu]].replace("-万元人民币", "-")
-            # insert_business_shareholder(conn_yuqing, cur, credit_code, stock_name[nu], stock_percent[nu], should_capi[nu], should_date[nu], stock_type[nu])
+            # insert_business_shareholder(conn_ma, cur, credit_code, stock_name[nu], stock_percent[nu], should_capi[nu], should_date[nu], stock_type[nu])
         except:
             traceback.print_exc()
             continue
     return re_dic
 
 
-def climb_managers(conn_yuqing, cur, content, r):
+def climb_managers(conn_ma, cur, content, r):
     try:
         name = re.findall("href=\"/human/[\w-]+\" target=\"_blank\" >\s*(.*?)\s*<", content)
         post = re.findall("solid #E2E7E8\">.*?<span >(.+?)</div>", content)
@@ -263,7 +263,7 @@ def climb_managers(conn_yuqing, cur, content, r):
             try:
                 # print credit_code, name[nu], post[nu]
                 re_list.append({post[nu].replace(" ", "").replace("<span>", "").replace("</span>", "").replace("未公开", "-").replace("未知, 未知", "-").replace("未知", "-"): name[nu].replace("未公开", "-")})
-                # insert_business_managers(conn_yuqing, cur, credit_code, name[nu], post[nu])
+                # insert_business_managers(conn_ma, cur, credit_code, name[nu], post[nu])
             except:
                 traceback.print_exc()
                 continue
@@ -274,7 +274,7 @@ def climb_managers(conn_yuqing, cur, content, r):
         return False
 
 
-def climb_judgementdoc(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_judgementdoc(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     try:
         url_susong = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=susong"
@@ -296,7 +296,7 @@ def climb_judgementdoc(conn_yuqing, cur, credit_code, plat_name, url, r):
                 for nu, i in enumerate(case_name):
                     # print i, pub_date[nu], case_no[nu], court[nu]
                     try:
-                        insert_business_judgementdoc(conn_yuqing, cur, credit_code, case_name[nu], pub_date[nu], case_no[nu], case_identity[nu], court[nu])
+                        insert_business_judgementdoc(conn_ma, cur, credit_code, case_name[nu], pub_date[nu], case_no[nu], case_identity[nu], court[nu])
                     except:
                         continue
             else:
@@ -308,7 +308,7 @@ def climb_judgementdoc(conn_yuqing, cur, credit_code, plat_name, url, r):
         return False
 
 
-def climb_court_announcement(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_court_announcement(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     try:
         url_susong = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=susong"
@@ -325,7 +325,7 @@ def climb_court_announcement(conn_yuqing, cur, credit_code, plat_name, url, r):
                 for nu, i in enumerate(publish_date):
                     print publish_date[nu], type[nu], party[nu], bis_content[nu]
                     try:
-                        insert_business_court_announcement(conn_yuqing, cur, credit_code, publish_date[nu], type[nu], party[nu], bis_content[nu])
+                        insert_business_court_announcement(conn_ma, cur, credit_code, publish_date[nu], type[nu], party[nu], bis_content[nu])
                     except:
                         continue
             else:
@@ -337,7 +337,7 @@ def climb_court_announcement(conn_yuqing, cur, credit_code, plat_name, url, r):
         return False
 
 
-def climb_enforced(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_enforced(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     try:
         url_susong = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=susong"
@@ -354,7 +354,7 @@ def climb_enforced(conn_yuqing, cur, credit_code, plat_name, url, r):
                 for nu, i in enumerate(name):
                     # print name[nu], register_date[nu], court[nu], subject[nu]
                     try:
-                        insert_business_enforced(conn_yuqing, cur, credit_code, name[nu], register_date[nu], court[nu], subject[nu])
+                        insert_business_enforced(conn_ma, cur, credit_code, name[nu], register_date[nu], court[nu], subject[nu])
                     except:
                         continuev
             else:
@@ -366,7 +366,7 @@ def climb_enforced(conn_yuqing, cur, credit_code, plat_name, url, r):
         return False
 
 
-def climb_begincourt_announcement(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_begincourt_announcement(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     try:
         url_susong = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=susong"
@@ -407,7 +407,7 @@ def climb_begincourt_announcement(conn_yuqing, cur, credit_code, plat_name, url,
         return False
 
 
-def climb_penalty(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_penalty(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     url_run = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=run"
     try:  # 工商局处罚
@@ -424,7 +424,7 @@ def climb_penalty(conn_yuqing, cur, credit_code, plat_name, url, r):
             for nu, i in enumerate(reference_no):
                 # print reference_no[nu], type[nu], bis_content[nu], decision_org[nu], decision_date[nu]
                 try:
-                    insert_penalty_industry(conn_yuqing, cur, credit_code, reference_no[nu], type[nu], content[nu], decision_org[nu], decision_date[nu])
+                    insert_penalty_industry(conn_ma, cur, credit_code, reference_no[nu], type[nu], content[nu], decision_org[nu], decision_date[nu])
                 except:
                     continue
     except:
@@ -451,7 +451,7 @@ def climb_penalty(conn_yuqing, cur, credit_code, plat_name, url, r):
         return False
 
 
-def climb_abnormal(conn_yuqing, cur, credit_code, plat_name, url, r):
+def climb_abnormal(conn_ma, cur, credit_code, plat_name, url, r):
     unique = re.findall("_([A-Za-z0-9]{10,40})", url)
     try:
         url = "http://www.qichacha.com/company_getinfos?unique=" + unique[0] + "&companyname=" + urllib.quote(plat_name) + "&tab=run"
@@ -477,7 +477,7 @@ def climb_abnormal(conn_yuqing, cur, credit_code, plat_name, url, r):
         return False
 
 
-def climb_invest(conn_yuqing, cur, content, r):
+def climb_invest(conn_ma, cur, content, r):
     try:
         company_name = re.findall("style=\"word-break: break-all;\">\s*<span\s*class=\"text-click-color\">(.+?)<", content)
         oper_name = re.findall("point new-c4\" target=\"_blank\"\s*title=\"(.+?)\"", content)
@@ -527,7 +527,7 @@ def climb_invest(conn_yuqing, cur, content, r):
         return False
 
 
-def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21, name_url, index):
+def get_info(conn_ma, cur, conn_ma_be, cur_be, r, conn_ma_21, cur_21, name_url, index):
     global url
     for nu, n_u in enumerate(name_url.iterrows()):  # 从测试库里查询所有公司
         if nu < index:
@@ -564,19 +564,19 @@ def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21
         try:
             content = r.get(url).content.replace("\n", "")
             # print content
-            credit_code, dic_IC_DATA= climb_info(conn_yuqing, cur, content, r)
+            credit_code, dic_IC_DATA= climb_info(conn_ma, cur, content, r)
             # credit_code = dic_IC_DATA = {}
             if len(re.findall("change-type=\"holder\"", content)):  # 股东多页
                 url_holder = "http://www.tianyancha.com/pagination/holder.xhtml?ps=30&id=" + re.findall("\d+", url)[0] + "&pn="
                 for i in range(2, int(re.findall("change-type=\"holder\">.*?<span>共</span>\s*(\d)\s*<span>页</span>", content)[0])+1):
                     content += r.get(url_holder + str(i)).content.replace("\n", "")
-            list_SHAREHOLDER_DATA = climb_shareholder(conn_yuqing, cur, content, r)
+            list_SHAREHOLDER_DATA = climb_shareholder(conn_ma, cur, content, r)
             # list_SHAREHOLDER_DATA = {}
             if len(re.findall("change-type=\"staff\"", content)):  # 主要成员多页
                 url_staff = "http://www.tianyancha.com/pagination/staff.xhtml?ps=30&id=" + re.findall("\d+", url)[0] + "&pn="
                 for i in range(2, int(re.findall("change-type=\"staff\">.*?<span>共</span>\s*(\d)\s*<span>页</span>", content)[0])+1):
                     content += r.get(url_staff + str(i)).content.replace("\n", "")
-            list_PRINCIPAL_DATA = climb_managers(conn_yuqing, cur, content, r)
+            list_PRINCIPAL_DATA = climb_managers(conn_ma, cur, content, r)
             # list_PRINCIPAL_DATA = {}change-type="holder"
             if len(re.findall("change-type=\"invest\"", content)):  # 投资多页
                 url_invest = "http://www.tianyancha.com/pagination/invest.xhtml?ps=30&id=" + re.findall("\d+", url)[0] + "&pn="
@@ -588,7 +588,7 @@ def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21
             #         url_invest = "http://www.tianyancha.com/pagination/invest.xhtml?ps=30&id=" + re.findall("\d+", url)[0] + "&pn="
             #         for i in range(2, int(re.findall(u"change-type=\"invest\">.*?<span>共</span>\s*(\d)\s*<span>页</span>", content)[0]) + 1):
             #                 content += r.get(url_invest + str(i)).text.replace("\n", "")
-            dic_INVESTMENT_ABROAD = climb_invest(conn_yuqing, cur, content, r)
+            dic_INVESTMENT_ABROAD = climb_invest(conn_ma, cur, content, r)
             # dic_INVESTMENT_ABROAD = {}
             print plat_name
             print url
@@ -603,15 +603,15 @@ def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21
                     url_invest = "http://www.tianyancha.com/pagination/invest.xhtml?ps=30&id=" + re.findall("\d+", url)[0] + "&pn="
                     for i in range(2, int(re.findall(u"change-type=\"invest\">.*?<span>共</span>\s*(\d)\s*<span>页</span>", content)[0]) + 1):
                         content += r.get(url_invest + str(i)).text.replace("\n", "")
-                dic_INVESTMENT_ABROAD = climb_invest(conn_yuqing, cur, content, r)
+                dic_INVESTMENT_ABROAD = climb_invest(conn_ma, cur, content, r)
                 print json.dumps(dic_INVESTMENT_ABROAD, encoding="UTF-8", ensure_ascii=False)
-            # insert_WDZJ_PLAT_COMPANY_IC_DATA(conn_yuqing, cur, plat_name,
+            # insert_GONG_PLAT_COMPANY_IC_DATA(conn_ma, cur, plat_name,
             #                                  str(json.dumps(dic_IC_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                  str(json.dumps(list_SHAREHOLDER_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                  str(json.dumps(list_PRINCIPAL_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                  str(json.dumps(dic_INVESTMENT_ABROAD, encoding="UTF-8", ensure_ascii=False)),
             #                                     url)
-            # insert_WDZJ_PLAT_COMPANY_IC_DATA21(conn_yuqing_be, cur_be, plat_name,
+            # insert_GONG_PLAT_COMPANY_IC_DATA21(conn_ma_be, cur_be, plat_name,
             #                                    str(json.dumps(dic_IC_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                    str(json.dumps(list_SHAREHOLDER_DATA, encoding="UTF-8",
             #                                                   ensure_ascii=False)),
@@ -620,7 +620,7 @@ def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21
             #                                    str(json.dumps(dic_INVESTMENT_ABROAD, encoding="UTF-8",
             #                                                   ensure_ascii=False)),
             #                                    url)
-            # insert_WDZJ_PLAT_COMPANY_IC_DATA21(conn_yuqing_21, cur_21, plat_name,
+            # insert_GONG_PLAT_COMPANY_IC_DATA21(conn_ma_21, cur_21, plat_name,
             #                                  str(json.dumps(dic_IC_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                  str(json.dumps(list_SHAREHOLDER_DATA, encoding="UTF-8", ensure_ascii=False)),
             #                                  str(json.dumps(list_PRINCIPAL_DATA, encoding="UTF-8", ensure_ascii=False)),
@@ -635,13 +635,13 @@ def get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21
         if (nu - index + 1) % 20 == 0:  # 每三十分钟采二十条
             time.sleep(1800)
     return ""
-        # climb_judgementdoc(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # climb_court_announcement(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # climb_enforced(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # climb_begincourt_announcement(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # climb_penalty(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # climb_abnormal(conn_yuqing, cur, credit_code, plat_name, url, r)
-        # insert_WDZJ_PLAT_COMPANY_IC_DATA(conn, cur, i, str(IC_DATA), str(SHAREHOLDER_DATA), PRINCIPAL_DATA,
+        # climb_judgementdoc(conn_ma, cur, credit_code, plat_name, url, r)
+        # climb_court_announcement(conn_ma, cur, credit_code, plat_name, url, r)
+        # climb_enforced(conn_ma, cur, credit_code, plat_name, url, r)
+        # climb_begincourt_announcement(conn_ma, cur, credit_code, plat_name, url, r)
+        # climb_penalty(conn_ma, cur, credit_code, plat_name, url, r)
+        # climb_abnormal(conn_ma, cur, credit_code, plat_name, url, r)
+        # insert_GONG_PLAT_COMPANY_IC_DATA(conn, cur, i, str(IC_DATA), str(SHAREHOLDER_DATA), PRINCIPAL_DATA,
         #                                  INVESTMENT_ABROAD, url)
         # break
 
@@ -685,7 +685,7 @@ def check_illegal(text):
 
 
 def get_company_url(conn):
-    select_sql = "SELECT company_name,source_url FROM WDZJ_PLAT_COMPANY_SPIDER"
+    select_sql = "SELECT company_name,source_url FROM GONG_PLAT_COMPANY_SPIDER"
     app_management = pd.read_sql(select_sql, conn)
     # ls_company = app_management.get("company_name")
     name_url = app_management
@@ -693,7 +693,7 @@ def get_company_url(conn):
     
 # def update():
 #     for i in ls_url:
-#     update_sql = "UPDATE wdzj_website_2.WDZJ_PLAT_COMPANY_IC_DATA SET account_url='" + "" + i +\
+#     update_sql = "UPDATE db_2.GONG_PLAT_COMPANY_IC_DATA SET account_url='" + "" + i +\
 #                  "' where account_id='" + i + "'"
 #     cur.execute(update_sql)
 #     conn.commit()
@@ -711,12 +711,12 @@ def login(r, username, pwd):
 
 if __name__ == "__main__":
     print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-    conn_yuqing = connect_database(db_nick='wdzj_website_2')
-    cur = conn_yuqing.cursor()
-    conn_yuqing_21 = connect_database(db_nick='wdzj_website_21')
-    cur_21 = conn_yuqing_21.cursor()
-    conn_yuqing_be = connect_database(db_nick='yuqing')
-    cur_be = conn_yuqing_be.cursor()
+    conn_ma = connect_database(db_nick='db_2')
+    cur = conn_ma.cursor()
+    conn_ma_21 = connect_database(db_nick='db_21')
+    cur_21 = conn_ma_21.cursor()
+    conn_ma_be = connect_database(db_nick='ma')
+    cur_be = conn_ma_be.cursor()
     r = requests.session()
     r.headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0, WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
@@ -753,27 +753,27 @@ if __name__ == "__main__":
     }
     url = ""
     credit_code = ""
-    # update_url(conn_yuqing_be, cur_be, r)
-    # compare_url(conn_yuqing_be, cur_be, r)
-    # urltoxianshang(conn_yuqing, cur, conn_yuqing_be, cur_be, conn_yuqing_21, cur_21)
-    # delete_repeat(conn_yuqing, cur, conn_yuqing_be, cur_be, conn_yuqing_21, cur_21)
-    # error_plat = get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21, name_url).decode("utf-8")
+    # update_url(conn_ma_be, cur_be, r)
+    # compare_url(conn_ma_be, cur_be, r)
+    # urltoxianshang(conn_ma, cur, conn_ma_be, cur_be, conn_ma_21, cur_21)
+    # delete_repeat(conn_ma, cur, conn_ma_be, cur_be, conn_ma_21, cur_21)
+    # error_plat = get_info(conn_ma, cur, conn_ma_be, cur_be, r, conn_ma_21, cur_21, name_url).decode("utf-8")
 
-    name_url = get_company_url(conn_yuqing)
+    name_url = get_company_url(conn_ma)
     error_plat = u"上海诺诺镑客金融信息服务有限公司"  # 默认从第一条运行
     # error_plat = u"贵州国信通电子商务有限公司"
     nu = 0
     while len(error_plat):
         time.sleep(1)
         index = list(name_url.get('company_name')).index(error_plat)
-        error_plat = get_info(conn_yuqing, cur, conn_yuqing_be, cur_be, r, conn_yuqing_21, cur_21, name_url, index).decode("utf-8")
+        error_plat = get_info(conn_ma, cur, conn_ma_be, cur_be, r, conn_ma_21, cur_21, name_url, index).decode("utf-8")
         nu += 1
         if nu % 9 == 0:  # 重复请求10次无果后停止运行
             break
     cur_be.close()
-    conn_yuqing_be.close()
+    conn_ma_be.close()
     cur_21.close()
-    conn_yuqing_21.close()
+    conn_ma_21.close()
     cur.close()
-    conn_yuqing.close()
+    conn_ma.close()
     print "climb finish"

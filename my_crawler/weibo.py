@@ -18,23 +18,23 @@ sys.setdefaultencoding("utf-8")
 
 
 # 连接数据库
-def connect_database(db_nick='yuqing'):
+def connect_database(db_nick='ma'):
     if db_nick == 'zhangrz':
         try:
-            conn = MySQLdb.connect(host='192.168.8.195', user='wdzj_many', passwd='wdzj_many',
-                                   db='zhangrz', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.8.195', user='wei_many', passwd='yu',
+                                   db='zhang', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'yuqing':
+    elif db_nick == 'ma':
         try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='wdzj_many', passwd='wdzj_many',
-                                   db='yuqing', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
+                                   db='ma', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'yuqing_b':
+    elif db_nick == 'ma_b':
         try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='wdzj_many', passwd='wdzj_many',
-                                   db='yuqing_b', port=3306, charset='utf8')
+            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
+                                   db='ma_b', port=3306, charset='utf8')
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
     else:
@@ -45,11 +45,11 @@ def connect_database(db_nick='yuqing'):
 def insert_management(conn, cur, plat_name, account_url):
     day_date = str(time.strftime('%Y-%m-%d', time.localtime(time.time())))
     create_time = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    insert_sql = "INSERT INTO yuqing.weibo_management (plat_name, account_url) VALUES ('" + str(plat_name) + "','" + str(account_url) +\
+    insert_sql = "INSERT INTO ma.weibo_management (plat_name, account_url) VALUES ('" + str(plat_name) + "','" + str(account_url) +\
                  + "')"
-    # insert_sql = "INSERT INTO yuqing.weibo_management (plat_name, account_url, use_for) VALUES ('" + str(plat_name) + "','" + str(account_url) + "','B"\
+    # insert_sql = "INSERT INTO ma.weibo_management (plat_name, account_url, use_for) VALUES ('" + str(plat_name) + "','" + str(account_url) + "','B"\
     #              + "')"
-    # select_sql = "SELECT * FROM yuqing.weibo_info"
+    # select_sql = "SELECT * FROM ma.weibo_info"
     # app_management = pd.read_sql(select_sql, conn)
     # if account_id not in list(app_management.get("account_id")):
         # print account_id, level, follow_count, followers_count, wb_count, day_date, create_time
@@ -58,7 +58,7 @@ def insert_management(conn, cur, plat_name, account_url):
 
 
 def update_managerment(conn, cur, account, account_id,  verified, description, account_url):
-    update_sql = "UPDATE yuqing.weibo_management SET weibo_account='" + account + "', account_id='" + account_id  + "' , verified='"\
+    update_sql = "UPDATE ma.weibo_management SET weibo_account='" + account + "', account_id='" + account_id  + "' , verified='"\
                  + verified + "' , description='" + description + "' where account_url='" + account_url + "'"
     cur.execute(update_sql)
     conn.commit()
@@ -67,12 +67,12 @@ def update_managerment(conn, cur, account, account_id,  verified, description, a
 def insert_info(conn, cur, account_id, level, follow_count, followers_count, wb_count):
     day_date = str(time.strftime('%Y-%m-%d', time.localtime(time.time())))
     create_time = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-    insert_sql = "INSERT INTO yuqing.weibo_info (account_id, level, follow_count, followers_count, wb_count, day_date, create_time) VALUES ('" + str(account_id) + "','" +str(level) + "','" \
+    insert_sql = "INSERT INTO ma.weibo_info (account_id, level, follow_count, followers_count, wb_count, day_date, create_time) VALUES ('" + str(account_id) + "','" +str(level) + "','" \
                  + str(follow_count) + "','" + str(followers_count) + "','" + str(wb_count) + "','" + \
                  day_date + "','" + \
                  create_time + \
                  "')"
-    # select_sql = "SELECT * FROM yuqing.weibo_info"
+    # select_sql = "SELECT * FROM ma.weibo_info"
     # app_management = pd.read_sql(select_sql, conn)
     # if account_id not in list(app_management.get("account_id")):
         # print account_id, level, follow_count, followers_count, wb_count, day_date, create_time
@@ -86,12 +86,12 @@ def insert_info(conn, cur, account_id, level, follow_count, followers_count, wb_
 
 def insert_content(conn, cur, account_id, weibo_id, source, content, comments_count,
                            like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url, weibo_account):
-    insert_sql = "INSERT INTO yuqing.weibo_content (account_id, weibo_id, source, content, comments_count, " \
+    insert_sql = "INSERT INTO ma.weibo_content (account_id, weibo_id, source, content, comments_count, " \
                  "like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url, weibo_account, docid) VALUES ('" + \
                  account_id + "','" + weibo_id + "','" + source + "','" + content + "','" + comments_count + "','" + \
                  like_count + "','" + reposts_count + "','" + repost_from + "','" + repost_content + "','" + \
                  pub_date + "','" + weibo_url + "','" + weibo_account + "', UPPER(replace(UUID(),\'-\',\'\')))"
-    select_sql = "SELECT * FROM yuqing.weibo_content"
+    select_sql = "SELECT * FROM ma.weibo_content"
     app_management = pd.read_sql(select_sql, conn)
     if weibo_id not in list(app_management.get("weibo_id")):
         # print account_id, weibo_id, source, content, comments_count, like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url
@@ -105,16 +105,16 @@ def insert_content(conn, cur, account_id, weibo_id, source, content, comments_co
 
 def insert_content_b(account_id, weibo_id, source, content, comments_count,
                        like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url, weibo_account):
-    conn_yuqing_b = connect_database(db_nick='yuqing_b')
-    cur_b = conn_yuqing_b.cursor()
-    insert_sql = "INSERT INTO yuqing_b.weibo_content (account_id, weibo_id, source, content, comments_count, " \
+    conn_ma_b = connect_database(db_nick='ma_b')
+    cur_b = conn_ma_b.cursor()
+    insert_sql = "INSERT INTO ma_b.weibo_content (account_id, weibo_id, source, content, comments_count, " \
                  "like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url,weibo_account, docid) VALUES ('" + \
                  account_id + "','" + weibo_id + "','" + source + "','" + content + "','" + comments_count + "','" + \
                  like_count + "','" + reposts_count + "','" + repost_from + "','" + repost_content + "','" + \
                  pub_date + "','" + weibo_url + "','" + weibo_account + "', UPPER(replace(UUID(),\'-\',\'\')))"
     try:
         cur_b.execute(insert_sql)
-        conn_yuqing_b.commit()
+        conn_ma_b.commit()
     except:
         traceback.print_exc()
         pass
@@ -150,7 +150,7 @@ def get_weibo_info(account_id, page_id, r):
         return account_id, level, follow_count, followers_count, wb_count
 
 
-def get_weibo_content(conn_yuqing, cur, account_id, page_id, r, isb):
+def get_weibo_content(conn_ma, cur, account_id, page_id, r, isb):
     time.sleep(1)
     containerid = ""
     user_info = ""
@@ -196,7 +196,7 @@ def get_weibo_content(conn_yuqing, cur, account_id, page_id, r, isb):
                 continue
             weibo_url = "https://m.weibo.cn/status/" + weibo_id
             pub_date = handle_time(str(i["mblog"]["created_at"].strip()))
-            insert_content(conn_yuqing, cur, account_id, weibo_id, source, content, comments_count,
+            insert_content(conn_ma, cur, account_id, weibo_id, source, content, comments_count,
                            like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url, screen_name)
             if isb == 1:
                 insert_content_b(account_id, weibo_id, source, content, comments_count,
@@ -204,7 +204,7 @@ def get_weibo_content(conn_yuqing, cur, account_id, page_id, r, isb):
 
 
 def get_url(conn):
-    select_sql = "SELECT * FROM yuqing.weibo_management"
+    select_sql = "SELECT * FROM ma.weibo_management"
     app_management = pd.read_sql(select_sql, conn)
     ls_url = app_management.get("account_url")
     return ls_url
@@ -238,20 +238,20 @@ def get_proxies():
     return proxies
 
 
-def climb_management(conn_yuqing, cur):
-    for i in get_url(conn_yuqing):  # 爬取管理信息
+def climb_management(conn_ma, cur):
+    for i in get_url(conn_ma):  # 爬取管理信息
     # #    con, weibo.py = login_weibo.login(i)
         r = requests.session()
         r.proxies = get_proxies()
         account_id = i.lstrip("http://m.weibo.com/u/")
         page_id = r.get(i).url.lstrip("https://m.weibo.cn/p/")
         account, verified, description = get_weibo_management(page_id, r)
-        update_managerment(conn_yuqing, cur, account, account_id, verified, description, i)
+        update_managerment(conn_ma, cur, account, account_id, verified, description, i)
     print "weibo_management climb finish"
 
 
-def climb_content(conn_yuqing, cur):
-    for i in get_url(conn_yuqing):  # 爬取微博内容
+def climb_content(conn_ma, cur):
+    for i in get_url(conn_ma):  # 爬取微博内容
         # con, weibo.py = login_weibo.login(i)
         r = requests.session()
         r.proxies = get_proxies()
@@ -263,15 +263,15 @@ def climb_content(conn_yuqing, cur):
             time.sleep(1)
             continue
         if isinb(i):
-            get_weibo_content(conn_yuqing, cur, account_id, page_id, r, 1)
+            get_weibo_content(conn_ma, cur, account_id, page_id, r, 1)
         else:
-            get_weibo_content(conn_yuqing, cur, account_id, page_id, r, 0)
+            get_weibo_content(conn_ma, cur, account_id, page_id, r, 0)
         time.sleep(1)
     print "weibo_content climb finish"
 
 
-def climb_info(conn_yuqing, cur):
-    for i in get_url(conn_yuqing):  # 爬取微博信息
+def climb_info(conn_ma, cur):
+    for i in get_url(conn_ma):  # 爬取微博信息
     #    con, weibo.py = login_weibo.login(i)
         r = requests.session()
         r.proxies = get_proxies()
@@ -284,7 +284,7 @@ def climb_info(conn_yuqing, cur):
             print i
             time.sleep(1)
             continue
-        insert_info(conn_yuqing, cur, account_id, level, follow_count, followers_count, wb_count)
+        insert_info(conn_ma, cur, account_id, level, follow_count, followers_count, wb_count)
     print "weibo_info climb finish"
 
 
@@ -324,15 +324,15 @@ def isinb(url):
 
 
 def merge_update():
-    conn_y = connect_database(db_nick='yuqing')
-    select_sql = "SELECT * FROM yuqing.weibo_content"
+    conn_y = connect_database(db_nick='ma')
+    select_sql = "SELECT * FROM ma.weibo_content"
     app_management = pd.read_sql(select_sql, conn_y)
-    conn_yuqing_b = connect_database(db_nick='yuqing_b')
-    cur_b = conn_yuqing_b.cursor()
+    conn_ma_b = connect_database(db_nick='ma_b')
+    cur_b = conn_ma_b.cursor()
     for i in range(0, app_management.shape[0]):  # 合并content\
         mtime = app_management.irow(i)["pub_date"]
         weibo_url = "https://m.weibo.cn/status/" + str(app_management.irow(i)["weibo_id"])
-        insert_sql = "INSERT INTO yuqing_b.weibo_content (account_id, weibo_id, source, content, comments_count, " \
+        insert_sql = "INSERT INTO ma_b.weibo_content (account_id, weibo_id, source, content, comments_count, " \
                      "like_count, reposts_count, repost_from, repost_content, pub_date, weibo_url, docid) VALUES ('" + \
                      app_management.irow(i)["account_id"] + "','" + app_management.irow(i)["weibo_id"] + "','" + \
                      app_management.irow(i)["source"] + "','" + app_management.irow(i)["content"] + "','" + str(
@@ -342,35 +342,35 @@ def merge_update():
                      app_management.irow(i)["repost_content"] + "','" + \
                      mtime + "','" + weibo_url + "', '" + str(app_management.irow(i)["docid"]) + "')"
         cur_b.execute(insert_sql)
-        conn_yuqing_b.commit()
+        conn_ma_b.commit()
 
 
 def update_weibo_account(conn, cur):  # 新增微博帐号
-    conn_yuqing_b = connect_database(db_nick='yuqing_b')
-    cur_b = conn_yuqing_b.cursor()
-    select_sql = "SELECT * FROM yuqing.weibo_content"
+    conn_ma_b = connect_database(db_nick='ma_b')
+    cur_b = conn_ma_b.cursor()
+    select_sql = "SELECT * FROM ma.weibo_content"
     app_management = pd.read_sql(select_sql, conn)
     for i in  app_management.iterrows():
-        update_sql = "UPDATE yuqing.weibo_content SET repost_content='" + urllib.unquote(urllib.unquote(i[1]["repost_content"])) + \
+        update_sql = "UPDATE ma.weibo_content SET repost_content='" + urllib.unquote(urllib.unquote(i[1]["repost_content"])) + \
                      "' where docid='" + i[1]["docid"] + "'"
         cur.execute(update_sql)
-        conn_yuqing.commit()
-    select_sql_b = "SELECT * FROM yuqing_b.weibo_content"
-    app_management_b = pd.read_sql(select_sql_b, conn_yuqing_b)
+        conn_ma.commit()
+    select_sql_b = "SELECT * FROM ma_b.weibo_content"
+    app_management_b = pd.read_sql(select_sql_b, conn_ma_b)
     for i in  app_management_b.iterrows():
-        update_sql_b = "UPDATE yuqing_b.weibo_content SET repost_content='" + urllib.unquote(urllib.unquote(i[1]["repost_content"])) + \
+        update_sql_b = "UPDATE ma_b.weibo_content SET repost_content='" + urllib.unquote(urllib.unquote(i[1]["repost_content"])) + \
                      "' where docid='" + i[1]["docid"] + "'"
         cur_b.execute(update_sql_b)
-        conn_yuqing_b.commit()
+        conn_ma_b.commit()
     # ls_id = app_management.get("account_id")
     # for i in ls_id:
-    #     select_sql_weibo_account = "SELECT * FROM yuqing.weibo_management where account_id='" + i + "'"
+    #     select_sql_weibo_account = "SELECT * FROM ma.weibo_management where account_id='" + i + "'"
     #     ls_weibo_account = pd.read_sql(select_sql_weibo_account, conn)
     #     weibo_account = ls_weibo_account.get("weibo_account")
     #     print i, weibo_account[0]
-    #     update_sql = "UPDATE yuqing.weibo_content SET weibo_account='" + weibo_account[0] + \
+    #     update_sql = "UPDATE ma.weibo_content SET weibo_account='" + weibo_account[0] + \
     #                  "' where account_id='" + i + "'"
-    #     update_sql_b = "UPDATE yuqing_b.weibo_content SET weibo_account='" + weibo_account[0] + \
+    #     update_sql_b = "UPDATE ma_b.weibo_content SET weibo_account='" + weibo_account[0] + \
     #                    "' where account_id='" + i + "'"
 
 
@@ -378,20 +378,20 @@ def update_weibo_account(conn, cur):  # 新增微博帐号
 # 测试函数
 if __name__ == "__main__":
     print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-    conn_yuqing = connect_database(db_nick='yuqing')
-    cur = conn_yuqing.cursor()
-    climb_info(conn_yuqing, cur)
-    climb_content(conn_yuqing, cur)
-    # update_weibo_account(conn_yuqing, cur)
+    conn_ma = connect_database(db_nick='ma')
+    cur = conn_ma.cursor()
+    climb_info(conn_ma, cur)
+    climb_content(conn_ma, cur)
+    # update_weibo_account(conn_ma, cur)
     # threads = []
-    # threads.append(threading.Thread(target=climb_content, args=(conn_yuqing, cur)))
-    # threads.append(threading.Thread(target=climb_info, args=(conn_yuqing, cur)))
+    # threads.append(threading.Thread(target=climb_content, args=(conn_ma, cur)))
+    # threads.append(threading.Thread(target=climb_info, args=(conn_ma, cur)))
     # for t in threads:
     #     t.setDaemon(True)
     #     t.start()
     # merge_update()
     cur.close()
-    conn_yuqing.close()
+    conn_ma.close()
     print "climb finish"
 
 

@@ -3,6 +3,7 @@ python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
 replace()返回新对象
 requests请求时数值中逗号已被移除
+请求payloads参数时，格式为data=json.dumps({})
 
 crond:(5参或6参或7参)
 秒 分 时 日 月 周 年
@@ -39,3 +40,4 @@ BSD代码鼓励代码共享，但需要尊重代码作者的著作权。BSD由于允许使用者修改和重新发布
 很多的公司企业在选用开源产品的时候都首选BSD协议，因为可以完全控制这些第三方的代码，在必要的时候可以修改或者 二次开发
 
 如果把一个事务可看作是一个程序,它要么完整的被执行,要么完全不执行。这种特性就叫原子性
+IO操作类型http://www.cnblogs.com/fanzhidongyzby/p/4098546.html
