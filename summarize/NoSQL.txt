@@ -7,6 +7,7 @@ Redis
 win启动redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
 设置键值对SET myKey abc
 取出键值对GET myKey
+键命令：
 命令：DEL/DUMP/EXIST key
 设置过期时间EXPIRE key seconds（EXPIREAT key 时间戳），PEXPIRE/PEXPIRE毫秒为单位
 移除key过期时间PERSIST key
@@ -14,6 +15,26 @@ win启动redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
 MOVE key db
 RENAME key newkey
 TYPE key(key所储值类型)
+字符串命令：
+GETRANGE key start end
+GETSET key value
+GETBIT key offset
+MGET key1 [key2,key3,,,]
+SETBIT key offset value
+SETEX key seconds value(PSETEX以毫秒为单位)
+SETNX key value(仅在key不存在时创建)
+SETRANGE key offset value
+STRLEN key
+MSET key1 value1 [key2 value2 ,,,]
+MSETNX key1 value1 [key2 value2 ,,,](仅在key不存在时创建)
+INCR key(key所存值增1)
+INCRBY key increment(key所存值加上指定值)
+INCRBYFLOAT key increment(key所存值加浮点型值)
+DECR key(key所存值减1)
+DECRBY key decrement(key所存值减去指定值)
+APPEND key value(如果key存在且所在值为string,追加value)
+
+
  
 
 MemCache
