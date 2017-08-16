@@ -3,8 +3,11 @@ python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
 replace()返回新对象
 requests请求时数值中逗号已被移除
-请求payloads参数时，格式为data=json.dumps({})
+请求payload参数时，格式为data=json.dumps({})
 
+yum install vixie-cron
+yum install crontabs
+chkconfig crond on开机启动
 crond:(5参或6参或7参)
 秒 分 时 日 月 周 年
 5参无秒年，6参无年,?表示不设置值无关紧要只能在月周中使用

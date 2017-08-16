@@ -1,0 +1,20 @@
+多线程
+def climb_content(a, b):
+    print 'content'
+
+
+def climb_info(a, b):
+    print 'info'
+
+
+# 测试函数
+if __name__ == "__main__":
+    threads = []
+    conn = 1
+    cur = 2
+    threads.append(threading.Thread(target=climb_content, args=(conn, cur)))
+    threads.append(threading.Thread(target=climb_info, args=(conn, cur)))
+    for t in threads:
+        t.setDaemon(True)
+        t.start()
+setDaemon(True) 将该线程设置为守护线程，表示不重要，主线程线束时不用考虑该线程可直接销毁（否则默认为False时不可）

@@ -1,7 +1,7 @@
 MongoDB
 数据保存在磁盘，经常读取的数据会加载到内存
 
-Redis
+Redis (http://www.runoob.com/redis/redis-hashes.html)
 数据存在内存，可定时向磁盘写入数据
 安装：https://github.com/MSOpenTech/redis/releases
 win启动redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
