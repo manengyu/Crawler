@@ -17,7 +17,12 @@ if __name__ == "__main__":
     for t in threads:
         t.setDaemon(True)
         t.start()
-setDaemon(True) 将该线程设置为守护线程，表示不重要，主线程线束时不用考虑该线程可直接销毁（否则默认为False时不可）
-
+setDaemon(True) 将该线程设置为守护线程，表示不重要，主线程线束时不用考虑该线程可直接销毁(否则默认为False时不可)
+.join()用来阻塞主线程的，可加参数t单位秒，表示该线程需执行t秒后主线程才能被唤醒，不加参数意味主线程需等待该线程结束
+线程池from multiprocessing.pool import ThreadPool
+进程池from multiprocessing import Pool
+进程间通信是通过Queue、Pipes等实现的
 http://mp.weixin.qq.com/s?__biz=MzA3NDk1NjI0OQ==&mid=2247483809&idx=1&sn=dda66a5dd61e7d326ea9152e209f2a0d&chksm=9f76ad17a801240114a8974178c105a00c7f69c70668dcf10add4571695828e74fe36c6df2d4&scene=21#wechat_redirect
 http://blog.csdn.net/crisschan/article/details/53838622
+
+http://blog.csdn.net/mmc2015/article/details/51873163
