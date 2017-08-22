@@ -1,4 +1,5 @@
 多线程
+import threading
 def climb_content(a, b):
     print 'content'
 
@@ -22,6 +23,8 @@ setDaemon(True) 将该线程设置为守护线程，表示不重要，主线程线束时不用考虑该线程可
 线程池from multiprocessing.pool import ThreadPool
 进程池from multiprocessing import Pool
 进程间通信是通过Queue、Pipes等实现的
+CPU每执行100字节码，解释器就自动释放GIL锁
+from multiprocessing import Process,Queue,Pipes
 http://mp.weixin.qq.com/s?__biz=MzA3NDk1NjI0OQ==&mid=2247483809&idx=1&sn=dda66a5dd61e7d326ea9152e209f2a0d&chksm=9f76ad17a801240114a8974178c105a00c7f69c70668dcf10add4571695828e74fe36c6df2d4&scene=21#wechat_redirect
 http://blog.csdn.net/crisschan/article/details/53838622
 

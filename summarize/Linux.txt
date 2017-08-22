@@ -1,0 +1,9 @@
+ 命令
+grep 搜索
+ps -ef | grep java表示查看所有进程里 CMD 是 java 的进程信息
+e显示所有进程,环境变量
+f全格式
+ps -aux | grep显示所有状态
+
+kill -9 [PID]
+9表示强迫进程立即停止
