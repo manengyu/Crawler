@@ -9,6 +9,7 @@ reduce(fun,参数)fun作用在两个参数上，重复作用在结果与下一个参数
 raise ErrorName()直接抛出异常
 assert expression[,arg] 若expression为False抛出异常或arg
 &直接将数据当二进制来进行运算
+r = requests.session() r.proxies无用，要写在get()里
 
 格式化
 %用类C语言，format用{} {}中为空时默认为0
