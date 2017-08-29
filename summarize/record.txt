@@ -10,6 +10,7 @@ raise ErrorName()直接抛出异常
 assert expression[,arg] 若expression为False抛出异常或arg
 &直接将数据当二进制来进行运算
 r = requests.session() r.proxies无用，要写在get()里
+* **都为可变参数，*参数当组传入，**参数当字典传入
 
 格式化
 %用类C语言，format用{} {}中为空时默认为0
@@ -46,6 +47,7 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
 linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
 
+https://juejin.im/post/599e14875188251240632702
 git远程仓库至本地
 方法一
 git clone http://....git
@@ -65,5 +67,7 @@ BSD代码鼓励代码共享，但需要尊重代码作者的著作权。BSD由于允许使用者修改和重新发布
 IO操作类型http://www.cnblogs.com/fanzhidongyzby/p/4098546.html
 
 ip http://881free.com/  http://www.xdaili.cn/freeproxy.html
+https http://mp.weixin.qq.com/s/9BkJ90CE6sNuUXJjiwHlGg http://www.jianshu.com/p/072a657337ae
+get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
