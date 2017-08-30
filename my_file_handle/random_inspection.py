@@ -1,4 +1,4 @@
-#coding:utf-8
+﻿#coding:utf-8
 import urllib
 import urllib2
 import requests
@@ -16,19 +16,19 @@ sys.setdefaultencoding("utf-8")
 
 # 连接数据库
 def connect_database(db_nick='yuqing'):
-    if db_nick == 'ProductData':
+    if db_nick == '':
         while True:
             try:
-                conn = MySQLdb.connect(host='192.168.16.17', user='wdzj_read', passwd='wdzj_read',
-                                       db='ProductData', port=3306, charset='utf8')
+                conn = MySQLdb.connect(host='1', user='', passwd='',
+                                       db='', port=3306, charset='utf8')
                 break
             except MySQLdb.Error, e:
                 print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'RawData':
+    elif db_nick == '':
         while True:
             try:
-                conn = MySQLdb.connect(host='192.168.16.17', user='wdzj_read', passwd='wdzj_read',
-                                       db='RawData', port=3306, charset='utf8')
+                conn = MySQLdb.connect(host='', user='', passwd='',
+                                       db='', port=3306, charset='utf8')
                 break
             except MySQLdb.Error, e:
                 print "Mysql Error %d: %s" % (e.args[0], e.args[1])

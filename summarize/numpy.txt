@@ -1,0 +1,22 @@
+import numpy as np
+from numpy import *
+ndarray.ndim：数组的维数
+ndarray.shape：数组的维度
+ndarray.size：数组元素的总个数
+ndarray.dtype：表示数组中元素类型的对象
+ndarray.itemsize：数组中每个元素的字节大小
+ndarray.data：包含实际数组元素的缓冲区
+zeros((3,4)) 
+ones( (2,3,4), dtype=int16 ) 
+arange(10, 30, 5)指定步长
+numpy.linspace(-1, 0, 5)指定元素个数
+arange(9).reshape(3,3)
+hstack((a, b))水平组合
+vstack((a, b))垂直组合
+dstack((a, b))深度组合
+row_stack((one, two))行组合(二维数组等价垂直组合)
+column_stack((one, two))列组合(二维数组等价水平组合)
+hsplit(a, 3)水平分割(等价split(a, 3, axis=1))
+dsplit(c, 3)深度分割(等价split(a, 3, axis=0))
+=完全不复制 c = a.view()浅复制 d = a.copy()深复制
+set_printoptions(threshold='nan')取消省略打印，强制打印所有内容
