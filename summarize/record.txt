@@ -73,3 +73,6 @@ https http://mp.weixin.qq.com/s/9BkJ90CE6sNuUXJjiwHlGg http://www.jianshu.com/p/
 get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
+
+python3
+Êä³öÖÐÎÄ

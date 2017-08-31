@@ -18,5 +18,6 @@ row_stack((one, two))行组合(二维数组等价垂直组合)
 column_stack((one, two))列组合(二维数组等价水平组合)
 hsplit(a, 3)水平分割(等价split(a, 3, axis=1))
 dsplit(c, 3)深度分割(等价split(a, 3, axis=0))
-=完全不复制 c = a.view()浅复制 d = a.copy()深复制
+=浅复制 c = a.view()生成新对象不生成新数据 d = a.copy()深复制 
+python中=浅复制 copy()深复制(但list二级元素浅复制) deepcopy()深复制
 set_printoptions(threshold='nan')取消省略打印，强制打印所有内容

@@ -11,6 +11,7 @@ import chardet
 import MySQLdb
 import pandas as pd
 import logging
+import traceback
 import json
 import lxml.html
 import sys
@@ -18,8 +19,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-# 连接数据库
-def connect_database(db_nick='yuqing'):
+def connect_database(db_nick='yuqing'):  # 连接数据库
     if db_nick == 'ProductData':
         while True:
             try:
@@ -41,12 +41,12 @@ def connect_database(db_nick='yuqing'):
     return conn
 
 
-def initLogging(logFilename):
+def initlogging(logfilename):
     logging.basicConfig(
         level=logging.DEBUG,
         format='LINE %(lineno)-4d  %(levelname)-8s %(message)s',
         datefmt='%m-%d %H:%M',
-        filename=logFilename,
+        filename=logfilename,
         filemode='w')
     # define a Handler which writes INFO messages or higher to the sys.stderr
     console = logging.StreamHandler()
@@ -141,7 +141,7 @@ def get_info():
 
 
 def main():
-    initLogging('get_.log')
+    initlogging('get_.log')
     logging.info("current:%s",time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     conn_yuqing_be = connect_database(db_nick='yuqing')
     cur_be = conn_yuqing_be.cursor()
