@@ -6,8 +6,8 @@ select_sql = "SELECT * FROM _ WHERE _='" + i + "'ORDER BY _ DESC LIMIT 1"
 查询某字段非重复记录
 SELECT DISTINCT 字段 FROM 表
 查询某字段重复记录
-SELECT * FROM 表 WHERE 字段 IN (SELECT 字段 FROM 表 GROUP BY 字段 HAVING COUNT(字段) > 1)
-WHERE type LIKE '%type%' and type NOT REGEXP '新|D'
+SELECT * FROM 表 WHERE 字段 IN (SELECT 字段 FROM 表 GROUP BY 字段 HAVING COUNT(字段) > 1) WHERE type LIKE '%type%' and type NOT REGEXP '新|D'
+时间戳和datetime都可的比较用> '2017-08-25 10:02:43' 查询时可用DATE_FORMAT(mydate,'%Y-%m-%d %H:%i:%s')
 
 Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。
 Hash索引弊端：
