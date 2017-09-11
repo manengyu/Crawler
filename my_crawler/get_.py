@@ -142,6 +142,26 @@ def get_info():
             climb_hujing(conn_yuqing, cur, u"" + j)
 
 
+def get_cookie():
+    return u""
+    
+    
+def get_proxies():
+    ip = json.loads(requests.get(
+            "http://dps.kuaidaili.com/api/getdps/?orderid=958964320330191&num=50&ut=1&format=json&sep=1").content)
+    proxies = {  # 每次请求从代理ip中随机产生一个地址
+        "http": "http://8283891:ojonvhe8@" + ip["data"]["proxy_list"][random.randint(0, len(ip)-1)]
+    }
+    return proxies
+
+
+def login(r, username, pwd):
+    m = hashlib.md5()
+    m.update(pwd)
+    logging.info(r.post('https://www..com/cd/login.json', data=json.dumps({'mobile': username, 'cdpassword': str(m.hexdigest()), 'loginway': 'PL', 'autoLogin': True})).text)
+    return r
+
+
 def main():
     initlogging(u"get_.log")
     logging.info(u"current:%s", time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))

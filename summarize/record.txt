@@ -13,6 +13,8 @@ r = requests.session() r.proxies无用，要写在get()里
 * **都为可变参数，*参数当组传入，**参数当字典传入
 字典items()返回元组列表[(key,val),],iteritems()返回元组列表迭代器
 ^按位异或
+json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
+rsttip(u'1.')去除尾部包含.和1,循环匹配.1
 
 格式化
 %用类C语言，format用{} {}中为空时默认为0
@@ -48,6 +50,8 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
 linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
+ls | wc -w查看当前目录下文件及文件夹数
+ls | wc -c查看当前目录及子目录文件数
 
 https://juejin.im/post/599e14875188251240632702
 git远程仓库至本地
@@ -73,6 +77,7 @@ https http://mp.weixin.qq.com/s/9BkJ90CE6sNuUXJjiwHlGg http://www.jianshu.com/p/
 get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
-
+规定时间任务完成度，质量正确率
+多问，反馈问题
 python3
 输出中文
