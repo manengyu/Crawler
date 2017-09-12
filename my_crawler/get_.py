@@ -14,26 +14,27 @@ import datetime
 import lxml.html
 import traceback
 import pandas as pd
+from bs4 import BeautifulSoup
 import sys
 reload(sys)
 sys.setdefaultencoding(u"utf-8")
 
 
-def connect_database(db_nick=u"yuqing"):  # 连接数据库
+def connect_database(db_nick=u""):  # 连接数据库
     conn = u""
-    if db_nick == u"ProductData":
+    if db_nick == u"Data":
         while True:
             try:
-                conn = MySQLdb.connect(host=u"192.168.16.17", user=u"wdzj_read", passwd=u"wdzj_read",
-                                       db=u"ProductData", port=3306, charset=u"utf8")
+                conn = MySQLdb.connect(host=u"", user=u"", passwd=u"",
+                                       db=u"", port=3306, charset=u"utf8")
                 break
             except MySQLdb.Error, e:
                 print u"Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == u"RawData":
+    elif db_nick == u"Data":
         while True:
             try:
-                conn = MySQLdb.connect(host=u"192.168.16.17", user=u"wdzj_read", passwd=u"wdzj_read",
-                                       db=u"RawData", port=3306, charset=u"utf8")
+                conn = MySQLdb.connect(host=u"", user=u"", passwd=u"",
+                                       db=u"", port=3306, charset=u"utf8")
                 break
             except MySQLdb.Error, e:
                 print u"Mysql Error %d: %s" % (e.args[0], e.args[1])
@@ -61,8 +62,7 @@ def initlogging(logfilename):
 
 def insert_(conn, cur, ):
     update_time = str(time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
-    insert_sql = u"INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA () VALUES ('" + u"','" + + u"','" + + u"','" + \
-                 + u"','" + u"','" + u"','" + update_time + u"')"
+    insert_sql = u"INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA () VALUES (" + u"','" + update_time + u"')"
     try:
         cur.execute(insert_sql)
         conn.commit()
@@ -71,45 +71,22 @@ def insert_(conn, cur, ):
         pass
 
 
-def climb_tianyan(sheet, file_name):
-    new_workbook = xlwt.Workbook(file_name)
-    sheet_w = new_workbook.add_sheet(sheet)
-    yesterday = str(datetime.datetime.now().month) + u"月" + str(datetime.datetime.now().day - 1) + u"日"
-    plat = []
-    r = requests.session()
-    r.headers = {u"User-Agent": u"Mozilla/5.0 (Windows NT 10.0, WOW64) "
-                                u"AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"}
-    con = r.get(u"http://www.p2peye.com/shuju/ptsj/").text
-    x = lxml.html.fromstring(con)
-    plat_count = x.xpath(u"//*[@id='fixedptsj']/div/div/ul/li[5]/span/span/text()")
-    result = {}
-    for i in range(21, int(plat_count[0]) + 1):
-        plat_name = x.xpath(u"//*[@id='platdata']/tbody/tr[" + str(i) + u"]/td[2]/a/text()")[0]
-        loan_amount = x.xpath(u"//*[@id='platdata']/tbody/tr[" + str(i) + u"]/td[3]/text()")[0]
-        result[plat_name] = loan_amount
-    for nu, i in enumerate(plat):
-        if i.decode(u"utf-8") in result.keys():
-            sheet_w.write(nu, 0, i.decode(u"utf-8"))
-            sheet_w.write(nu, 1, result[i.decode(u"utf-8")])
-            sheet_w.write(nu, 2, yesterday.decode(u"utf-8"))
-            print i, result[i.decode(u"utf-8")], yesterday
-    new_workbook.save(file_name)
-
-
 def climb_hujing(conn, cur, url):
-    x = lxml.html.fromstring(r.get(url).text)  # .replace(u" u", u"").replace(u"\n", u"")
+    text = r.get(url).text  # .replace(u"\r\n", u"").replace(u"\n", u"").replace(u"\t", u"").replace(u" ", u"")
+    x = lxml.html.fromstring(text)
+    soup = BeautifulSoup(text, u"lxml")
+    url = soup.find_all(u"a", class_=u"fn-left ui-box-username fn-text-overflow a_cor pl20")[0].string
     plat_id = url.lstrip(u"")
-    plat_name = x.xpath(u"//*[@id='theForm']/div[1]/div[2]/div[1]/div[1]/span[1]/text()")[0]
-    tr = x.xpath(u"//*[@id='trade-log']/table[1]/tr")
-    table2_td = x.xpath(u"//*[@id='trade-log']/table[2]/tr[2]/td")
+    plat_name = x.xpath(u'//*[@id="theForm"]/div[1]/div[2]/div[1]/div[1]/span[1]/text()')[0]
+    tr = x.xpath(u'//*[@id="trade-log"]/table[1]/tr')
+    table2_td = x.xpath(u'//*[@id="trade-log"]/table[2]/tr[2]/td')
     for i in range(2, len(tr) + 1):
         data_ls = []
-        day_date = x.xpath(u"//*[@id='trade-log']/table[1]/tr[" + str(i) + u"]/td/text()")[0]
+        day_date = x.xpath(u'//*[@id="trade-log"]/table[1]/tr[" + str(i) + u"]/td/text()')[0]
         create_time = str(time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
         for j in range(1, len(table2_td) + 1):
             try:
-                value = x.xpath(u"//*[@id='trade-log']/table[2]/tr[" + str(i) + u"]/td[" + str(j) + u"]/text()")[0]
-                # .replace(u"\r\n", u"").replace(u"\n", u"").replace(u"\t", u"").replace(u" u", u"")
+                value = x.xpath(u"" + str(i) + u"" + str(j) + u"]/text()")[0]
                 if len(value):
                     data_ls.append(u"%.2f" % float(value))
                 else:  # 为空
@@ -133,12 +110,12 @@ def climb_hujing(conn, cur, url):
 def get_info():
     first_url = u""
     x = lxml.html.fromstring(r.get(first_url).text)
-    total_nu = x.xpath(u"//*[@id='oldpage']/a[13]/@href")[0].lstrip(u"")
+    total_nu = x.xpath(u'//*[@id="oldpage"]/a[13]/@href')[0].lstrip(u"")
     # select_sql = u"SELECT plat_name FROM finace_association_of_china"
     # app_management = pd.read_sql(select_sql, conn_yuqing)
     for i in range(1, int(total_nu) + 1):
         url_page = u"" + str(i)
-        for j in lxml.html.fromstring(r.get(url_page).text).xpath(u"//*[@id='runinfotbody']/tr/td[8]/a/@href"):
+        for j in lxml.html.fromstring(r.get(url_page).text).xpath(u"//*[@id=\"runinfotbody\"]/tr/td[8]/a/@href"):
             climb_hujing(conn_yuqing, cur, u"" + j)
 
 
@@ -148,9 +125,9 @@ def get_cookie():
     
 def get_proxies():
     ip = json.loads(requests.get(
-            "http://dps.kuaidaili.com/api/getdps/?orderid=958964320330191&num=50&ut=1&format=json&sep=1").content)
+            u"http://.com/api/").content)
     proxies = {  # 每次请求从代理ip中随机产生一个地址
-        "http": "http://8283891:ojonvhe8@" + ip["data"]["proxy_list"][random.randint(0, len(ip)-1)]
+        u"http": u"http://name:pwd@" + ip[u"data"][u"proxy_list"][random.randint(0, len(ip)-1)]
     }
     return proxies
 
@@ -158,14 +135,15 @@ def get_proxies():
 def login(r, username, pwd):
     m = hashlib.md5()
     m.update(pwd)
-    logging.info(r.post('https://www..com/cd/login.json', data=json.dumps({'mobile': username, 'cdpassword': str(m.hexdigest()), 'loginway': 'PL', 'autoLogin': True})).text)
+    logging.info(r.post(u"https://www..com/cd/login.json", data=json.dumps({u"mobile": username, u"cdpassword":
+                        unicode(m.hexdigest()), u"loginway": u"PL", u"autoLogin": True})).text)
     return r
 
 
 def main():
     initlogging(u"get_.log")
     logging.info(u"current:%s", time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
-    conn_yuqing_be = connect_database(db_nick=u"yuqing")
+    conn_yuqing_be = connect_database(db_nick=u"")
     cur_be = conn_yuqing_be.cursor()
     r = requests.session()
     r.headers = {
