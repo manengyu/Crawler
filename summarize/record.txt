@@ -59,8 +59,9 @@ git远程仓库至本地
 git clone http://....git
 方法二
 git init
-git remote add origin http://...git
+git remote add origin http://...git  # 将本地库与远端库关联
 git pull origin master
+
 
 BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。当你发布使用了BSD协议的代码，或者以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：
 1.如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。
@@ -76,8 +77,13 @@ ip http://881free.com/  http://www.xdaili.cn/freeproxy.html
 https http://mp.weixin.qq.com/s/9BkJ90CE6sNuUXJjiwHlGg http://www.jianshu.com/p/072a657337ae
 get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 
+一行9*9
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
+print "\n".join([" ".join(['%d*%d=%2-d'%(i,j, i*j) for j in range(1, i+1)]) for i in range(1, 10)])
 规定时间任务完成度，质量正确率
 多问，反馈问题
 python3
-输出中文
+print中文
+import io
+import sys
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
