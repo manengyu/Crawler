@@ -10,3 +10,5 @@ https://segmentfault.com/a/1190000000574348
 9. 数据压缩算法
 10. 随机数生成
 https://yanqiangmiffy.github.io/2017/07/26/Python28-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BD%BF%E7%94%A8Python%E5%92%8CR%E4%BB%A3%E7%A0%81%EF%BC%89/
+深度学习https://segmentfault.com/a/1190000011044305
+https://segmentfault.com/a/1190000009123950

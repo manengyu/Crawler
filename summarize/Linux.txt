@@ -7,3 +7,25 @@ ps -aux | grep显示所有状态
 
 kill -9 [PID]
 9表示强迫进程立即停止
+
+linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
+ls | wc -w查看当前目录下文件及文件夹数
+ls | wc -c查看当前目录及子目录文件数
+
+Linux权限
+groupadd name
+useradd -g groupname usernaem
+chgrp root ./abc.py  # 改变当前目录所属组为root
+chown R root ./abc.py  # 改变当前目录及下所有文件和目录所属组为root
+chmod
+-rwxrw-r--. 1 root root 1314 Feb 2 09:39 abc.py
+-文件，d目录，l链接
+rwx读写执行，r4w2x1
+1连接的文件数，正常文件为1，目录为目录下文件数
+root用户
+root组
+1314大小字节，ls -lh显示为k,m
+Feb 2 09:39 最后修改时间
+示例
+chmod u=rwx，g=5，o=rx abc.py  # o为其它组里的用户
+chmod a+r abc.py  # 给所有用户添加读权限

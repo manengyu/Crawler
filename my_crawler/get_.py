@@ -15,9 +15,9 @@ import lxml.html
 import traceback
 import pandas as pd
 from bs4 import BeautifulSoup
-import sys
-reload(sys)
-sys.setdefaultencoding(u"utf-8")
+# import sys
+# reload(sys)
+# sys.setdefaultencoding(u"utf-8")
 
 
 def connect_database(db_nick=u""):  # 连接数据库
@@ -29,7 +29,7 @@ def connect_database(db_nick=u""):  # 连接数据库
                                        db=u"", port=3306, charset=u"utf8")
                 break
             except MySQLdb.Error, e:
-                print u"Mysql Error %d: %s" % (e.args[0], e.args[1])
+                logging.error(u"Mysql Error %d: %s", e.args[0], e.args[1])
     elif db_nick == u"Data":
         while True:
             try:
@@ -37,7 +37,7 @@ def connect_database(db_nick=u""):  # 连接数据库
                                        db=u"", port=3306, charset=u"utf8")
                 break
             except MySQLdb.Error, e:
-                print u"Mysql Error %d: %s" % (e.args[0], e.args[1])
+                logging.error(u"Mysql Error %d: %s", e.args[0], e.args[1])
     else:
         print u"No such database!!!"
     return conn
@@ -67,11 +67,12 @@ def insert_(conn, cur, ):
         cur.execute(insert_sql)
         conn.commit()
     except MySQLdb.Error:
-        traceback.print_exc()
+        logging.error(traceback.print_exc())
         pass
 
 
-def climb_hujing(conn, cur, url):
+def climb_hujing(conn, cur, name_urls, index):
+    # for url in name_urls[index:]:
     text = r.get(url).text  # .replace(u"\r\n", u"").replace(u"\n", u"").replace(u"\t", u"").replace(u" ", u"")
     x = lxml.html.fromstring(text)
     soup = BeautifulSoup(text, u"lxml")
@@ -99,7 +100,7 @@ def climb_hujing(conn, cur, url):
         while len(data_ls) < 27:
             data_ls.append(u"0.00")
         insert_finace_association_of_china(conn, cur, plat_id, plat_name, day_date, data_ls[0], data_ls[1], data_ls[2],
-                                           data_ls[3].rstrip(u".00"), data_ls[4].rstrip(u".00"), data_ls[5],
+                                           data_ls[3], data_ls[4], data_ls[5],
                                            data_ls[6], data_ls[7], data_ls[8],
                                            data_ls[9], data_ls[10], data_ls[11], data_ls[12], data_ls[13],
                                            data_ls[14], data_ls[15], data_ls[16], data_ls[17], data_ls[18],
@@ -107,16 +108,21 @@ def climb_hujing(conn, cur, url):
                                            data_ls[24], data_ls[25], data_ls[26], url, create_time)
 
 
-def get_info():
-    first_url = u""
+def get_info(conn_yuqing, cur, url):
+    first_url = url
     x = lxml.html.fromstring(r.get(first_url).text)
     total_nu = x.xpath(u'//*[@id="oldpage"]/a[13]/@href')[0].lstrip(u"")
-    # select_sql = u"SELECT plat_name FROM finace_association_of_china"
-    # app_management = pd.read_sql(select_sql, conn_yuqing)
     for i in range(1, int(total_nu) + 1):
         url_page = u"" + str(i)
         for j in lxml.html.fromstring(r.get(url_page).text).xpath(u"//*[@id=\"runinfotbody\"]/tr/td[8]/a/@href"):
             climb_hujing(conn_yuqing, cur, u"" + j)
+
+
+def get_url(conn):
+    select_sql = u"SELECT  FROM "
+    app_management = pd.read_sql(select_sql, conn)
+    # name_urls = app_management.get("url")
+    return app_management
 
 
 def get_cookie():
@@ -136,7 +142,7 @@ def login(r, username, pwd):
     m = hashlib.md5()
     m.update(pwd)
     logging.info(r.post(u"https://www..com/cd/login.json", data=json.dumps({u"mobile": username, u"cdpassword":
-                        unicode(m.hexdigest()), u"loginway": u"PL", u"autoLogin": True})).text)
+                        unicode(m.hexdigest()), u"loginway": u"PL", u"autoLogin": True})).text)  # payload
     return r
 
 
@@ -151,31 +157,29 @@ def main():
                        u"(KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
         # u"Cookie": get_cookie(),
         # u"X-Requested-With": u"XMLHttpRequest",
-        # u"Host": u"www.tianyancha.com",
-        # u"Host": u"www.tianyancha.com",
-        # u"Connection": u"keep-alive",
+        # u"Host": u"",
         # u"Content-Length": u"106",
-        # u"Origin": u"https://www.tianyancha.com",
+        # u"Origin": u"",
         # u"Content-Type": u"application/json; charset=UTF-8",  # x-www-form-urlencoded
         # u"Accept": u"*/*",
-        # u"Referer": u"https://www.tianyancha.com/login",
+        # u"Referer": u"",
         # u"Accept-Encoding": u"gzip, deflate, br",
         # u"Accept-Language": u"zh-CN,zh;q=0.8"
     }
-    # name_url = get_company_url(conn_yuqing)
-    error_plat = u""  # 默认从第一条运行
-    # error_plat = u""
+    name_urls = list(get_url(conn_yuqing).get(u"url"))
+    error_url = u""  # 默认从第一条运行
+    # error_url = u""
     nu = 0
-    while len(error_plat):
+    while len(error_url):
         time.sleep(1)
-        # index = list(name_url.get(u"company_name")).index(error_plat)
-        error_plat = get_info().decode(u"utf-8")
+        index = name_urls.index(error_url)
+        error_url = get_info(conn_yuqing_be, cur_be, name_urls, index).decode(u"utf-8")
         nu += 1
         if nu % 9 == 0:  # 重复请求10次无果后停止运行
             break
     cur_be.close()
     conn_yuqing_be.close()
-    print u"climb finish"
+    logging.info(u"climb finish")
 
 
 if __name__ == u"__main__":  # 测试函数

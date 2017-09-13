@@ -49,9 +49,7 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 迭代器拥有next或__next__和__iter__方法特殊对象，定义方式：一（），二yield此时属于生成器
 编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
-linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
-ls | wc -w查看当前目录下文件及文件夹数
-ls | wc -c查看当前目录及子目录文件数
+
 
 https://juejin.im/post/599e14875188251240632702
 git远程仓库至本地
@@ -61,6 +59,8 @@ git clone http://....git
 git init
 git remote add origin http://...git  # 将本地库与远端库关联
 git pull origin master
+
+git merge等价git pull + git fetch
 
 
 BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。当你发布使用了BSD协议的代码，或者以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：
@@ -80,10 +80,11 @@ get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 一行9*9
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
 print "\n".join([" ".join(['%d*%d=%2-d'%(i,j, i*j) for j in range(1, i+1)]) for i in range(1, 10)])
-规定时间任务完成度，质量正确率
-多问，反馈问题
+
 python3
 print中文
 import io
 import sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
+
+程序在编译时变量名将全部转换成内存地址编号，二进制程序变量名已不存在，变成地址编号与址址内容相对应
