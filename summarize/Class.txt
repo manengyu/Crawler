@@ -1,0 +1,29 @@
+成员变量、成员方法：类中一般变量方法又称实例变量方法，属于实例存在堆内存中。
+类变量、类方法：类中静态变量、方法又称静态变量方法，属于类存在方法区域中。
+局部变量：方法中的变量。
+		类内部	包内	子类	包外
+public		Y	Y	Y	Y
+protected	Y	Y	Y	N
+default-friendlyY	Y	N	N
+private		Y	N	N	N
+对protected而言，若子类不在同一包中可访问
+对default而言，若子类在同一包中可访问
+
+堆Heap由程序员分配释放，若不释放由系统释放。
+栈Stack由编译器分配释放。
+全局区存放全局变量和静态变量的区域。
+
+反射的概念是由Smith在1982年首次提出的，主要是指程序可以访问、检测和修改它本身状态或行为的一种能力。
+Java中通过反射技术可以查看对象自身状态信息，实现动态加载类。
+反射获取类
+1.Class c = Class.forName("A");
+2.Class c = A.class;
+3.A a = new A();Class c = a.getClass();
+
+序列化：对象转为字节。方便数据传输查看，故协议应倾向通用性，跨语言跨平台。
+反序列化：字节转为对象。
+
+Python
+_variable、_method()理解为保护变量/方法（Python中不这么称），可以在子类中调用，但Python不建议这么做,不能from import
+__variable、__method()私有变量/方法，仅在类内部使用，不能被子类重写（重写无效），实例不可调用，调用可a._A__method()
+__variable__、__method__()Python内特殊的变量方法，不建议如此命名以防误解

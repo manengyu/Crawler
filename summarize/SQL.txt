@@ -62,4 +62,21 @@ WHEREÌõ¼ş£ºÔÚÓĞONÌõ¼şµÄSELECTÓï¾äÖĞÊÇ¹ıÂËÖĞ¼ä±íµÄÔ¼ÊøÌõ¼ş¡£ÔÚÃ»ÓĞONµÄµ¥±í²éÑ¯ÖĞ£
 ´ÓÕâÀï¿ÉÒÔ¿´³ö£¬½«WHEREÌõ¼şÒÆÈëONºóÃæÊÇ²»Ç¡µ±µÄ¡£ÍÆ¼öµÄ×ö·¨ÊÇ£ºONÖ»½øĞĞÁ¬½Ó²Ù×÷£¬WHEREÖ»¹ıÂËÖĞ¼ä±íµÄ¼ÇÂ¼¡£
 http://www.cnblogs.com/fnlingnzb-learner/p/6343828.html
 
+È¨ÏŞ
+grant all privileges on test.* to 'jack'@'192.168.0.%' identified by "jack" with grant option;
+flush privileges;  # Ë¢ĞÂÈ¨ÏŞ
+show grants  for 'jack'@'%';  # ²éÑ¯È¨ÏŞ
+revoke delete on *.* from 'jack'@'localhost';  # »ØÊÕÈ¨ÏŞ
+select host,user,password from user;
+drop user 'jack'@'localhost';  # É¾³ıÓÃ»§
+rename user 'jack'@'%' to 'jim'@'%';  # ÖØÃüÃû
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');  # ĞŞ¸ÄÃÜÂë
+all privilegesËùÓĞÈ¨ÏŞ
+onÖ¸¶¨¿â±í,test.*Îªtest¿âÏÂµÄËùÓĞ±í
+%ÈÎÒâ
+indentified byÎªÖ¸¶¨ÓÃ»§µÇÂ¼ÃÜÂë
+with grant optionÎª¸³ÓèÓÃ»§ÊÚÈ¨¸øÆäËüÓÃ»§
+DROP,GRANT,OPTION,REFERENCES,ALTER,DELETE,INDEX,INSERT,SELECT,UPDATE,CREATE,VIEW,SHOW,VIEW,ALTER,ROUTINE,CREATE,ROUTINE,EXECUTE,FILE,CREATE,TEMPORARY,TABLES,LOCK,TABLES,CREATE,USER,PROCESS
+
+
 
