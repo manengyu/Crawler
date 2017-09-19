@@ -9,9 +9,21 @@ from multiprocessing.dummy import Pool as ThreadPool  # 线程池
 CPU每执行100字节码，解释器就自动释放GIL锁
 threading.Lock两次调用acquire()后将形成死锁
 threading.RLock acquire()可多次调用但必需release()成对出现
+Lock为值是1的Semaphore（信号量）
 
 from multiprocessing import Process,Queue,Pipes
 http://mp.weixin.qq.com/s?__biz=MzA3NDk1NjI0OQ==&mid=2247483809&idx=1&sn=dda66a5dd61e7d326ea9152e209f2a0d&chksm=9f76ad17a801240114a8974178c105a00c7f69c70668dcf10add4571695828e74fe36c6df2d4&scene=21#wechat_redirect
 http://blog.csdn.net/crisschan/article/details/53838622
 
 http://blog.csdn.net/mmc2015/article/details/51873163
+
+并发：多任务存在，交替执行。概念包含并行。多线程或多进程。
+并行：多任务存在且同时执行。多线程、多进程（这又包括共享存储区的和分布式多机，以及混合式的），指令级并行。并行需要多个cpu，在CPython中由于单进程（多线程）被上GIL，故无法实现并行。
+CPython的GIL仅仅影响着多核CPU上不能将单进程多线程程序实现并行。
+http://ifeve.com
+https://zhuanlan.zhihu.com/p/25377631
+
+a.多核CPU——计算密集型任务。此时要尽量使用多线程，可以提高任务执行效率，例如加密解密，数据压缩解压缩（视频、音频、普通数据），否则只能使一个核心满载，而其他核心闲置。
+b.单核CPU——计算密集型任务。此时的任务已经把CPU资源100%消耗了，就没必要也不可能使用多线程来提高计算效率了；相反，如果要做人机交互，最好还是要用多线程，避免用户没法对计算机进行操作。
+c.单核CPU——IO密集型任务，使用多线程还是为了人机交互方便，
+d.多核CPU——IO密集型任务，这就更不用说了，跟单核时候原因一样。

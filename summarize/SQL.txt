@@ -8,7 +8,7 @@ SELECT DISTINCT 字段 FROM 表
 查询某字段重复记录
 SELECT * FROM 表 WHERE 字段 IN (SELECT 字段 FROM 表 GROUP BY 字段 HAVING COUNT(字段) > 1) WHERE type LIKE '%type%' and type NOT REGEXP '新|D'
 时间戳和datetime都可的比较用> '2017-08-25 10:02:43' 查询时可用DATE_FORMAT(mydate,'%Y-%m-%d %H:%i:%s')
-替换空格和tab
+替换空格和tab char(9),\n char(10),\r\n char(13)
 update gongshang.comp_invest_info_year_report set name=replace(name, ' ', '');
 #update gongshang.comp_invest_info_year_report set name=replace(name, char(9), '');
 

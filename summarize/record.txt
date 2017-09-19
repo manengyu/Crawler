@@ -15,6 +15,7 @@ r = requests.session() r.proxies无用，要写在get()里
 ^按位异或
 json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
 rsttip(u'1.')去除尾部包含.和1,循环匹配.1
+全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改
 
 格式化
 %用类C语言，format用{} {}中为空时默认为0
@@ -88,3 +89,5 @@ import sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 
 程序在编译时变量名将全部转换成内存地址编号，二进制程序变量名已不存在，变成地址编号与址址内容相对应
+
+app抓包fiddler,upd包可用wireshark

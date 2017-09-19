@@ -16,7 +16,10 @@ if __name__ == "__main__":  # 测试函数
     threads.append(threading.Thread(target=climb_info, args=(conn, cur)))
     for t in threads:
         t.setDaemon(True)
-        t.start()
+        t.start()  # t.join()不能放这，否则主线程被阻塞后，下一次线程的开始必须等主线程被激活，多线程作用便失效
+    for p in threads: 
+        p.join()  # join()用来阻塞主线程
+    print threading.currentThread().name
 
 
 线程池
@@ -37,7 +40,7 @@ if __name__ == '__main__':
        
     pool = threadpool.ThreadPool(2)  
     requests = threadpool.makeRequests(hello, func_var)  
-    [pool.putRequest(req) for req in requests]  
+    [pool.putRequest(req) for req in requests]
     pool.wait()
 
 线程锁
