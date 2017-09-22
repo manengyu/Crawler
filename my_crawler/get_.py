@@ -46,7 +46,7 @@ def connect_database(db_nick=u""):  # 连接数据库
 def initlogging(logfilename):
     logging.basicConfig(
         level=logging.DEBUG,
-        format=u"LINE %(lineno)-4d  %(levelname)-8s %(message)s",
+        format=u"%(asctime)s %(filename)s [line:%(lineno)d] %(levelname)s %(message)s",
         datefmt=u"%m-%d %H:%M",
         filename=logfilename,
         filemode=u"w")
@@ -54,26 +54,27 @@ def initlogging(logfilename):
     console = logging.StreamHandler()
     console.setLevel(logging.DEBUG)
     # set a format which is simpler for console use
-    formatter = logging.Formatter(u"LINE %(lineno)-4d : %(levelname)-8s %(message)s")
+    formatter = logging.Formatter(u"%(asctime)s %(filename)s [line:%(lineno)d] %(levelname)s %(message)s")
     # tell the handler to use this format
     console.setFormatter(formatter)
     logging.getLogger(u"").addHandler(console)
 
 
 def insert_(conn, cur, ):
-    update_time = str(time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+    update_time = unicode(time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     insert_sql = u"INSERT INTO WDZJ_PLAT_COMPANY_IC_DATA () VALUES (" + u"','" + update_time + u"')"
     try:
         cur.execute(insert_sql)
         conn.commit()
-    except MySQLdb.Error:
-        logging.error(traceback.print_exc())
+    except MySQLdb.Error, e:
+        logging.error(e)
         pass
 
 
 def climb_hujing(conn, cur, name_urls, index):
     # for url in name_urls[index:]:
-    text = r.get(url).text  # .replace(u"\r\n", u"").replace(u"\n", u"").replace(u"\t", u"").replace(u" ", u"")
+    text = r.get(name_urls[index]).text
+    # .replace(u"\r\n", u"").replace(u"\n", u"").replace(u"\t", u"").replace(u" ", u"")
     x = lxml.html.fromstring(text)
     soup = BeautifulSoup(text, u"lxml")
     url = soup.find_all(u"a", class_=u"fn-left ui-box-username fn-text-overflow a_cor pl20")[0].string
@@ -108,14 +109,14 @@ def climb_hujing(conn, cur, name_urls, index):
                                            data_ls[24], data_ls[25], data_ls[26], url, create_time)
 
 
-def get_info(conn_yuqing, cur, url):
+def get_info(conn_yuqing, cur, url, index):
     first_url = url
     x = lxml.html.fromstring(r.get(first_url).text)
     total_nu = x.xpath(u'//*[@id="oldpage"]/a[13]/@href')[0].lstrip(u"")
     for i in range(1, int(total_nu) + 1):
         url_page = u"" + str(i)
         for j in lxml.html.fromstring(r.get(url_page).text).xpath(u"//*[@id=\"runinfotbody\"]/tr/td[8]/a/@href"):
-            climb_hujing(conn_yuqing, cur, u"" + j)
+            climb_hujing(conn_yuqing, cur, u"" + j, index)
 
 
 def get_url(conn):
@@ -127,8 +128,8 @@ def get_url(conn):
 
 def get_cookie():
     return u""
-    
-    
+
+
 def get_proxies():
     ip = json.loads(requests.get(
             u"http://.com/api/").content)
@@ -148,7 +149,7 @@ def login(r, username, pwd):
 
 def main():
     initlogging(u"get_.log")
-    logging.info(u"current:%s", time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+    logging.info(u"start:current:%s", time.strftime(u"%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     conn_yuqing_be = connect_database(db_nick=u"")
     cur_be = conn_yuqing_be.cursor()
     r = requests.session()

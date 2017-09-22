@@ -4,6 +4,7 @@ from scrapy.spider import BaseSpider
 from scrapy.http import Request
 from scrapy.selector import HtmlXPathSelector,Selector
 from tutorial.items import 
+import requests
 import re
 import sys
 reload(sys)
@@ -31,6 +32,7 @@ class DmozSpider(BaseSpider):
 			url_head = ''
 			for url in self.start_urls:
 				yield self.make_requests_from_url(url)  # 默认调用parse方法
+				# yield self.parse(requests.get(url, headers=self.headers))
 	def parse(self, response):
 		hxs = HtmlXPathSelector(response)
 		for sel in hxs.xpath('//ul/li'):

@@ -4,6 +4,7 @@ ps -ef | grep java表示查看所有进程里 CMD 是 java 的进程信息
 e显示所有进程,环境变量
 f全格式
 ps -aux | grep显示所有状态
+netstat -ap|grep 8090查看端口被占用的进程
 
 kill -9 [PID]
 9表示强迫进程立即停止
@@ -29,3 +30,12 @@ Feb 2 09:39 最后修改时间
 示例
 chmod u=rwx，g=5，o=rx abc.py  # o为其它组里的用户
 chmod a+r abc.py  # 给所有用户添加读权限
+
+free -m查看内存
+
+/dev/null 表示空设备文件
+0 表示stdin标准输入
+1 表示stdout标准输出
+2 表示stderr标准错误
+command 1>a 2>&1与command 1>a 2>a还是有区别的，区别就在于前者只打开一次文件a，后者会打开文件两次，并导致stdout被stderr覆盖。
+nohup用途：不挂断地运行命令。 &用途：在后台运行 nohup Command [ Arg … ] [　& ]
