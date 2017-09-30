@@ -1,0 +1,14 @@
+https://www.ibm.com/developerworks/cn/java/j-lo-keyboard/
+
+function selector(attribute, value) {
+            var all = document.getElementsByTagName('*');
+            for (var i = 0; i < all.length; i++) {
+                if (all[i].getAttribute(attribute) == value) {
+                    return all[i];
+                }
+            } }
+
+
+
+self.br.find_element_by_xpath(u"//div[@class='live-search-wrap']/input").send_keys(u"wdzj2014")
+js = u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""

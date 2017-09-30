@@ -1,41 +1,36 @@
 ﻿# -*- coding: UTF-8 -*-
-__author__ = 'Administrator'
-
+import smtplib
+import datetime
+from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email.header import Header
-import smtplib, datetime
 
 
-class SendMail():
-    def __init__(self, head='', body=''):
+class SendMail:
+    def __init__(self, head=u'', body=u''):
         self.head = head
         self.body = body
-        self.SendMailAttach()
+        self.sendmailattach()
 
-    def SendMailAttach(self):
+    def sendmailattach(self):
         msg = MIMEMultipart()
-        # att = MIMEText(open(u'D:\cncepgf\workspace\PycharmProjects\my\\2017-07-02.xls', 'rb').read(), 'base64', 'utf-8')
-        # att["Content-Type"] = 'application/octet-stream'
-        # att["Content-Disposition"] = 'attachment; filename="chongfu.xls"'
+        # att = MIMEText(open(u'D:\cncepgf\workspace\PycharmProjects\my\\2017-07-02.xls', u'rb').read(), u'base64',
+        #  u'utf-8')
+        # att[u"Content-Type"] = u'application/octet-stream'
+        # att[u"Content-Disposition"] = u'attachment; filename="' + self.filename.encode(u"gb2312") + u'"'
         # msg.attach(att)
 
-        msg['to'] = '@.com'
-        msg['from'] = '@.com'
-        msg['CC'] = '@.com'
-        msg['subject'] = Header(self.head + '(' + str(datetime.date.today()) + ')', 'utf-8')
+        msg[u'to'] = u'@.com'
+        msg[u'from'] = u'@.com'
+        msg[u'cc'] = u'@.com'
+        msg[u'subject'] = Header(self.head + u'(' + str(datetime.date.today()) + u')', u'utf-8')
 
-        msg.attach(MIMEText(self.body, 'plain'))
+        msg.attach(MIMEText(self.body.encode(u"utf-8"), u'plain'))
 
-        server = smtplib.SMTP('smtp.exmail.qq.com', 25)
-        server.login("@.com", "")
-        msg_text=msg.as_string()
-        server.sendmail(msg['from'], msg['to'],msg_text)
+        server = smtplib.SMTP(u'smtp.exmail.qq.com', 25)
+        server.login(u"@.com", u"")
+        msg_text = msg.as_string()
+        server.sendmail(msg[u'from'], msg[u'to'].split(u" ") + msg[u'cc'].split(u" "), msg_text)
 
-if __name__ == "__main__":
-    SendMail('head', 'body')
-
-
-
-
-
+if __name__ == u"__main__":
+    SendMail(u'head', u'body')

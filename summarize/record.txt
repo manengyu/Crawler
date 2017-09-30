@@ -17,6 +17,7 @@ json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
 rsttip(u'1.')去除尾部包含.和1,循环匹配.1
 全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改
 
+
 格式化
 %用类C语言，format用{} {}中为空时默认为0
 '%s %d-%d' % ('hello', 7, 1)
@@ -36,6 +37,7 @@ chkconfig crond on开机启动
 crond:(5参或6参或7参)
 秒 分 时 日 月 周 年
 5参无秒年，6参无年,?表示不设置值无关紧要只能在月周中使用
+星期时1周日，2周一（有的0周日，1周一用时注意）
 */5 * * * * 命令 >> /a.log 2>&1  # 每五钟执行一次,日志全输出到a.log
 04,34 * * * *  # 第小时的04和34分钟执行
 0 06 * * *  #第天上午6点执行
@@ -50,7 +52,8 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 迭代器拥有next或__next__和__iter__方法特殊对象，定义方式：一（），二yield此时属于生成器
 编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
-
+python利用phantomjs执行js时，定位元素只能在第一个元素基础上查找下一个如
+u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
 
 https://juejin.im/post/599e14875188251240632702
 git远程仓库至本地
