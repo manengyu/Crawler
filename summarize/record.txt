@@ -1,5 +1,6 @@
 python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
 注意
+# -*-coding:utf-8-*-
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
 replace()返回新对象
 requests请求时数值中逗号已被移除
@@ -16,6 +17,7 @@ r = requests.session() r.proxies无用，要写在get()里
 json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
 rsttip(u'1.')去除尾部包含.和1,循环匹配.1
 全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改
+to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
 
 
 格式化
@@ -30,6 +32,11 @@ for i in range(5):
 ...   '{0:.{1}f}'.format(1 / 3.0, i)
 %-2s表示占两个字符
 {0:a<2}表示左对齐两个字符，不足用a填充默认用空格填充,^居中,>右对齐
+时间戳：timestamp = time.time()
+戳转结构化：struct_time = time.localtime(timestamp)
+结构转格式化：time.strftime("%a, %d %b %Y %H:%M:%S +0000", struct_time)  #周 日 月
+格式化转结构化：time.strptime(struct_time， "%a, %d %b %Y %H:%M:%S +0000")
+结构化转戳：timestamp = time.mktime(struct_time)
 
 yum install vixie-cron
 yum install crontabs
@@ -54,6 +61,7 @@ yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
 lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
 python利用phantomjs执行js时，定位元素只能在第一个元素基础上查找下一个如
 u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
+Mac(CR-\r) Linux(LF-\n) Windows(CRLF-\r\n)
 
 https://juejin.im/post/599e14875188251240632702
 git远程仓库至本地
@@ -89,7 +97,10 @@ python3
 print中文
 import io
 import sys
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8'
+与2区分
+MySQLdb-PyMySQL
+urlib.unquote()-urllib.parse.unquote()
 
 程序在编译时变量名将全部转换成内存地址编号，二进制程序变量名已不存在，变成地址编号与址址内容相对应
 

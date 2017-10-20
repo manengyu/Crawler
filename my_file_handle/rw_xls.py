@@ -1,4 +1,4 @@
-#coding:utf-8
+ï»¿#coding:utf-8
 import urllib
 import urllib2
 import requests
@@ -18,7 +18,7 @@ def read_xls(sheet, file_path, *args):
     for row in range(booksheet.nrows):
         if booksheet.cell(row, 4).value == args[1]:
             if args[0] == "date":
-                tuple_date = xlrd.xldate_as_tuple(booksheet.cell(row, 5).value, 0)  # ¶ÁÈ¡ÈÕÆÚÊ±
+                tuple_date = xlrd.xldate_as_tuple(booksheet.cell(row, 5).value, 0)  # è¯»å–æ—¥æœŸæ—¶
                 str_date = str(tuple_date[0]).decode("utf-8") + u"/" + str(tuple_date[1]).decode("utf-8") + u"/" +\
                            str(tuple_date[2]).decode("utf-8")
                 if str_date not in ls:
@@ -32,7 +32,7 @@ def read_xls(sheet, file_path, *args):
 def save_my_data(file_name, sheet, ls_name):
     new_workbook = xlwt.Workbook(file_name)
     sheet_w = new_workbook.add_sheet(sheet)
-    title = [u"ĞÕÃû", u"Ãû", u"ÍøÖ·", u"·½Ê½", u"Ê±¼ä"]
+    title = [u"å§“å", u"å", u"ç½‘å€", u"æ–¹å¼", u"æ—¶é—´"]
     for j in range(0, len(title)):
         sheet_w.write(0, j, title[j])
     for i in range(len(ls_name)):
@@ -40,14 +40,15 @@ def save_my_data(file_name, sheet, ls_name):
     new_workbook.save(file_name)
 
 
-def main(sheet, file_path, user_name):
+def main(sheet, file_path, user_name):  # è¡¨æ ¼å·¦ä¸Šè§’ä¸ºï¼ˆ0ï¼Œ0ï¼‰ï¼Œæ–‡ä»¶ååŠå†…å®¹ç»Ÿä¸€ç”¨unicode
     ls_name = read_xls(sheet, file_path, "user_name", user_name)  
     save_xls(file_name, sheet, ls_name)
 
 
-# ²âÊÔº¯Êı
+# æµ‹è¯•å‡½æ•°
 if __name__ == "__main__":
-    main(u'Sheet1', ur'D:\cncepgf\workspace\07.07-07.28.xlsx', u"ÂíÄÜÓî")  # ¹¤×÷±í ÎÄ¼şËùÔÚÂ·¾¶ Ãû×Ö
+    main(u'Sheet1', ur'D:\cncepgf\workspace\07.07-07.28.xlsx', u"é©¬èƒ½å®‡")  # å·¥ä½œè¡¨ æ–‡ä»¶æ‰€åœ¨è·¯å¾„ åå­—
+
 
 
 

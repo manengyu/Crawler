@@ -10,8 +10,9 @@ kill -9 [PID]
 9表示强迫进程立即停止
 
 linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
-ls | wc -w查看当前目录下文件及文件夹数
-ls | wc -c查看当前目录及子目录文件数
+ls | wc -w查看当前目录下文件及文件夹数（-l）
+ls | wc -c(查看当前目录及子目录字节数)
+ls -lha(l以列表详细信息显示，a-all,h-human-readable)
 
 Linux权限
 groupadd name

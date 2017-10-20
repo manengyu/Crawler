@@ -19,7 +19,6 @@ class SendMail:
         # att[u"Content-Type"] = u'application/octet-stream'
         # att[u"Content-Disposition"] = u'attachment; filename="' + self.filename.encode(u"gb2312") + u'"'
         # msg.attach(att)
-
         msg[u'to'] = u'@.com'
         msg[u'from'] = u'@.com'
         msg[u'cc'] = u'@.com'
