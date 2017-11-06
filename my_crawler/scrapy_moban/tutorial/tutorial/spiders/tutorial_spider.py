@@ -5,6 +5,8 @@ from scrapy.http import Request
 from scrapy.selector import HtmlXPathSelector,Selector
 from tutorial.items import 
 import requests
+from bs4 import BeautifulSoup
+from get_hurongbao_selenium import Gsxt
 import re
 import sys
 reload(sys)
@@ -18,7 +20,8 @@ class DmozSpider(BaseSpider):
         '',
         ''
     ]
-	headers = {
+	r = requests.session()
+    r.headers = {
       "Host":"onlinelibrary.wiley.com",
       "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       "Accept-Language":"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3",
@@ -31,8 +34,16 @@ class DmozSpider(BaseSpider):
 		try:
 			url_head = ''
 			for url in self.start_urls:
-				yield self.make_requests_from_url(url)  # 默认调用parse方法
+				#yield self.make_requests_from_url(url)  # 默认调用parse方法
 				# yield self.parse(requests.get(url, headers=self.headers))
+				text = self.r.get(url).text
+                soup = BeautifulSoup(text, u"lxml")
+                page_total = soup.find_all(u"a", id=u"last")[0].string
+				for i in [u"all", u"noviceArea"][:]:
+                    Gsxt("chrome", self.r).run(i, page_total, url, u"")
+		        except Exception, e:
+            print e
+			
 	def parse(self, response):
 		hxs = HtmlXPathSelector(response)
 		for sel in hxs.xpath('//ul/li'):

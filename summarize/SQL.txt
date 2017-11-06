@@ -1,6 +1,6 @@
 #SQL增删改查语句：
 insert_sql = "INSERT INTO _ (, , , , , , ) VALUES ('" +  + "','" ++ "','" +  + "','" +  + "','" +  + "','" + + "','" +  + "')"
-delete_sql = "DELETE * FROM _ WHERE _='" + i + "'"
+delete_sql = "DELETE FROM _ WHERE _='" + i + "'"
 delete_sql = "UPDATE _ SET _='" +  + "' WHERE _='" +  + "'"
 select_sql = "SELECT * FROM _ WHERE _='" + i + "'ORDER BY _ DESC LIMIT 1"
 查询某字段非重复记录
@@ -61,6 +61,11 @@ ON条件：是过滤两个链接表笛卡尔积形成中间表的约束条件。
 WHERE条件：在有ON条件的SELECT语句中是过滤中间表的约束条件。在没有ON的单表查询中，是限制物理表或者中间查询结果返回记录的约束。在两表或多表连接中是限制连接形成最终中间表的返回结果的约束。
 从这里可以看出，将WHERE条件移入ON后面是不恰当的。推荐的做法是：ON只进行连接操作，WHERE只过滤中间表的记录。
 http://www.cnblogs.com/fnlingnzb-learner/p/6343828.html
+
+EXCEPT 返回两个结果集的差（即从左查询中返回右查询没有找到的所有非重复值）。
+INTERSECT 返回 两个结果集的交集（即两个查询都返回的所有非重复值）。
+UNION返回两个结果集的并集。
+GROUP BY通过分组再进行数据的处理，GROUP BY ALL在存在WHERE的情况下不答WHERE条件的同样显示但值为0或null
 
 权限
 grant all privileges on test.* to 'jack'@'192.168.0.%' identified by "jack" with grant option;

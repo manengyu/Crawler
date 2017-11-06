@@ -5,6 +5,7 @@
 import json
 import codecs
 import MySQLdb
+import traceback
 
 class TutorialPipeline(object):
 	def __init__(self):
@@ -15,23 +16,34 @@ class TutorialPipeline(object):
 		self.file.write(line.decode('unicode_escape'))
         return item
 	# 连接数据库
-	def connect_database(db_nick='yuqing'):
-		if db_nick == 'ProductData':
+	@staticmethod
+	def connect_database(db_nick=''):
+		if db_nick == 'Data':
 			while True:
 				try:
-					conn = MySQLdb.connect(host='192.168.16.17', user='wdzj_read', passwd='wdzj_read',
-										   db='ProductData', port=3306, charset='utf8')
-					break
-				except MySQLdb.Error, e:
-					print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-		elif db_nick == 'RawData':
-			while True:
-				try:
-					conn = MySQLdb.connect(host='192.168.16.17', user='wdzj_read', passwd='wdzj_read',
-										   db='RawData', port=3306, charset='utf8')
+					conn = MySQLdb.connect(host='192.168.16.17', user='', passwd='',
+										   db='Data', port=3306, charset='utf8')
 					break
 				except MySQLdb.Error, e:
 					print "Mysql Error %d: %s" % (e.args[0], e.args[1])
 		else:
 			print 'No such database!!!'
 		return conn
+		
+	@staticmethod
+    def insert_bid(conn, cur, ):
+        insert_sql = u"INSERT " +  + u"() VALUES ('" ++ u"')"
+        try:
+            cur.execute(insert_sql)
+            conn.commit()
+        except MySQLdb.Error:
+            traceback.print_exc()
+    
+    @staticmethod
+    def insert_borrow(conn, cur, ):
+        insert_sql = u"INSERT " +  + u"() VALUES('" + + u"')"
+        try:
+            cur.execute(insert_sql)
+            conn.commit()
+        except MySQLdb.Error:
+            traceback.print_exc()

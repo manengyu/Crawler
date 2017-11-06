@@ -40,3 +40,10 @@ free -m查看内存
 2 表示stderr标准错误
 command 1>a 2>&1与command 1>a 2>a还是有区别的，区别就在于前者只打开一次文件a，后者会打开文件两次，并导致stdout被stderr覆盖。
 nohup用途：不挂断地运行命令。 &用途：在后台运行 nohup Command [ Arg … ] [　& ]
+
+shutdown -h关机，now（立刻），+5（5分钟后），10：30（十点半关机）
+shutdown -c取消关机
+windows下
+shutdown -s关机，-t 00（立刻），-t 60（1分钟后），
+at 10:30 shutdown -s（十点半关机）
+shutdown -a取消关机

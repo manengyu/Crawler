@@ -12,3 +12,5 @@ function selector(attribute, value) {
 
 self.br.find_element_by_xpath(u"//div[@class='live-search-wrap']/input").send_keys(u"wdzj2014")
 js = u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
+
+将chromedriver.exe驱动程序放在chrome.exe同目录下，并加入至path变量中，便可运行selenium程序无需再指定驱动路径

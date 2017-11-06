@@ -3,8 +3,11 @@ MongoDB
 
 Redis (http://www.runoob.com/redis/redis-hashes.html)
 数据存在内存，可定时向磁盘写入数据,存储分为内存存储、磁盘存储和log文件三部分
+基于内存的数据结构服务器
 安装：https://github.com/MSOpenTech/redis/releases
-win启动redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
+win启动与登录
+redis-server
+redis-cli.exe -h 127.0.0.1 -p 6379 -a password(远端时加密码)
 设置键值对SET myKey abc
 取出键值对GET myKey
 键命令：
