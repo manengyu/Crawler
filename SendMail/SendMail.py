@@ -14,22 +14,22 @@ class SendMail:
 
     def sendmailattach(self):
         msg = MIMEMultipart()
-        # att = MIMEText(open(u'D:\\cncepgf\\workspace\\PycharmProjects\\my\\2017-07-02.xls', u'rb').read(), u'base64',
+        # att = MIMEText(open(u'D:\\cncepgf\\workspace\\PycharmProjects\\my\\2017-07-02.xls', 'rb').read(), u'base64',
         #  u'utf-8')
         # att[u"Content-Type"] = u'application/octet-stream'
-        # att[u"Content-Disposition"] = u'attachment; filename="' + self.filename.encode(u"gb2312") + u'"'
+        # att[u"Content-Disposition"] = 'attachment; filename="' + self.filename.encode(u"gb2312") + '"'
         # msg.attach(att)
 		# 多个附件时
-		# att_two = MIMEText(open(u'', u'rb').read(), u'base64', u'utf-8')
+		# att_two = MIMEText(open(u'', 'rb').read(), u'base64', u'utf-8')
 		# att_two[u"Content-Type"] = u'application/octet-stream'
-        # att_two[u"Content-Disposition"] = u'attachment; filename="' + self.filename.encode(u"gb2312") + u'"'
+        # att_two[u"Content-Disposition"] = 'attachment; filename="' + self.filename.encode(u"gb2312") + '"'
 		# msg.attach(att_two)
         msg[u'to'] = u'@.com,@.com'
         msg[u'from'] = u'@.com'
         msg[u'cc'] = u'@.com'
         msg[u'subject'] = Header(self.head + u'(' + str(datetime.date.today()) + u')', u'utf-8')
 
-        msg.attach(MIMEText(self.body.encode(u"utf-8"), u'plain'))  #  _subtype=u'html'
+        msg.attach(MIMEText(self.body.encode(u"utf-8"), _subtype=u'plain'))  #  _subtype=u'html'
 
         server = smtplib.SMTP(u'smtp.exmail.qq.com', 25)
         server.login(u"@.com", u"")

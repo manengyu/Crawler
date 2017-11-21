@@ -1,7 +1,7 @@
 #SQL增删改查语句：
-insert_sql = "INSERT INTO _ (, , , , , , ) VALUES ('" +  + "','" ++ "','" +  + "','" +  + "','" +  + "','" + + "','" +  + "')"
+insert_sql = "INSERT INTO _ (, , , , , , ) VALUES ('" +  + "','" ++ "','" +  + "','" +  + "','" +  + "','" + + "','" +  + "') where not exists(select id from member where loginName = )"
 delete_sql = "DELETE FROM _ WHERE _='" + i + "'"
-delete_sql = "UPDATE _ SET _='" +  + "' WHERE _='" +  + "'"
+update_sql = "UPDATE _ SET _='" +  + "' WHERE _='" +  + "'"
 select_sql = "SELECT * FROM _ WHERE _='" + i + "'ORDER BY _ DESC LIMIT 1"
 查询某字段非重复记录
 SELECT DISTINCT 字段 FROM 表
@@ -66,6 +66,11 @@ EXCEPT 返回两个结果集的差（即从左查询中返回右查询没有找到的所有非重复值）。
 INTERSECT 返回 两个结果集的交集（即两个查询都返回的所有非重复值）。
 UNION返回两个结果集的并集。
 GROUP BY通过分组再进行数据的处理，GROUP BY ALL在存在WHERE的情况下不答WHERE条件的同样显示但值为0或null
+SUBSTR(字段，起始位置下标1开始，长度参数可省)
+PATINDEX('%+%)计算字符索引
+convert(numeric(长度,小数长度),isnull(字段,0))转化为浮点型
+insert into tb(col1,col2) select col1,col2 from tb另一表查出插入新表不需要values
+
 
 权限
 grant all privileges on test.* to 'jack'@'192.168.0.%' identified by "jack" with grant option;
@@ -83,5 +88,7 @@ indentified by为指定用户登录密码
 with grant option为赋予用户授权给其它用户
 DROP,GRANT,OPTION,REFERENCES,ALTER,DELETE,INDEX,INSERT,SELECT,UPDATE,CREATE,VIEW,SHOW,VIEW,ALTER,ROUTINE,CREATE,ROUTINE,EXECUTE,FILE,CREATE,TEMPORARY,TABLES,LOCK,TABLES,CREATE,USER,PROCESS
 
-
+SQLite IDE可使用:
+SQLite Administrator(http://sqliteadmin.orbmu2k.de/)
+SQLite Developer(http://www.sqlitedeveloper.com/download)
 

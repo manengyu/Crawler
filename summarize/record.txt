@@ -19,12 +19,29 @@ rsttip(u'1.')去除尾部包含.和1,循环匹配.1
 全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改
 to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
 字典取值时，当无此键时[]返加KeyError错误，get()默认返回None,get("b",1)可以设置默认值为1
+python2中urllib2变成3中urllib.request,3中urllib包含urllib.request, urllib.parse, urllib.error
+MySQLdb语法错误ProgrammingError，键值重复IntegrityError，表结构默认值长度等操作错误OperationalError
+处理多个异常时，可以except(ValueError,TypeError)
+写接口时，异常里不能有continue,否则响应超时
+替换非中文re.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
+urllib.unquote(args)若参数为已为unicode，刚返回原字符串不再解码，可多次解码，weibo，api碰到
+列表表达式[],先找第一个for,再找for后if或for或没有(从左至右)，再找for前if或没有
+pandas取行数shape[0],列数shape[1]
+string indices must be integers意思字符串的索引必须为整型，通常是字符串json未使用loads()直接取值出现
+请求Content-Type为application/x-www-form-urlencoded; charset=UTF-8时需将参数编码成url形式（以数组可能请求不到数据）
+若为multipart/form-data; boundary=---...刚以数据组形式提交
+使用cursor.fetchall()获取结果时，游标已到结果集最后，再取第二次时无结果
+
+
+总结
+sql字符串拼接注意转换成unicode
+pd返回结果时注意空时，None if DataFrame.empty else DataFrame.iloc(0)
 
 
 格式化
 %用类C语言，format用{} {}中为空时默认为0
 '%s %d-%d' % ('hello', 7, 1)
-'{0} {1}:{2}'.format('hello', '1', '7'
+'{0} {1}:{2}'.format('hello', '1', '7')
 '%.3f' % 1.234567869
 '{0:.3f}'.format(1 / 3.0)
 for i in range(5):  
@@ -102,6 +119,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8'
 与2区分
 MySQLdb-PyMySQL
 urlib.unquote()-urllib.parse.unquote()
+3中无iteritems(),iterkeys(),itervalues(),has_key()
 
 程序在编译时变量名将全部转换成内存地址编号，二进制程序变量名已不存在，变成地址编号与址址内容相对应
 
