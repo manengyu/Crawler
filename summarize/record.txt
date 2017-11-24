@@ -26,11 +26,13 @@ MySQLdbÓï·¨´íÎóProgrammingError£¬¼üÖµÖØ¸´IntegrityError£¬±í½á¹¹Ä¬ÈÏÖµ³¤¶ÈµÈ²Ù×÷´
 Ìæ»»·ÇÖÐÎÄre.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
 urllib.unquote(args)Èô²ÎÊýÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬weibo£¬apiÅöµ½
 ÁÐ±í±í´ïÊ½[],ÏÈÕÒµÚÒ»¸öfor,ÔÙÕÒforºóif»òfor»òÃ»ÓÐ(´Ó×óÖÁÓÒ)£¬ÔÙÕÒforÇ°if»òÃ»ÓÐ
+pandasºÏ²¢pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandasÈ¡ÐÐÊýshape[0],ÁÐÊýshape[1]
 string indices must be integersÒâË¼×Ö·û´®µÄË÷Òý±ØÐëÎªÕûÐÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹ÓÃloads()Ö±½ÓÈ¡Öµ³öÏÖ
 ÇëÇóContent-TypeÎªapplication/x-www-form-urlencoded; charset=UTF-8Ê±Ðè½«²ÎÊý±àÂë³ÉurlÐÎÊ½£¨ÒÔÊý×é¿ÉÄÜÇëÇó²»µ½Êý¾Ý£©
 ÈôÎªmultipart/form-data; boundary=---...¸ÕÒÔÊý¾Ý×éÐÎÊ½Ìá½»
 Ê¹ÓÃcursor.fetchall()»ñÈ¡½á¹ûÊ±£¬ÓÎ±êÒÑµ½½á¹û¼¯×îºó£¬ÔÙÈ¡µÚ¶þ´ÎÊ±ÎÞ½á¹û
+½Ó¿Ú´¦ÀíurlÊý¾ÝÊ±£¬ÓÃunquote½âÂëÁ½´ÎÇÒÔÚ±àÂëÎªutf-8ºóÔÙ½â£¬±ÜÃâÖ±½Ó½âunicode
 
 
 ×Ü½á
@@ -120,6 +122,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8'
 MySQLdb-PyMySQL
 urlib.unquote()-urllib.parse.unquote()
 3ÖÐÎÞiteritems(),iterkeys(),itervalues(),has_key()
+2×ª3Ê±(print>print(),unicode>str,Exception,e>Exception as e,MySQLdb>pymysql)
 
 ³ÌÐòÔÚ±àÒëÊ±±äÁ¿Ãû½«È«²¿×ª»»³ÉÄÚ´æµØÖ·±àºÅ£¬¶þ½øÖÆ³ÌÐò±äÁ¿ÃûÒÑ²»´æÔÚ£¬±ä³ÉµØÖ·±àºÅÓëÖ·Ö·ÄÚÈÝÏà¶ÔÓ¦
 

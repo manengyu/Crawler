@@ -15,6 +15,7 @@ from multiprocessing import Process,Queue,Pipes
 http://mp.weixin.qq.com/s?__biz=MzA3NDk1NjI0OQ==&mid=2247483809&idx=1&sn=dda66a5dd61e7d326ea9152e209f2a0d&chksm=9f76ad17a801240114a8974178c105a00c7f69c70668dcf10add4571695828e74fe36c6df2d4&scene=21#wechat_redirect
 http://blog.csdn.net/crisschan/article/details/53838622
 http://blog.csdn.net/luoweifu/article/details/46595285
+http://blog.csdn.net/u012927281/article/details/51602898
 
 http://blog.csdn.net/mmc2015/article/details/51873163
 

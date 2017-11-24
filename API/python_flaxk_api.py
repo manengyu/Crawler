@@ -56,7 +56,7 @@ def restart():
         return u"Failed"
 
 
-def get_ip():
+def get_ip(net_card=u"eth0"):
     if platform.system() == u'Windows':
         hostname = socket.gethostname()
         inip = socket.gethostbyname_ex(hostname)[-1][-1]
@@ -65,7 +65,9 @@ def get_ip():
         import struct
         sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # outip = socket.inet_ntoa(fcntl.ioctl(sk.fileno(), 0x8915, struct.pack('256s', "lo"[:15]))[20:24])
-        inip = socket.inet_ntoa(fcntl.ioctl(sk.fileno(), 0x8915, struct.pack('256s', "eth0"[:15]))[20:24])
+        inip = socket.inet_ntoa(
+            fcntl.ioctl(sk.fileno(), 0x8915, struct.pack(  # pack only accepts bytes
+                unicode('256s').encode(u"utf-8"), unicode(net_card[:15]).encode(u"utf-8")))[20:24])  #2unicode,3str
     return inip
 
 

@@ -29,7 +29,7 @@ class SendMail:
         msg[u'cc'] = u'@.com'
         msg[u'subject'] = Header(self.head + u'(' + str(datetime.date.today()) + u')', u'utf-8')
 
-        msg.attach(MIMEText(self.body.encode(u"utf-8"), _subtype=u'plain'))  #  _subtype=u'html'
+        msg.attach(MIMEText(self.body.encode(u"utf-8"), _subtype=u'plain', _charset=u"utf-8"))  #  _subtype=u'html'
 
         server = smtplib.SMTP(u'smtp.exmail.qq.com', 25)
         server.login(u"@.com", u"")
