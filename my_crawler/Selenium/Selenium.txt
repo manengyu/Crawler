@@ -7,10 +7,32 @@ function selector(attribute, value) {
                     return all[i];
                 }
             } }
+js循环标签方法，取属性时若无此属性刚为null
+var items = document.getElementsByTagName("a");
+for(var i = 0;i<items.length;i++){
+	if((items[i].getAttribute("onclick")!=null)&&items[i].getAttribute("onclick").indexOf("next")>0){
+		var clickEvent = document.createEvent("HTMLEvents");
+		clickEvent.initEvent("click",false,true);
+		items[i].dispatchEvent(clickEvent);
+		break;
+	}
+}
 
 
-
-self.br.find_element_by_xpath(u"//div[@class='live-search-wrap']/input").send_keys(u"wdzj2014")
+查找元素
+element = self.br.find_element_by_xpath(u"//div[@class='live-search-wrap']/input").send_keys(u"wdzj2014")或
+element = self.wait.until(ec.presence_of_element_located((By.XPATH, u"//ul[@class='nav']/li[7]/a")))或
 js = u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
+点击事件
+element.click()或
+action = ActionChains(self.br)
+action.click(element).perform()或
+js
 
+js相关
+查找元素一级一级往下找
+无法通过标签识别，可循环根据属性值判断
+点击事件在onclick属性中时，需要为标签添加点击事件，再用selenium点击方法点击，方可触发
 将chromedriver.exe驱动程序放在chrome.exe同目录下，并加入至path变量中，便可运行selenium程序无需再指定驱动路径
+getElementsByTagName()
+getElementById()

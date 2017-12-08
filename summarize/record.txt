@@ -27,12 +27,16 @@ MySQLdbÓï·¨´íÎóProgrammingError£¬¼üÖµÖØ¸´IntegrityError£¬±í½á¹¹Ä¬ÈÏÖµ³¤¶ÈµÈ²Ù×÷´
 urllib.unquote(args)Èô²ÎÊıÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬weibo£¬apiÅöµ½
 ÁĞ±í±í´ïÊ½[],ÏÈÕÒµÚÒ»¸öfor,ÔÙÕÒforºóif»òfor»òÃ»ÓĞ(´Ó×óÖÁÓÒ)£¬ÔÙÕÒforÇ°if»òÃ»ÓĞ
 pandasºÏ²¢pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
-pandasÈ¡ĞĞÊıshape[0],ÁĞÊıshape[1]
+pandasÈ¡ĞĞÊıshape[0],ÁĞÊıshape[1],ÁªºÏÓÃappend()
 string indices must be integersÒâË¼×Ö·û´®µÄË÷Òı±ØĞëÎªÕûĞÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹ÓÃloads()Ö±½ÓÈ¡Öµ³öÏÖ
 ÇëÇóContent-TypeÎªapplication/x-www-form-urlencoded; charset=UTF-8Ê±Ğè½«²ÎÊı±àÂë³ÉurlĞÎÊ½£¨ÒÔÊı×é¿ÉÄÜÇëÇó²»µ½Êı¾İ£©
 ÈôÎªmultipart/form-data; boundary=---...¸ÕÒÔÊı¾İ×éĞÎÊ½Ìá½»
 Ê¹ÓÃcursor.fetchall()»ñÈ¡½á¹ûÊ±£¬ÓÎ±êÒÑµ½½á¹û¼¯×îºó£¬ÔÙÈ¡µÚ¶ş´ÎÊ±ÎŞ½á¹û
 ½Ó¿Ú´¦ÀíurlÊı¾İÊ±£¬ÓÃunquote½âÂëÁ½´ÎÇÒÔÚ±àÂëÎªutf-8ºóÔÙ½â£¬±ÜÃâÖ±½Ó½âunicode
+ÅĞ¶ÏÎª¿ÕÊ±£¬unicode(str)==u"",u"None",u"NaN",u"nan"
+ÕıÔò²»Æ¥ÅäÄ³¸öµ¥´Ê»ò´Ê×é(?:(?!item\")(?!µµ°¸ÁĞ±í).)*?
+´úÂë±ÜÃâÈ«¾Ö±äÁ¿£¬¾Ö²¿ĞŞ¸ÄÓ°ÏìÈ«¾ÖµÄÄÚÈİ£¬ÈôÉæ¼°µ½Ó¦·ÅÔÚÍ³Ò»ĞŞ¸Ä»ò´¦ÅäÖÃÎÄ¼şÖĞ(jieba¼ÓÔØ×Öµä£¬Ó°ÏìËùÓĞÎÄ¼şjiebaµÄÊ¹ÓÃ)
+ÌØ±ğ×¢ÖØ´úÂëÖØÓÃ£¬ÓÈÆäÊ±¼ä£¬³¤¶ÈµÈ±äÁ¿£¨±£Ö¤¸ÄÒ»´¦£¬È«²¿ĞŞ¸Ä£¬·ñÔòºÜÈİÒ×Íü¼ÇĞŞ¸Ä±ğ´¦µ¼ÖÂbugÄÑÕÒ£©
 
 
 ×Ü½á
@@ -93,6 +97,7 @@ git remote add origin http://...git  # ½«±¾µØ¿âÓëÔ¶¶Ë¿â¹ØÁª
 git pull origin master
 
 git mergeµÈ¼Ûgit pull + git fetch
+git merge devºÏ²¢dev·ÖÖ§µ½µ±Ç°·ÖÖ§
 
 
 BSD¿ªÔ´Ğ­ÒéÊÇÒ»¸ö¸øÓÚÊ¹ÓÃÕßºÜ´ó×ÔÓÉµÄĞ­Òé¡£¿ÉÒÔ×ÔÓÉµÄÊ¹ÓÃ£¬ĞŞ¸ÄÔ´´úÂë£¬Ò²¿ÉÒÔ½«ĞŞ¸ÄºóµÄ´úÂë×÷Îª¿ªÔ´»òÕß×¨ÓĞÈí¼şÔÙ·¢²¼¡£µ±Äã·¢²¼Ê¹ÓÃÁËBSDĞ­ÒéµÄ´úÂë£¬»òÕßÒÔBSDĞ­Òé´úÂëÎª»ù´¡×ö¶ş´Î¿ª·¢×Ô¼ºµÄ²úÆ·Ê±£¬ĞèÒªÂú×ãÈı¸öÌõ¼ş£º
@@ -130,3 +135,15 @@ app×¥°üfiddler,upd°ü¿ÉÓÃwireshark
 shili
 https://github.com/adafruit/Adafruit_Python_DHT
 http://www.devstore.cn/essay/essayInfo/9430.html
+
+pythonº¯ÊıÏÈ·µ»Ø²ÎÊı¼Óº¯Êı¶ÔÏóÔÙ»Øµ÷ºÄÊ±ÈÎÎñ
+def profile_update(inputs):
+    #take updates and update the database 
+    def post_processing_task():
+        #do maintainence processing now..
+    return ("it worked", post_processing_task)
+	
+questions:
+¶à½ø³Ìµ÷ÓÃ½Ó¿ÚÑµÁ·Ä£ĞÍ¿¨×¡½øĞĞ²»ÏÂÈ¥
+windowsÏÂÈçºÎ²é¿´pythonËùÆô¶¯µÄ½ø³Ì
+flask½Ó¿Úget, postÊı¾İµÄÌá½»

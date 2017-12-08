@@ -38,6 +38,8 @@ def doc_sent_score():
     #     status = False
     #     msg = u'Failed to parse'
     #     print(u"data failed to parse with the reason", e)
+	# request.method = u"GET":
+	# request.args.get()
     try:
         print 0
     except:

@@ -1,4 +1,4 @@
 监听器是实现监听器接口的类
 处理器是监听器中的事件处理方法
 为事件源绑定（也可以说成注册/添加）监听器，因为处理器在监听器内部，也将监听器说成处理器
-table宽度自动换行（table加属性style="table-layout:fixed;"宽度设为width="75%"适宜，td都用百分数，td再加上属性style="word-wrap:break-word;"）
+table宽度自动换行（table加属性style="table-layout:fixed;"宽度设为width="1200px"适宜，td用固定px在手机中会按比例缩小（百分数在手机邮箱中只显示屏幕宽度多出换行），td再加上属性style="word-wrap:break-word;"）

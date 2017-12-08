@@ -9,13 +9,13 @@
                 <p><strong>邮件为数据,请查收！</strong></p>
                 """ + title + u"。总计：" + model_data[u"count_retag"] + u"条,正确率：" + u"{0:.2f}%".format(float(model_data[u"accuracy_retag"])) + u"""，详情如下:
                 <div id="content">
-                 <table width="75%" border="1" bordercolor="black" cellspacing="0" style="table-layout:fixed;">
+                 <table width="1200px" border="1" bordercolor="black" cellspacing="0" style="table-layout:fixed;">
                 <tr>
-                  <td width="7%" nowrap><strong></strong></td>
-                  <td width="6%" nowrap><strong></strong></td>
-                  <td width="7%" nowrap><strong></strong></td>
-                  <td width="53%"><strong></strong></td>
-                  <td width="27%" nowrap><strong></strong></td>
+                  <td width="100px" nowrap><strong></strong></td>
+                  <td width="90px" nowrap><strong></strong></td>
+                  <td width="90px" nowrap><strong></strong></td>
+                  <td width="600px"><strong></strong></td>
+                  <td width="320px" nowrap><strong></strong></td>
                 </tr>
                 """
         for i in corrected_result.iterrows():
