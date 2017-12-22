@@ -25,7 +25,7 @@ MySQLdbÓï·¨´íÎóProgrammingError£¬¼üÖµÖØ¸´IntegrityError£¬±í½á¹¹Ä¬ÈÏÖµ³¤¶ÈµÈ²Ù×÷´
 Ğ´½Ó¿ÚÊ±£¬Òì³£Àï²»ÄÜÓĞcontinue,·ñÔòÏìÓ¦³¬Ê±
 Ìæ»»·ÇÖĞÎÄre.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
 urllib.unquote(args)Èô²ÎÊıÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬weibo£¬apiÅöµ½
-ÁĞ±í±í´ïÊ½[],ÏÈÕÒµÚÒ»¸öfor,ÔÙÕÒforºóif»òfor»òÃ»ÓĞ(´Ó×óÖÁÓÒ)£¬ÔÙÕÒforÇ°if»òÃ»ÓĞ
+ÁĞ±íÉú³ÉÊ½±í´ïÊ½[],ÏÈÕÒµÚÒ»¸öfor,ÔÙÕÒforºóif»òfor»òÃ»ÓĞ(´Ó×óÖÁÓÒ)£¬ÔÙÕÒforÇ°if»òÃ»ÓĞ
 pandasºÏ²¢pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandasÈ¡ĞĞÊıshape[0],ÁĞÊıshape[1],ÁªºÏÓÃappend()
 string indices must be integersÒâË¼×Ö·û´®µÄË÷Òı±ØĞëÎªÕûĞÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹ÓÃloads()Ö±½ÓÈ¡Öµ³öÏÖ
@@ -37,11 +37,15 @@ string indices must be integersÒâË¼×Ö·û´®µÄË÷Òı±ØĞëÎªÕûĞÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹Ó
 ÕıÔò²»Æ¥ÅäÄ³¸öµ¥´Ê»ò´Ê×é(?:(?!item\")(?!µµ°¸ÁĞ±í).)*?
 ´úÂë±ÜÃâÈ«¾Ö±äÁ¿£¬¾Ö²¿ĞŞ¸ÄÓ°ÏìÈ«¾ÖµÄÄÚÈİ£¬ÈôÉæ¼°µ½Ó¦·ÅÔÚÍ³Ò»ĞŞ¸Ä»ò´¦ÅäÖÃÎÄ¼şÖĞ(jieba¼ÓÔØ×Öµä£¬Ó°ÏìËùÓĞÎÄ¼şjiebaµÄÊ¹ÓÃ)
 ÌØ±ğ×¢ÖØ´úÂëÖØÓÃ£¬ÓÈÆäÊ±¼ä£¬³¤¶ÈµÈ±äÁ¿£¨±£Ö¤¸ÄÒ»´¦£¬È«²¿ĞŞ¸Ä£¬·ñÔòºÜÈİÒ×Íü¼ÇĞŞ¸Ä±ğ´¦µ¼ÖÂbugÄÑÕÒ£©
-
+pythonº¯Êı±äÁ¿´«µİÊôÓÚÒıÓÃ´«µİ£¨²»¿É±ä¶ÔÏóÏàµ±ÓÚ´«ÖµÈçÕûĞÍ×Ö·ûĞÍÔª×é£©£¬ĞŞ¸ÄºóÔ­Öµ¸Ä±ä
+.contents»ñÈ¡ËùÓĞ×ÓÏî£¬Ã¿¸ö×ÓÏî×÷ÎªÒ»¸öÕûÌå
+sorted({}.items(), key=operator.itemgetter(1))
 
 ×Ü½á
 sql×Ö·û´®Æ´½Ó×¢Òâ×ª»»³Éunicode
 pd·µ»Ø½á¹ûÊ±×¢Òâ¿ÕÊ±£¬None if DataFrame.empty else DataFrame.iloc(0)
+ÎÄ¼şÃû²»ÄÜÓëÄ£¿éÃûÖØ¸´
+ÕÒÎÊÌâÏÈË¼¿¼±¨´íĞÅÏ¢¿ÉÄÜÔì³ÉÔ­Òò
 
 
 ¸ñÊ½»¯
@@ -61,6 +65,9 @@ for i in range(5):
 ½á¹¹×ª¸ñÊ½»¯£ºtime.strftime("%a, %d %b %Y %H:%M:%S +0000", struct_time)  #ÖÜ ÈÕ ÔÂ
 ¸ñÊ½»¯×ª½á¹¹»¯£ºtime.strptime(struct_time£¬ "%a, %d %b %Y %H:%M:%S +0000")
 ½á¹¹»¯×ª´Á£ºtimestamp = time.mktime(struct_time)
+datetime
+datetimeºÍdateÀàĞÍ×ªÊ±¼ä´Á£ºtime.mktime(var.timetuple())
+¼ÆËã±¾ÖÜÒ»ÈÕÆÚ£ºdatetime.date.today() - datetime.timedelta(days=now.weekday())
 
 yum install vixie-cron
 yum install crontabs
@@ -123,6 +130,11 @@ printÖĞÎÄ
 import io
 import sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8'
+ĞÂÔö¹¦ÄÜ
+[k for k in {}.keys() & [1,2]]
+mydict = {1:3,2:4}# &±íÊ¾ÔËËãk in [1,2],True·µ»Øk
+[k: mydict[k] for k in mydict.keys() & [1,2]]
+ÁĞ±íÓĞ½»¼¯·½·¨.intersection(list2)
 Óë2Çø·Ö
 MySQLdb-PyMySQL
 urlib.unquote()-urllib.parse.unquote()

@@ -1,3 +1,35 @@
+#mail-port
+Post Office Protocol 3邮局协议
+Internet Mail Access Protocol交互式邮件存取协议
+Simple Mail Transfer Protocol简单邮件传输协议
+Exchange Server微软邮件收发协议服务
+qq
+POP3协议收pop.qq.com 110(SSL 995)
+SMTP协议发smtp.qq.com 25(SSL 465|587)
+exmail
+POP3协议收pop.exmail.qq.com 110(SSL 995)
+IMAP协议收imap.exmail.qq.com (SSL 993)
+SMTP协议发smtp.exmail.qq.com 25(SSL 465|587)
+sina
+POP3协议收pop3.sina.com.cn 110
+SMTP协议发smtp.sina.com.cn 25
+POP3协议收pop3.sina.com 110
+SMTP协议发smtp.sina.com 25
+POP3协议收pop3.vip.sina.com 110
+SMTP协议发smtp.vip.sina.com 25
+sohu
+POP3协议收pop3.sohu.com 110
+SMTP协议发smtp.sohu.com 25
+126、163
+POP3协议收pop.126|163.com 110(SSL 995)
+IMAP协议收imap.163.com 143(SSL 993)
+SMTP协议发smtp.126|163.com 25(SSL 465|994)
+139
+POP3协议收POP.139.com 110
+SMTP协议发sSMTP.139.com 25
+
+
+
 # 构造html
         text = u"""
                 <html xmlns="http://www.w3.org/1999/xhtml">

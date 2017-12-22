@@ -11,6 +11,11 @@ SELECT * FROM ±í WHERE ×Ö¶Î IN (SELECT ×Ö¶Î FROM ±í GROUP BY ×Ö¶Î HAVING COUNT(×
 Ìæ»»¿Õ¸ñºÍtab char(9),\n char(10),\r\n char(13)
 update gongshang.comp_invest_info_year_report set name=replace(name, ' ', '');
 #update gongshang.comp_invest_info_year_report set name=replace(name, char(9), '');
+Æ´½Ó
+Êı×ÖÖ±½ÓÓÃ+
+×Ö·û´®£¨MySQL CONCAT, SQLite ||£©
+name=CONCAT(name,'end')
+name=CONCAT_WS('.',cname,'end') #ÓÃµãÀ´Á¬½Ó
 
 Hash Ë÷Òı½á¹¹µÄÌØÊâĞÔ£¬Æä¼ìË÷Ğ§ÂÊ·Ç³£¸ß£¬Ë÷ÒıµÄ¼ìË÷¿ÉÒÔÒ»´Î¶¨Î»£¬²»ÏñB-Tree Ë÷ÒıĞèÒª´Ó¸ù½Úµãµ½Ö¦½Úµã£¬×îºó²ÅÄÜ·ÃÎÊµ½Ò³½ÚµãÕâÑù¶à´ÎµÄIO·ÃÎÊ£¬ËùÒÔ Hash Ë÷ÒıµÄ²éÑ¯Ğ§ÂÊÒªÔ¶¸ßÓÚ B-Tree Ë÷Òı¡£
 HashË÷Òı±×¶Ë£º

@@ -1,3 +1,5 @@
+½ø³ÌÊÇÏµÍ³½øÐÐ×ÊÔ´·ÖÅäºÍµ÷¶ÈµÄÒ»¸ö¶ÀÁ¢µ¥Î»
+Ïß³ÌÊÇCPUµ÷¶ÈºÍ·ÖÅÉµÄ»ù±¾µ¥Î»
 setDaemon(True) ½«¸ÃÏß³ÌÉèÖÃÎªÊØ»¤Ïß³Ì£¬±íÊ¾²»ÖØÒª£¬Ö÷Ïß³ÌÏßÊøÊ±²»ÓÃ¿¼ÂÇ¸ÃÏß³Ì¿ÉÖ±½ÓÏú»Ù(·ñÔòÄ¬ÈÏÎªFalseÊ±²»¿É)
 .join()ÓÃÀ´×èÈûÖ÷Ïß³ÌµÄ£¬¿É¼Ó²ÎÊýtµ¥Î»Ãë£¬±íÊ¾¸ÃÏß³ÌÐèÖ´ÐÐtÃëºóÖ÷Ïß³Ì²ÅÄÜ±»»½ÐÑ£¬²»¼Ó²ÎÊýÒâÎ¶Ö÷Ïß³ÌÐèµÈ´ý¸ÃÏß³Ì½áÊø
 ÔÚ½ø³ÌÖÐjoin()ÓÃÀ´×èÈû¸¸½ø³Ì
@@ -31,3 +33,9 @@ a.¶àºËCPU¡ª¡ª¼ÆËãÃÜ¼¯ÐÍÈÎÎñ¡£´ËÊ±Òª¾¡Á¿Ê¹ÓÃ¶àÏß³Ì£¬¿ÉÒÔÌá¸ßÈÎÎñÖ´ÐÐÐ§ÂÊ£¬ÀýÈç¼ÓÃ
 b.µ¥ºËCPU¡ª¡ª¼ÆËãÃÜ¼¯ÐÍÈÎÎñ¡£´ËÊ±µÄÈÎÎñÒÑ¾­°ÑCPU×ÊÔ´100%ÏûºÄÁË£¬¾ÍÃ»±ØÒªÒ²²»¿ÉÄÜÊ¹ÓÃ¶àÏß³ÌÀ´Ìá¸ß¼ÆËãÐ§ÂÊÁË£»Ïà·´£¬Èç¹ûÒª×öÈË»ú½»»¥£¬×îºÃ»¹ÊÇÒªÓÃ¶àÏß³Ì£¬±ÜÃâÓÃ»§Ã»·¨¶Ô¼ÆËã»ú½øÐÐ²Ù×÷¡£
 c.µ¥ºËCPU¡ª¡ªIOÃÜ¼¯ÐÍÈÎÎñ£¬Ê¹ÓÃ¶àÏß³Ì»¹ÊÇÎªÁËÈË»ú½»»¥·½±ã£¬
 d.¶àºËCPU¡ª¡ªIOÃÜ¼¯ÐÍÈÎÎñ£¬Õâ¾Í¸ü²»ÓÃËµÁË£¬¸úµ¥ºËÊ±ºòÔ­ÒòÒ»Ñù¡£
+
+Ïß³ÌÓÐÁ½ÖÖ
+Ò»ÖÖÊÇ ¡°ÓÃ»§Ì¬Ïß³Ì¡± £¬¶ÔÄÚºË²»¿É¼û£¬ÄÚºË²»¿ÉÒÔµ÷¶È£¬ÏÖÔÚÒ»°ã½Ð×öÏË³Ì»òÐ­³Ì¡£()
+ÁíÒ»ÖÖÊÇ ¡°ÄÚºËÌ¬Ïß³Ì¡±£¬ÓÉÄÚºËµ÷¶È£¬Ò²³Æ×÷ÇáÁ¿½ø³Ì LWP ¡£(ÔÚÏµÍ³±£»¤µÄÄÚ´æ¿éÖÐÔËÐÐ)
+ÏÖÔÚËµµÄÏß³Ì£¬Ò»°ã²»ÌØÊâÖ¸¶¨£¬¶¼ÊÇÄÚºËÏß³Ì£¬ÒòÎªÓÃ»§Ïß³ÌÒ»°ãÍ¨¹ýÊ¹ÓÃAPI»òÕßÊÇÏµÍ³µ÷ÓÃ´´½¨µÄÏß³Ì¾ùÎªÒ»¶ÔÒ»Ïß³Ì¡£ÀýÈç£¬linuxÊ¹ÓÃclone´´½¨µÄÏß³Ì£¬ÒÔ¼°winÏÂÊ¹ÓÃCreateThread´´½¨µÄÏß³Ì¡£
+https://www.cnblogs.com/wanglulu/p/5522809.html
