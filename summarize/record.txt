@@ -29,7 +29,7 @@ urllib.unquote(args)Èô²ÎÊıÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬wei
 pandasºÏ²¢pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandasÈ¡ĞĞÊıshape[0],ÁĞÊıshape[1],ÁªºÏÓÃappend()
 string indices must be integersÒâË¼×Ö·û´®µÄË÷Òı±ØĞëÎªÕûĞÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹ÓÃloads()Ö±½ÓÈ¡Öµ³öÏÖ
-ÇëÇóContent-TypeÎªapplication/x-www-form-urlencoded; charset=UTF-8Ê±Ğè½«²ÎÊı±àÂë³ÉurlĞÎÊ½£¨ÒÔÊı×é¿ÉÄÜÇëÇó²»µ½Êı¾İ£©
+*ÇëÇóContent-TypeÎªapplication/x-www-form-urlencoded; charset=UTF-8Ê±Ğè½«²ÎÊı±àÂë³ÉurlĞÎÊ½£¨ÒÔÊı×é¿ÉÄÜÇëÇó²»µ½Êı¾İ£©
 ÈôÎªmultipart/form-data; boundary=---...¸ÕÒÔÊı¾İ×éĞÎÊ½Ìá½»
 Ê¹ÓÃcursor.fetchall()»ñÈ¡½á¹ûÊ±£¬ÓÎ±êÒÑµ½½á¹û¼¯×îºó£¬ÔÙÈ¡µÚ¶ş´ÎÊ±ÎŞ½á¹û
 ½Ó¿Ú´¦ÀíurlÊı¾İÊ±£¬ÓÃunquote½âÂëÁ½´ÎÇÒÔÚ±àÂëÎªutf-8ºóÔÙ½â£¬±ÜÃâÖ±½Ó½âunicode
@@ -40,10 +40,13 @@ string indices must be integersÒâË¼×Ö·û´®µÄË÷Òı±ØĞëÎªÕûĞÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹Ó
 pythonº¯Êı±äÁ¿´«µİÊôÓÚÒıÓÃ´«µİ£¨²»¿É±ä¶ÔÏóÏàµ±ÓÚ´«ÖµÈçÕûĞÍ×Ö·ûĞÍÔª×é£©£¬ĞŞ¸ÄºóÔ­Öµ¸Ä±ä
 .contents»ñÈ¡ËùÓĞ×ÓÏî£¬Ã¿¸ö×ÓÏî×÷ÎªÒ»¸öÕûÌå
 sorted({}.items(), key=operator.itemgetter(1))
+\b³£³ÆÍË¸ñ(Êµ¼Ê×÷ÓÃ½«µ±Ç°Î»ÖÃÄÚÈİÌæ»»Îª¿Õ£¬ÕıÔòÖĞµ¥´Ê±ß½çÒ²ÊÇÆ¥ÅäµÄ¿Õ)
+htmlÖĞÏÔÊ¾Ô´Âë±êÇ©.replace(u"<", u"&lt;").replace(u">", u"&gt;")
+Àà/ÊµÀı__dict__½«Àà±äÁ¿»òÊµÀı±äÁ¿×ª»»Îª×Öµä
 
 ×Ü½á
 sql×Ö·û´®Æ´½Ó×¢Òâ×ª»»³Éunicode
-pd·µ»Ø½á¹ûÊ±×¢Òâ¿ÕÊ±£¬None if DataFrame.empty else DataFrame.iloc(0)
+pd·µ»Ø½á¹ûÊ±×¢Òâ¿ÕÊ±£¬None if DataFrame.empty else DataFrame.iloc[0]
 ÎÄ¼şÃû²»ÄÜÓëÄ£¿éÃûÖØ¸´
 ÕÒÎÊÌâÏÈË¼¿¼±¨´íĞÅÏ¢¿ÉÄÜÔì³ÉÔ­Òò
 
@@ -83,6 +86,7 @@ crond:(5²Î»ò6²Î»ò7²Î)
 0 ±íÊ¾stdin±ê×¼ÊäÈë
 1 ±íÊ¾stdout±ê×¼Êä³ö
 2 ±íÊ¾stderr±ê×¼´íÎó
+crontabÖĞ²»ÄÜ³öÏÖ%
 
 ÈÕÖ¾Ò»¹²·Ö³É5¸öµÈ¼¶£¬´ÓµÍµ½¸ß·Ö±ğÊÇ£ºDEBUG INFO WARNING ERROR CRITICAL
 yieldÀàËÆreturn£¬º¯ÊıÖ´ĞĞÖÁyield¸Õ·µ»Ø£¬ÏÂ´Îµü´ú½ô½ÓyieldºóÖ´ĞĞ
@@ -103,8 +107,9 @@ git init
 git remote add origin http://...git  # ½«±¾µØ¿âÓëÔ¶¶Ë¿â¹ØÁª
 git pull origin master
 
-git mergeµÈ¼Ûgit pull + git fetch
+git pullµÈ¼Ûgit fetch + git mergeÀ­È¡ÏÂÀ´ºÏ²¢(ºÏ²¢Ê±ÓĞ³åÍ»ĞèÒªÊÖ¶¯½â¾ö³åÍ»)
 git merge devºÏ²¢dev·ÖÖ§µ½µ±Ç°·ÖÖ§
+git log --graph --pretty=oneline --abbrev-commit²é¿´·ÖÖ§ºÏ²¢Í¼
 
 
 BSD¿ªÔ´Ğ­ÒéÊÇÒ»¸ö¸øÓÚÊ¹ÓÃÕßºÜ´ó×ÔÓÉµÄĞ­Òé¡£¿ÉÒÔ×ÔÓÉµÄÊ¹ÓÃ£¬ĞŞ¸ÄÔ´´úÂë£¬Ò²¿ÉÒÔ½«ĞŞ¸ÄºóµÄ´úÂë×÷Îª¿ªÔ´»òÕß×¨ÓĞÈí¼şÔÙ·¢²¼¡£µ±Äã·¢²¼Ê¹ÓÃÁËBSDĞ­ÒéµÄ´úÂë£¬»òÕßÒÔBSDĞ­Òé´úÂëÎª»ù´¡×ö¶ş´Î¿ª·¢×Ô¼ºµÄ²úÆ·Ê±£¬ĞèÒªÂú×ãÈı¸öÌõ¼ş£º
@@ -159,3 +164,15 @@ questions:
 ¶à½ø³Ìµ÷ÓÃ½Ó¿ÚÑµÁ·Ä£ĞÍ¿¨×¡½øĞĞ²»ÏÂÈ¥
 windowsÏÂÈçºÎ²é¿´pythonËùÆô¶¯µÄ½ø³Ì
 flask½Ó¿Úget, postÊı¾İµÄÌá½»
+
+# -*-coding:utf-8-*-ÓÃÓÚÎÄ¼ş±àÂë
+'ÎÒ'  # ±àÎªutf-8
+u'ÎÒ'  # ±àÎªunicode
+import sys
+reload(sys)
+sys.setdefaultencoding(u"utf-8")ÓÃÓÚpythonÏµÍ³×Ö·û´®×ª»»Ê±±àÂë
+*linuxºóÌ¨´òÓ¡º¬ÖĞÎÄunicodeÊ±£¬Èô²»¼ÓÕâÈıĞĞ£¬»áÒÔascii±àÂë£¬½á¹û±¨´í
+sys.stdout_encodingÊä³ö±àÂë£¬ÓëÃüÁîĞĞ±àÂëÓĞ¹Ø
+¶ş½øÖÆÓëunicodeÔËËãpythonÄ¬ÈÏ»»Ëã³ÉunicodeÀ´ÔËËã
+
+
