@@ -1,0 +1,20 @@
+jenkins https://pkg.jenkins.io/redhat/jenkins-2.103-1.1.noarch.rpm
+war /usr/lib/jenkins/
+配置文件 /etc/sysconfig/jenkins
+HOME  /var/lib/jenkins/
+日志 /var/log/jenkins/jenkins.log
+密码 /var/lib/jenkins/secrets/initialAdminPassword
+
+配置java路径 /etc/init.d/jenkins
+java需1.8及以上
+默认端口8080，不能冲突且liunx防火墙需打开此端口
+
+
+Starting Jenkins Jenkins requires Java8 or later, but you are running 1.7.0_40-b43 from /root/                cncepgf/jdk1.7.0_40/jre
+java.lang.UnsupportedClassVersionError: 51.0
+        at Main.main(Main.java:124)
+
+
+gitlab token YCqQv3_DWyYw4GJzisuP
+教程http://blog.csdn.net/ruangong1203/article/details/73065410
+ssh-keygen -t rsa -C "root@<你服务器的ip地址>" -b 4096

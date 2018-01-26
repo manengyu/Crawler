@@ -9,6 +9,9 @@ jobs -l查看当前终端生效的后台进程(-l：显示进程号； -p：仅任务对应的显示进程号； 
 fg %n让编号n（非pid）进程调至前台
 bg %n将后台任务唤醒,在后台运行
 ctrl + z 可以将一个正在前台执行的命令放到后台，并且暂停
+编码及locale
+locale
+vi /etc/sysconfig/i18n(zh_CN.UTF-8,en_US.UTF-8)
 
 kill -9 [PID]
 9表示强迫进程立即停止
@@ -37,6 +40,9 @@ chmod u=rwx，g=5，o=rx abc.py  # o为其它组里的用户
 chmod a+r abc.py  # 给所有用户添加读权限
 
 free -m查看内存
+cat /proc/version系统详情
+uname -a系统用户
+uname -r系统内核
 
 /dev/null 表示空设备文件
 0 表示stdin标准输入

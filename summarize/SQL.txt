@@ -3,6 +3,11 @@ insert_sql = "INSERT INTO _ (, , , , , , ) VALUES ('" +  + "','" ++ "','" +  + "
 delete_sql = "DELETE FROM _ WHERE _='" + i + "'"
 update_sql = "UPDATE _ SET _='" +  + "' WHERE _='" +  + "'"
 select_sql = "SELECT * FROM _ WHERE _='" + i + "'ORDER BY _ DESC LIMIT 1"
+增删改查
+cur.execute(insert_sql)
+conn_yuqing.commit()
+查read_sql()，read_sql_query()只能用于查询
+app_management = pd.read_sql(select_sql, conn)
 查询某字段非重复记录(DISTINCT必须放字段最前)
 SELECT DISTINCT 字段 FROM 表
 如果以某个字段去重并查出所有字段，可以函数*, GROUP_CONCAT(DISTINCT 字段)或COUNT()
@@ -78,6 +83,7 @@ PATINDEX('%+%)计算字符索引
 convert(numeric(长度,小数长度),isnull(字段,0))转化为浮点型
 insert into tb(col1,col2) select col1,col2 from tb另一表查出插入新表不需要values
 GROUP BY以某个或多个字段进行分组，用聚合函数进行统计，若不用聚合函数将取每组第一条纪录,若想某列合并单行GROUP_CONCAT(字段  separator '-')
+OLTP与OLAP
 
 
 权限
@@ -95,8 +101,14 @@ on指定库表,test.*为test库下的所有表
 indentified by为指定用户登录密码
 with grant option为赋予用户授权给其它用户
 DROP,GRANT,OPTION,REFERENCES,ALTER,DELETE,INDEX,INSERT,SELECT,UPDATE,CREATE,VIEW,SHOW,VIEW,ALTER,ROUTINE,CREATE,ROUTINE,EXECUTE,FILE,CREATE,TEMPORARY,TABLES,LOCK,TABLES,CREATE,USER,PROCESS
+创建表时，表名字段不用加引号
 
 SQLite IDE可使用:
 SQLite Administrator(http://sqliteadmin.orbmu2k.de/)
 SQLite Developer(http://www.sqlitedeveloper.com/download)
 
+锁(show status like 'table%';)
+表级锁(MyISAM和MEMORY存储引擎)，分表共享读锁、独占写锁。
+页级锁(BDB存储引擎但也支持表级锁)
+行级锁(InnoDB但也支持表级锁, 分布式存储引擎NDBCluster)
+SET LOW_PRIORITY_UPDATES=1使该连接读比写的优先级高

@@ -7,3 +7,4 @@ K Shell（/usr/bin/ksh）
 Shell for Root（/sbin/sh）
 主要用bash
 bash是 Bourne Shell 的扩展,与 Bourne Shell 完全兼容
+使用EOF时，前面不要含空格，tab等符号

@@ -36,3 +36,12 @@ js相关
 将chromedriver.exe驱动程序放在chrome.exe同目录下，并加入至path变量中，便可运行selenium程序无需再指定驱动路径
 getElementsByTagName()
 getElementById()
+
+phantomjs
+http://npm.taobao.org/dist/phantomjs/
+
+PyVirtualDisplay安装
+http://blog.csdn.net/chengly0129/article/details/72229537
+yum install Xvfb  
+yum -y install libXfont  
+yum install xorg-x11-fonts* 

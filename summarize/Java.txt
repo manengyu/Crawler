@@ -34,3 +34,6 @@ String s3 = new String( "aaa ");
 System.out.println(s1 == s2);//true　同样使用的是常量，地址相同
 System.out.println(s1 == s3);//false 使用常量与使用对象(new出来的)是不同的
 System.out.println(s1.equals(s3));//true 内容相同，都是 "aaa "
+
+
+http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html

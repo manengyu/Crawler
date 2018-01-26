@@ -29,6 +29,8 @@ http://blog.csdn.net/whchina/article/details/51240898
 chrome
 点击{}美化，但美化过后无法编辑代码(可以在美化处先择代码在未美化处搜索到，编辑)
 debugger:///VM1772为chrome浏览器的虚拟机执行后的脚本。通常都是eval()的代码
+在线执行js
+https://tool.lu
 
 
 I/O 密集型与 CPU 密集型进程的比较
