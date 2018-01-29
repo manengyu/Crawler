@@ -68,3 +68,16 @@ nohup忽略sighup信号(一个kill信号，编号为1)，Terminal关闭时就发送了这个信号给sar
 
 休眠：将内存中的数据保存于硬盘中，所有设备都停止工作
 挂起(待机):将当前处于运行状态的数据保存在内存中，机器只对内存供电，而硬盘、屏幕和CPU等部件则停止供电
+
+开启端口
+方法一/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+/etc/init.d/iptables save
+service iptables restart 
+方法二vi /etc/sysconfig/iptables
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+关闭端口
+方法一/sbin/iptables -I INPUT -p tcp --dport 80 -j DROP
+/etc/init.d/iptables save
+service iptables restart
+方法二vi /etc/sysconfig/iptables
+ A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
