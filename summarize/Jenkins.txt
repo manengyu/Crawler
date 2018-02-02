@@ -16,5 +16,13 @@ java.lang.UnsupportedClassVersionError: 51.0
 
 
 gitlab token YCqQv3_DWyYw4GJzisuP
-教程http://blog.csdn.net/ruangong1203/article/details/73065410
+教程
+http://blog.csdn.net/ruangong1203/article/details/73065410
+http://blog.csdn.net/taishanduba/article/details/61423121
+http://blog.csdn.net/rheostat/article/details/7713590
+https://www.jianshu.com/p/98db1b956fc7
+https://www.jianshu.com/p/98db1b956fc7
 ssh-keygen -t rsa -C "root@<你服务器的ip地址>" -b 4096
+
+https://www.jianshu.com/p/b524b151d35f
+https://www.cnblogs.com/ceshisanren/p/5639869.html
