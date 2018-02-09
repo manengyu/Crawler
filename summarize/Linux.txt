@@ -49,6 +49,9 @@ uname -r系统内核
 1 表示stdout标准输出
 2 表示stderr标准错误
 command 1>a 2>&1与command 1>a 2>a还是有区别的，区别就在于前者只打开一次文件a，后者会打开文件两次，并导致stdout被stderr覆盖。
+<<EOF以EOF作为标准输入结束符(可另行指定)
+cat>a<<EOF创建a文件以标准输入写入内容以EOF结束
+cat>>a<<EOF向a文件追回内容或（cat<<EOF>>a）
 nohup用途：不挂断地运行命令。 &用途：在后台运行 nohup Command [ Arg … ] [　& ]
 
 shutdown -h关机，now（立刻），+5（5分钟后），10：30（十点半关机）
@@ -80,4 +83,19 @@ service iptables restart
 /etc/init.d/iptables save
 service iptables restart
 方法二vi /etc/sysconfig/iptables
- A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
+A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
+
+head -n 2 filename(显示文件前两行)
+tail -n -3 filename(显示文件后三行，+3第三行至最后一行)
+sed -n "2,3p" filename(显示文件2至3行)
+awk https://www.cnblogs.com/emanlee/p/3327576.html
+
+repo
+http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.8.1/
+https://people.centos.org/hughesjr/chromium/
+
+查看物理cpu个数：cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
+查看逻辑cpu个数：cat /proc/cpuinfo | grep "processor" | wc -l
+查看物理cpu核数：cat /proc/cpuinfo | grep "cpu cores"
+查看物理cpu中逻辑cpu个数：cat /proc/cpuinfo | grep "siblings"
+更新gcc

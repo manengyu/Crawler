@@ -180,6 +180,8 @@ https://github.com/adafruit/Adafruit_Python_DHT
 http://www.devstore.cn/essay/essayInfo/9430.html
 pywin32
 https://sourceforge.net/projects/pywin32
+python-docx
+https://python-docx.readthedocs.io/en/latest/
 
 python函数先返回参数加函数对象再回调耗时任务
 def profile_update(inputs):
