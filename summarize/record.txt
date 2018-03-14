@@ -28,6 +28,7 @@ urllib.unquote(args)若参数为已为unicode，刚返回原字符串不再解码，可多次解码，wei
 列表生成式表达式[],先找第一个for,再找for后if或for或没有(从左至右)，再找for前if或没有
 pandas合并pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandas取行数shape[0],列数shape[1],联合用append()
+dataframe查看元素索引 company_list[company_list.company_name==''[&]].index.tolist()[0]
 string indices must be integers意思字符串的索引必须为整型，通常是字符串json未使用loads()直接取值出现
 *请求Content-Type为application/x-www-form-urlencoded; charset=UTF-8时需将参数编码成url形式（以数组可能请求不到数据）
 若为multipart/form-data; boundary=---...刚以数据组形式提交
@@ -46,6 +47,8 @@ html中显示源码标签.replace(u"<", u"&lt;").replace(u">", u"&gt;")
 字符串不能超过32767
 异常捕获范围要精确，不能不太
 pandas.read_sql()仅能用于SELECT语句或表，无法增删改
+ord查看ASCII,chr查看字符
+a = b = []时，若b.append(1)则ab都为[1],若b=[1],则a为[],b为[1]
 
 总结
 sql字符串拼接注意转换成unicode
