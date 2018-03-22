@@ -77,6 +77,11 @@ class Gsxt(object):
             # driver = webdriver.PhantomJS()
             # return driver
         elif name.lower() == u"chrome":
+			# from selenium.webdriver.chrome.options import Options #  无头模式
+			# chrome_options = Options()
+			# chrome_options.add_argument(u'--headless')
+			# chrome_options.add_argument(u'--disable-gpu')
+			# return webdriver.Chrome(chrome_options=chrome_options)
             return webdriver.Chrome()
 
 # if __name__ == u"__main__":

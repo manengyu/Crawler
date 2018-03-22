@@ -20,7 +20,7 @@ rsttip(u'1.')去除尾部包含.和1,循环匹配.1
 to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
 字典取值时，当无此键时[]返加KeyError错误，get()默认返回None,get("b",1)可以设置默认值为1
 python2中urllib2变成3中urllib.request,3中urllib包含urllib.request, urllib.parse, urllib.error
-MySQLdb语法错误ProgrammingError，键值重复IntegrityError，表结构默认值长度等操作错误OperationalError
+MySQLdb语法错误ProgrammingError(表不存在)，键值重复IntegrityError，表结构默认值长度等操作错误OperationalError
 处理多个异常时，可以except(ValueError,TypeError)
 写接口时，异常里不能有continue,否则响应超时
 替换非中文re.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
@@ -49,6 +49,12 @@ html中显示源码标签.replace(u"<", u"&lt;").replace(u">", u"&gt;")
 pandas.read_sql()仅能用于SELECT语句或表，无法增删改
 ord查看ASCII,chr查看字符
 a = b = []时，若b.append(1)则ab都为[1],若b=[1],则a为[],b为[1]
+数据库操作，网络请求放一个函数中方便捕获异常
+base64图片格式保存时打开模式中需用b二进制，否则变成模糊图片
+字典排序sorted(d.items(),key = lambda x:x[1],reverse = True)
+sorted(d.items(),key = operator.itemgetter(1))
+sorted(zip(d.values(),d.keys()))
+
 
 总结
 sql字符串拼接注意转换成unicode
@@ -69,6 +75,7 @@ for i in range(5):
 ...   '{0:.{1}f}'.format(1 / 3.0, i)
 %-2s表示占两个字符
 {0:a<2}表示左对齐两个字符，不足用a填充默认用空格填充,^居中,>右对齐
+format优势一个实参可多次使用
 时间戳：timestamp = time.time()
 戳转结构化：struct_time = time.localtime(timestamp)
 结构转格式化：time.strftime("%a, %d %b %Y %H:%M:%S +0000", struct_time)  #周 日 月
@@ -126,11 +133,13 @@ ssh-keygen -t rsa -C "xx@xx.com"
 多个ssh key时，在.ssh下新建config文件
 Host github
 HostName github.com
+User manengyu@qq.com
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa
 
 Host gitlab
 HostName 192.168.8.15
+User manengyu@qq.com
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa_gitlab
 使用命令添加私钥

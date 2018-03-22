@@ -20,3 +20,17 @@ https://segmentfault.com/a/1190000000574348
 https://yanqiangmiffy.github.io/2017/07/26/Python28-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BD%BF%E7%94%A8Python%E5%92%8CR%E4%BB%A3%E7%A0%81%EF%BC%89/
 深度学习https://segmentfault.com/a/1190000011044305
 https://segmentfault.com/a/1190000009123950
+
+Pearson 皮尔逊相关系数 df.corr() 列相关系数
+功能：相似度比较
+从泛函分析的角度看，相关系数就是两个n维随机向量夹角的余弦值，取值都为-1～1，越接近1，向量夹角越小，两个向量的正相关性就越大。
+Kendall Tau相关系数df.corr('kendall') 
+spearman秩相关df.corr('spearman')
+
+最小二乘法http://blog.csdn.net/bitcarmanlee/article/details/51589143
+功能：曲线拟合
+多组数据即一对多拟合时可分开拟合，可同时拟合(求y平均，x坐标可重复，x与y颠倒)
+origin中的关联适合不知道是如何实再的
+x坐标可重复[通过颠倒顺序不影响，减少组数据影响验证正确]
+http://blog.csdn.net/lulei1217/article/details/49386295
+http://blog.csdn.net/guduruyu/article/details/70313176
