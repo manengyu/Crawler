@@ -1,4 +1,4 @@
-# _*_ coding: utf-8 _*_
+﻿# _*_ coding: utf-8 _*_
 
 import re
 import rsa
@@ -212,12 +212,12 @@ class WeiBoLogin(object):
 def login(url):
     logging.basicConfig(level=logging.DEBUG, format="%(asctime)s\t%(levelname)s\t%(message)s")
     weibo = WeiBoLogin()
-    weibo.login("wdzj_wb@163.com", "wdzj2016")
+    weibo.login("_wb@163.com", "2016")
     return weibo.get_content(url), weibo
 
 
 # def login_wap(url):
 #     logging.basicConfig(level=logging.DEBUG, format="%(asctime)s\t%(levelname)s\t%(message)s")
 #     weibo.py = WeiBoLogin()
-#     weibo.py.login("wdzj_wb@163.com", "wdzj2016")
+#     weibo.py.login("_wb@163.com", "2016")
 #     return weibo.py.get_location(url)

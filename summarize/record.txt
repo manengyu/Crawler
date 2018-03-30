@@ -101,6 +101,8 @@ crond:(5参或6参或7参)
 2 表示stderr标准错误
 crontab中不能出现%
 >> /logs.log 2>&1
+使用crond时默认输出文件径为当前用户路径，执行者为root
+方法export PATH=$PATH:/usr/local/bin && cd /home && /usr/local/bin/python
 
 日志一共分成5个等级，从低到高分别是：DEBUG INFO WARNING ERROR CRITICAL
 yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
