@@ -16,20 +16,31 @@ from pyvirtualdisplay import Display
 
 
 class GetCookie:
-    def __init__(self, url):
+    def __init__(self, url, ):
         self.cookie = u""
+        self.br = u""
         self.main(url)
-
+        
+    def login(self):
+        element = self.br.find_element_by_xpath(u"//div[@class='']/input").send_keys(u"")
+        element = self.br.find_element_by_xpath(u"//div[@class='']/input").send_keys(u"")
+        element = self.br.find_element_by_xpath(u"//div[@class='']/input")
+        element.click()
+        # action = ActionChains(self.br)
+        # action.click(element).perform()
+        js = u"""document.querySelectorAll('[change-type=""]')[0].getElementsByClassName('')[0].
+        getElementsByTagName('')[0].click();"""
+        
     def main(self, url):
         display = Display(visible=0, size=(800, 600))
         display.start()  # no gui
-        br = webdriver.Firefox()  # .Chrome()  sure to geckodriver or chromedriver.exe in PATH
+        self.br = webdriver.Firefox()  # .Chrome()  sure to geckodriver or chromedriver.exe in PATH
         # Ie('C:\Program Files (x86)\Internet Explorer\IEDriverServer.exe')
-        br.get(url)
+        self.br.get(url)
         time.sleep(10)  # if time is short,cookie may be lost
         cookie = [item[u"name"] + u"=" + item[u"value"] for item in br.get_cookies()]
         self.cookie = u';'.join(item for item in cookie)
-        br.close()
+        self.br.close()
         display.stop()
         
     def get_cookie(self):

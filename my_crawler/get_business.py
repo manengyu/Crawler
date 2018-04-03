@@ -17,30 +17,6 @@ import chardet
 sys.setdefaultencoding("utf-8")
 
 
-# 连接数据库
-def connect_database(db_nick='ma'):
-    if db_nick == 'zhangrz':
-        try:
-            conn = MySQLdb.connect(host='192.168.8.195', user='yu', passwd='yu',
-                                   db='zhang', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'ma':
-        try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
-                                   db='ma', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'ma_b':
-        try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
-                                   db='ma_b', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    else:
-        print 'No such database!!!'
-    return conn
-
 
 def insert_GONG_PLAT_COMPANY_IC_DATA(conn, cur, COMPANY_NAME, IC_DATA, SHAREHOLDER_DATA, PRINCIPAL_DATA, INVESTMENT_ABROAD, SOURCE_URL):
     UPDATE_DATE = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
@@ -524,8 +500,7 @@ def get_proxies():
 
 
 def get_cookie():
-    return "gr_user_id=3e03c0a4-1b09-42fe-bcce-9ddf8a741b7a; UM_distinctid=15d109913095e0-0d11f8eecf939c-36624308-1fa400-15d1099130aa86; _uab_collina=149922205384589626440603; acw_tc=AQAAAKhG3XxRwQgAmjPOjIcrinMlEt5p; hasShow=1; _umdata=C234BF9D3AFA6FE7131842C198B75BC38E2907B9EAB756D3B2AED3D4D95202FB1007B36E61547C9DCD43AD3E795C914C2BAED2C8E38531A74D8F22D7E6B29CC4; PHPSESSID=ksotoomqamo6ckojfrrqqd2f46; CNZZDATA1254842228=1220512888-1499217667-%7C1501138297; gr_session_id_9c1eb7420511f8b2=cd1eaed7-34ad-4b31-9de1-e605d2d951fe; gr_cs1_cd1eaed7-34ad-4b31-9de1-e605d2d951fe=user_id%3A1568fcb37ca2bbdf3e423afb17353439"
-
+    return ""
 
 def check_illegal(text):
     illegal = ["v", "-", "x", "y", "%", "\\", "/"]

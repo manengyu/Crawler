@@ -10,3 +10,10 @@ python manage.py startapp name
 models.py文件里继承models.Model创建字段
 通过python manage.py makemigrations
 python manage.py migrate创建表和数据库
+Django框架功能全面使用时需学习段时间，集成了ORM
+
+
+Flask使用简单方便，但用的技术相对另Django,Tornado较深，常结合ORM SQLAlchemy
+http://docs.jinkan.org/docs/flask/quickstart.html#redirects-and-errors
+
+Tornado既是web框架，又是web服务器

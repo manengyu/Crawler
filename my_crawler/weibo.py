@@ -17,31 +17,6 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-# 连接数据库
-def connect_database(db_nick='ma'):
-    if db_nick == 'zhangrz':
-        try:
-            conn = MySQLdb.connect(host='192.168.8.195', user='wei_many', passwd='yu',
-                                   db='zhang', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'ma':
-        try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
-                                   db='ma', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    elif db_nick == 'ma_b':
-        try:
-            conn = MySQLdb.connect(host='192.168.11.140', user='yu', passwd='yu',
-                                   db='ma_b', port=3306, charset='utf8')
-        except MySQLdb.Error, e:
-            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-    else:
-        print 'No such database!!!'
-    return conn
-
-
 def insert_management(conn, cur, plat_name, account_url):
     day_date = str(time.strftime('%Y-%m-%d', time.localtime(time.time())))
     create_time = str(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))

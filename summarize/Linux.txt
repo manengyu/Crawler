@@ -43,6 +43,9 @@ free -m查看内存
 cat /proc/version系统详情
 uname -a系统用户
 uname -r系统内核
+内存解释：https://www.cnblogs.com/sunny3096/p/7474594.html
+buffer缓冲(A buffer is something that has yet to be "written" to disk)
+cache缓存(A cache is something that has been "read" from the disk and stored for later use)
 
 /dev/null 表示空设备文件
 0 表示stdin标准输入
@@ -84,11 +87,14 @@ service iptables restart
 service iptables restart
 方法二vi /etc/sysconfig/iptables
 A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
+仅允许固定ip访问某个端口
+-A INPUT -s 111.111.111.111/32 -p tcp -m tcp --dport 80 -j ACCEPT
 
 head -n 2 filename(显示文件前两行)
 tail -n -3 filename(显示文件后三行，+3第三行至最后一行)
 sed -n "2,3p" filename(显示文件2至3行)
 awk https://www.cnblogs.com/emanlee/p/3327576.html
+
 
 repo
 http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.8.1/
