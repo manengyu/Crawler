@@ -86,6 +86,8 @@ GROUP BY以某个或多个字段进行分组，用聚合函数进行统计，若不用聚合函数将取每组第一
 datetime时间差mysql:TIMESTAMPDIFF(SECOND, start_time_date, end_time_date) presto:date_diff('second',min(time_date),max(time_date))
 mysql:整型除整型结果为浮点型，presto:整型除整型为整型
 OLTP与OLAP
+!=不能与NULL比较(需IS),因此!=不能删除出非NULL，既有值又有NULL时筛选不等于某值时((info != '值' OR info is NULL))
+ON DUPLICATE KEY UPDATE根据主键或索引判别记录是否存在，存在可更新自定义字段
 
 
 

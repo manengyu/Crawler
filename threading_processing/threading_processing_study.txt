@@ -8,12 +8,17 @@ from multiprocessing.pool import ThreadPool
 from multiprocessing.dummy import Pool as ThreadPool  # 线程池
 进程池from multiprocessing import Pool
 进程间通信是通过Queue、Pipes等实现的
+进程池创建指定完进程数时进程被立即被新建
+进程池用进程对象的get()来获取返回值,此时进程将阻塞主线程，可先将进程对象添加至列表，主线程唤醒时统一用get()获取
 CPU每执行100字节码，解释器就自动释放GIL锁
 threading.Lock两次调用acquire()后将形成死锁
 threading.RLock acquire()可多次调用但必需release()成对出现
 Lock为值是1的Semaphore（信号量）
 如果kill掉ppid,则pid的ppid默认转为1
-进程池中apply()是阻塞的(顺序执行官方建议废弃)，apply_async()异步非阻塞
+进程池中apply()是阻塞的(顺序执行官方建议废弃,等同apply_async().get())，apply_async()异步非阻塞
+非阻塞时进程创建即运行，但创建运行都需要时间，开始创建被调用主线程立刻执行下面代码，出现join则等待结束
+
+
 
 from multiprocessing import Process,Queue,Pipes
 http://mp.weixin.qq.com/s?__biz=MzA3NDk1NjI0OQ==&mid=2247483809&idx=1&sn=dda66a5dd61e7d326ea9152e209f2a0d&chksm=9f76ad17a801240114a8974178c105a00c7f69c70668dcf10add4571695828e74fe36c6df2d4&scene=21#wechat_redirect

@@ -47,6 +47,7 @@ html中显示源码标签.replace(u"<", u"&lt;").replace(u">", u"&gt;")
 字符串不能超过32767
 异常捕获范围要精确，不能不太
 pandas.read_sql()仅能用于SELECT语句或表，无法增删改
+pandas取出条件行依然作为dataframe对象df[df[u'borrower'].isin([0])]
 ord查看ASCII,chr查看字符
 a = b = []时，若b.append(1)则ab都为[1],若b=[1],则a为[],b为[1]
 数据库操作，网络请求放一个函数中方便捕获异常
@@ -54,6 +55,12 @@ base64图片格式保存时打开模式中需用b二进制，否则变成模糊图片
 字典排序sorted(d.items(),key = lambda x:x[1],reverse = True)
 sorted(d.items(),key = operator.itemgetter(1))
 sorted(zip(d.values(),d.keys()))
+为保证数据完整入库，事务应避免自动提交
+and优先级高于or,先算and两侧，算完再算or两侧
+GIL:Python2中1000字节后切换线程，Python3中15毫秒切换线程;
+GIL仅对IO密集型线程提升效率，对计算密集型线型不升反降相对于单线程
+requests使用proxies时请求网址的http/https要与代理ip保持一致，否则设置无效
+使用匿名https代理ip时会出现被拒绝访问
 
 
 总结

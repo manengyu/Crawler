@@ -14,6 +14,7 @@ ctrl + z 可以将一个正在前台执行的命令放到后台，并且暂停
 locale
 vi /etc/sysconfig/i18n(zh_CN.UTF-8,en_US.UTF-8)
 
+
 kill -9 [PID]
 9表示强迫进程立即停止
 
@@ -47,16 +48,27 @@ uname -r系统内核
 内存解释：https://www.cnblogs.com/sunny3096/p/7474594.html
 buffer缓冲(A buffer is something that has yet to be "written" to disk)
 cache缓存(A cache is something that has been "read" from the disk and stored for later use)
+                                      total         used        free      shared       buffers       cached
+Mem:                                 255268       238332       16936           0         85540       126384
+-/+ buffers/cache:                                 26408      228860
+Swap:                                265000            0      265000
+total1 = used1 + free1
+total1 = used2 + free2
+used1  = buffers1 + cached1 + used2
+free2  = buffers1 + cached1 + free1
+total1从OS系统角度看，total2从应用程序角度看
 
 /dev/null 表示空设备文件
 0 表示stdin标准输入
 1 表示stdout标准输出
 2 表示stderr标准错误
 command 1>a 2>&1与command 1>a 2>a还是有区别的，区别就在于前者只打开一次文件a，后者会打开文件两次，并导致stdout被stderr覆盖。
+cat用于创建，合并，查看整个文件
 <<EOF以EOF作为标准输入结束符(可另行指定)
 cat>a<<EOF创建a文件以标准输入写入内容以EOF结束
 cat>>a<<EOF向a文件追回内容或（cat<<EOF>>a）
 nohup用途：不挂断地运行命令。 &用途：在后台运行 nohup Command [ Arg … ] [　& ]
+如果直接点击关闭终端的按钮，断掉的session会通知nohup一起关闭，保持程序一直后台运行可用exit退出
 
 shutdown -h关机，now（立刻），+5（5分钟后），10：30（十点半关机）
 shutdown -c取消关机
@@ -106,3 +118,9 @@ https://people.centos.org/hughesjr/chromium/
 查看物理cpu核数：cat /proc/cpuinfo | grep "cpu cores"
 查看物理cpu中逻辑cpu个数：cat /proc/cpuinfo | grep "siblings"
 更新gcc
+
+awk
+grep 'abc' | awk '{print $0$1$2$3$4$5$6}'
+awk '/print/{print $0}' filename  匹配时始末用/
+
+操作系统史：http://muchong.com/html/200603/213109.html
