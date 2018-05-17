@@ -8,3 +8,12 @@ Shell for Root（/sbin/sh）
 主要用bash
 bash是 Bourne Shell 的扩展,与 Bourne Shell 完全兼容
 使用EOF时，前面不要含空格，tab等符号
+
+检查服务状态
+PIDCHECK='ps -ef|grep crond|grep -v grep'
+PID="$?"
+if [ "$PID" -eq 0 ];
+then
+    echo 'server already running!'
+    exit
+fi

@@ -1,4 +1,5 @@
 python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
+whl and gz包https://pypi.org/project
 注意
 # -*-coding:utf-8-*-
 .replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
@@ -61,6 +62,9 @@ GIL:Python2中1000字节后切换线程，Python3中15毫秒切换线程;
 GIL仅对IO密集型线程提升效率，对计算密集型线型不升反降相对于单线程
 requests使用proxies时请求网址的http/https要与代理ip保持一致，否则设置无效
 使用匿名https代理ip时会出现被拒绝访问
+except未捕获异常且无其它异常才执行else
+url打不开时可以需要某个请求头，如X-Requested-With：XMLHttpRequest
+args=(,)字典时，若参数只有一个要注意逗号，否则会出现字符串被切割为元组
 
 
 总结

@@ -43,10 +43,10 @@ http://npm.taobao.org/dist/phantomjs/
 
 PyVirtualDisplay安装
 http://blog.csdn.net/chengly0129/article/details/72229537
-yum install Xvfb  
+yum install Xvfb(需要)
 yum -y install libXfont  
 yum install xorg-x11-fonts* 
-pip install pyvirtualdisplay
+pip install pyvirtualdisplay(需要)
 
 Chromedriver 
 http://chromedriver.storage.googleapis.com/index.html
@@ -61,7 +61,7 @@ https://github.com/mozilla/geckodriver/releases?after=v0.13.0
 
 https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=geckodriver%20unexceptedly%20exited&oq=geckodriver.exe&rsv_pq=95b32b0d00102776&rsv_t=1b91DUeCY7TbON4DY3P5yr8U1FF%2Fgd0nb1kPp0EbR9e%2B2Q02KB5gUsYmELE&rqlang=cn&rsv_enter=1&sug=firefoxdriver&inputT=13058&rsv_sug3=39&rsv_sug1=18&rsv_sug7=100&rsv_sug2=0&rsv_sug4=13058
 https://stackoverflow.com/questions/40994493/service-geckodriver-unexpectedly-exited-status-code-was-2
-contos.x86_64+Python2.7.3+selenium3.8.1+Firefox52.7.2+geckodriver0.16.0
+contos.x86_64+Python2.7.3+selenium3.8.1/3.11.0+Firefox52.7.2+geckodriver0.16.0
 from pyvirtualdisplay import Display
 from selenium import webdriver
 display = Display(visible=0, size=(800, 600))

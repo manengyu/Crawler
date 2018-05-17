@@ -13,10 +13,13 @@ ctrl + z 可以将一个正在前台执行的命令放到后台，并且暂停
 编码及locale
 locale
 vi /etc/sysconfig/i18n(zh_CN.UTF-8,en_US.UTF-8)
+mv -f(mv dir不移动dir,mv dir/移动dir)
+rm -rf
 
 
 kill -9 [PID]
 9表示强迫进程立即停止
+批量杀死ps -ef|grep firefox|grep -v grep|awk '{print "kill -9 " $2}' |sh
 
 linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
 ls | wc -w查看当前目录下文件及文件夹数（-l）
@@ -117,6 +120,7 @@ https://people.centos.org/hughesjr/chromium/
 查看逻辑cpu个数：cat /proc/cpuinfo | grep "processor" | wc -l
 查看物理cpu核数：cat /proc/cpuinfo | grep "cpu cores"
 查看物理cpu中逻辑cpu个数：cat /proc/cpuinfo | grep "siblings"
+逻辑cpu个数=物理cpu个数*物理cpu核数*物理cpu中逻辑cpu个数
 更新gcc
 
 awk

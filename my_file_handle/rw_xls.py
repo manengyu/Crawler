@@ -28,25 +28,48 @@ def read_xls(sheet, file_path, *args):
                 ls.append(booksheet.cell(row, 3).value)
     return ls
 
+def init_xls():
+    new_workbook = xlwt.Workbook()
+    sheet_top20 = new_workbook.add_sheet(u"")
+    sheet_all = new_workbook.add_sheet(u"")
+    sheet_api = new_workbook.add_sheet(u"")
+    sheet_amount = new_workbook.add_sheet(u"")
+    sheet_amount_7 = new_workbook.add_sheet(u"")
+    sheet_error_url = new_workbook.add_sheet(u"")
+    title_amount = [u"", u"", u"", u""]
+    title_api = [u"", u"", u"", u"", u"", u""]
+    title_data = [u"", u"", u"", u""]
+    title_errorurl = [u"", u"", u""]
+    for j in range(0, len(title_amount)):
+        sheet_amount.write(0, j, title_amount[j])
+        sheet_amount_7.write(0, j, title_amount[j])
+    for j in range(0, len(title_api)):
+        sheet_api.write(0, j, title_api[j])
+    for j in range(0, len(title_data)):
+        sheet_top20.write(0, j, title_data[j])
+        sheet_all.write(0, j, title_data[j])
+    for j in range(0, len(title_errorurl)):
+        sheet_error_url.write(0, j, title_errorurl[j])
+    return new_workbook, sheet_amount, sheet_amount_7, sheet_api, sheet_top20, sheet_all, sheet_error_url
 
-def save_my_data(file_name, sheet, ls_name):
-    new_workbook = xlwt.Workbook(file_name)
-    sheet_w = new_workbook.add_sheet(sheet)
-    title = [u"姓名", u"名", u"网址", u"方式", u"时间"]
-    for j in range(0, len(title)):
-        sheet_w.write(0, j, title[j])
-    for i in range(len(ls_name)):
-        sheet_w.write(i + 1, 0, ls_name[i])
+
+def write_xls(sheet, nu,  *args):
+    for i in range(len(args)):
+        sheet.write(nu+1, i, args[i])  # 存在标题，所以+1
+
+
+def save_xls(file_name, new_workbook):
     new_workbook.save(file_name)
 
 
 def main(sheet, file_path, user_name):  # 表格左上角为（0，0），文件名及内容统一用unicode
-    ls_name = read_xls(sheet, file_path, "user_name", user_name)  
-    save_xls(file_name, sheet, ls_name)
+    ls_name = read_xls(sheet, file_path, u"user_name", user_name)
+    new_workbook, sheet_amount, sheet_amount_7, sheet_api, sheet_top20, sheet_all, sheet_error_url = init_xls()
+    save_xls(file_path, new_workbook)
 
 
 # 测试函数
-if __name__ == "__main__":
+if __name__ == u"__main__":
     main(u'Sheet1', ur'D:\cncepgf\workspace\07.07-07.28.xlsx', u"马能宇")  # 工作表 文件所在路径 名字
 
 

@@ -22,6 +22,10 @@ update gongshang.comp_invest_info_year_report set name=replace(name, ' ', '');
 字符串（MySQL CONCAT, SQLite ||）
 name=CONCAT(name,'end')
 name=CONCAT_WS('.',cname,'end') #用点来连接
+GROUP_CONCAT(, ';')分组后连接
+转换浮点
+CAST(type AS DECIMAL(8, 8)) AS type
+统计某个字符串len(replace(column,'-','--'))-len(column)
 
 Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。
 Hash索引弊端：
@@ -81,6 +85,7 @@ GROUP BY通过分组再进行数据的处理，GROUP BY ALL在存在WHERE的情况下不答WHERE条件的
 SUBSTR(字段，起始位置下标1开始，长度参数可省)
 PATINDEX('%+%)计算字符索引
 convert(numeric(长度,小数长度),isnull(字段,0))转化为浮点型
+CAST(字段 AS DECIMAL)
 insert into tb(col1,col2) select col1,col2 from tb另一表查出插入新表不需要values
 GROUP BY以某个或多个字段进行分组，用聚合函数进行统计，若不用聚合函数将取每组第一条纪录,若想某列合并单行GROUP_CONCAT(字段  separator '-')
 datetime时间差mysql:TIMESTAMPDIFF(SECOND, start_time_date, end_time_date) presto:date_diff('second',min(time_date),max(time_date))
