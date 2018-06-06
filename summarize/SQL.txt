@@ -24,8 +24,10 @@ name=CONCAT(name,'end')
 name=CONCAT_WS('.',cname,'end') #用点来连接
 GROUP_CONCAT(, ';')分组后连接
 转换浮点
-CAST(type AS DECIMAL(8, 8)) AS type
+CAST(type AS DECIMAL(8, 8)) AS type [int varchar]
 统计某个字符串len(replace(column,'-','--'))-len(column)
+case when exp then res0[||res01||res02] else res1[res11||res12] end as my_var
+case中可以用select语句加括号，但结果需聚合为一个值，用连接或数组
 
 Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。
 Hash索引弊端：
@@ -92,7 +94,10 @@ datetime时间差mysql:TIMESTAMPDIFF(SECOND, start_time_date, end_time_date) presto
 mysql:整型除整型结果为浮点型，presto:整型除整型为整型
 OLTP与OLAP
 !=不能与NULL比较(需IS),因此!=不能删除出非NULL，既有值又有NULL时筛选不等于某值时((info != '值' OR info is NULL))
-ON DUPLICATE KEY UPDATE根据主键或索引判别记录是否存在，存在可更新自定义字段
+ON DUPLICATE KEY UPDATE根据主键或索引判别记录是否存在，存在可更新自定义字段，功能类似REPLACE INTO(先删再插效率略低)
+如果需要判别条件，避免后面不需要的耗时查询时，可以将条件放于紧跟where后，以便提前终止
+INSERT IGNORE INTO插入存在则忽略
+REPLACE INTO根据主键及索引判断存在替换，不存在则插入，返回影响的行数
 
 
 

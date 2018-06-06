@@ -30,6 +30,7 @@ urllib.unquote(args)若参数为已为unicode，刚返回原字符串不再解码，可多次解码，wei
 pandas合并pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandas取行数shape[0],列数shape[1],联合用append()
 dataframe查看元素索引 company_list[company_list.company_name==''[&]].index.tolist()[0]
+dataframe新建df=pandas.DataFrame({'a':[1,2]}),取值df[:1]['a'][0]
 string indices must be integers意思字符串的索引必须为整型，通常是字符串json未使用loads()直接取值出现
 *请求Content-Type为application/x-www-form-urlencoded; charset=UTF-8时需将参数编码成url形式（以数组可能请求不到数据）
 若为multipart/form-data; boundary=---...刚以数据组形式提交
@@ -65,6 +66,7 @@ requests使用proxies时请求网址的http/https要与代理ip保持一致，否则设置无效
 except未捕获异常且无其它异常才执行else
 url打不开时可以需要某个请求头，如X-Requested-With：XMLHttpRequest
 args=(,)字典时，若参数只有一个要注意逗号，否则会出现字符串被切割为元组
+dir(module_name)来查看 模块下的函数
 
 
 总结

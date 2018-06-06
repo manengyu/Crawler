@@ -9,8 +9,11 @@ HOME  /var/lib/jenkins/
 java需1.8及以上
 默认端口8080，不能冲突且liunx防火墙需打开此端口
 
+启动方式：
+java -jar jenkins.war或service jenkins start
 
-Starting Jenkins Jenkins requires Java8 or later, but you are running 1.7.0_40-b43 from /root/                cncepgf/jdk1.7.0_40/jre
+
+Starting Jenkins Jenkins requires Java8 or later, but you are running 1.7.0_40-b43 from /root/cncepgf/jdk1.7.0_40/jre
 java.lang.UnsupportedClassVersionError: 51.0
         at Main.main(Main.java:124)
 

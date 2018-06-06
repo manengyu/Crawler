@@ -25,6 +25,9 @@ linux常用下载命令wget,curl(不支持多线程，但可同时下多个文件)，axel(支持多线程)
 ls | wc -w查看当前目录下文件及文件夹数（-l）
 ls | wc -c(查看当前目录及子目录字节数)
 ls -lha(l以列表详细信息显示，a-all,h-human-readable)
+wc -[c字节数或--bytes|l行数|w单词数|m字符数或--chars]
+ls -l|grep "^d"|wc -l当前目录下目录数
+ls -lR|grep "^-"|wc -l当前目录下及子目录下文件数
 
 Linux权限
 groupadd name
