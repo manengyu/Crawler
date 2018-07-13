@@ -70,7 +70,7 @@ def main(sheet, file_path, user_name):  # 表格左上角为（0，0），文件
 
 # 测试函数
 if __name__ == u"__main__":
-    main(u'Sheet1', ur'D:\cncepgf\workspace\07.07-07.28.xlsx', u"马能宇")  # 工作表 文件所在路径 名字
+    main(u'Sheet1', ur'D:\cncepgf\workspace\07.07-07.28.xlsx', u"")  # 工作表 文件所在路径 名字
 
 
 

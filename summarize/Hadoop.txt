@@ -1,0 +1,20 @@
+Hadoop
+  Hadoop的核心就是HDFS和MapReduce，而两者只是理论基础，不是具体可使用的高级应用
+  HDFS Hadoop文件系统
+  MapReduce map-reduce计算框架
+
+Hive
+  基于Hadooop的分布式数据库,将HQL转换为map-reduce任务进行执行
+  速度较慢（带*的查询select * from不会生成map-reduce任务，只是进行全表扫描）
+  不支持更新操作
+
+Hhase
+  基于HDFS的key-value|面向列、分布式存储系统
+  提供实时查询，速度快
+  
+Spark
+  分布式机器学习
+  
+Zookeeper
+  用来分布式协调服务
+  

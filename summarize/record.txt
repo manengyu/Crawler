@@ -8,7 +8,7 @@ requestsÇëÇóÊ±ÊýÖµÖÐ¶ººÅÒÑ±»ÒÆ³ý
 ÇëÇópayload²ÎÊýÊ±£¬¸ñÊ½Îªdata=json.dumps({})
 map(fun,²ÎÊý)funÑ­»·×÷ÓÃÔÚ²ÎÊýÉÏ£¬Í¨³£funÓÃlambda
 reduce(fun,²ÎÊý)fun×÷ÓÃÔÚÁ½¸ö²ÎÊýÉÏ£¬ÖØ¸´×÷ÓÃÔÚ½á¹ûÓëÏÂÒ»¸ö²ÎÊý
-raise ErrorName()Ö±½ÓÅ×³öÒì³£
+raise ErrorName()Ö±½ÓÅ×³öÒì³£, ²¶»ñ¶à¸öÒì³£Ê±ÐèÓÃ()
 assert expression[,arg] ÈôexpressionÎªFalseÅ×³öÒì³£»òarg
 &Ö±½Ó½«Êý¾Ýµ±¶þ½øÖÆÀ´½øÐÐÔËËã
 r = requests.session() r.proxiesÎÞÓÃ£¬ÒªÐ´ÔÚget()Àï
@@ -25,12 +25,12 @@ MySQLdbÓï·¨´íÎóProgrammingError(±í²»´æÔÚ)£¬¼üÖµÖØ¸´IntegrityError£¬±í½á¹¹Ä¬ÈÏÖµ³
 ´¦Àí¶à¸öÒì³£Ê±£¬¿ÉÒÔexcept(ValueError,TypeError)
 Ð´½Ó¿ÚÊ±£¬Òì³£Àï²»ÄÜÓÐcontinue,·ñÔòÏìÓ¦³¬Ê±
 Ìæ»»·ÇÖÐÎÄre.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
-urllib.unquote(args)Èô²ÎÊýÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬weibo£¬apiÅöµ½
+urllib.unquote(args)Èô²ÎÊýÎªÒÑÎªunicode£¬¸Õ·µ»ØÔ­×Ö·û´®²»ÔÙ½âÂë£¬¿É¶à´Î½âÂë£¬weibo£¬apiÅöµ½,
 ÁÐ±íÉú³ÉÊ½±í´ïÊ½[],ÏÈÕÒµÚÒ»¸öfor,ÔÙÕÒforºóif»òfor»òÃ»ÓÐ(´Ó×óÖÁÓÒ)£¬ÔÙÕÒforÇ°if»òÃ»ÓÐ
 pandasºÏ²¢pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
 pandasÈ¡ÐÐÊýshape[0],ÁÐÊýshape[1],ÁªºÏÓÃappend()
 dataframe²é¿´ÔªËØË÷Òý company_list[company_list.company_name==''[&]].index.tolist()[0]
-dataframeÐÂ½¨df=pandas.DataFrame({'a':[1,2]}),È¡Öµdf[:1]['a'][0]
+dataframeÐÂ½¨df=pandas.DataFrame({'a':[1,2]}),È¡Öµdf[:1]['a'][0]»òdf.iloc[0]['a']
 string indices must be integersÒâË¼×Ö·û´®µÄË÷Òý±ØÐëÎªÕûÐÍ£¬Í¨³£ÊÇ×Ö·û´®jsonÎ´Ê¹ÓÃloads()Ö±½ÓÈ¡Öµ³öÏÖ
 *ÇëÇóContent-TypeÎªapplication/x-www-form-urlencoded; charset=UTF-8Ê±Ðè½«²ÎÊý±àÂë³ÉurlÐÎÊ½£¨ÒÔÊý×é¿ÉÄÜÇëÇó²»µ½Êý¾Ý£©
 ÈôÎªmultipart/form-data; boundary=---...¸ÕÒÔÊý¾Ý×éÐÎÊ½Ìá½»
@@ -67,6 +67,7 @@ exceptÎ´²¶»ñÒì³£ÇÒÎÞÆäËüÒì³£²ÅÖ´ÐÐelse
 url´ò²»¿ªÊ±¿ÉÒÔÐèÒªÄ³¸öÇëÇóÍ·£¬ÈçX-Requested-With£ºXMLHttpRequest
 args=(,)×ÖµäÊ±£¬Èô²ÎÊýÖ»ÓÐÒ»¸öÒª×¢Òâ¶ººÅ£¬·ñÔò»á³öÏÖ×Ö·û´®±»ÇÐ¸îÎªÔª×é
 dir(module_name)À´²é¿´ Ä£¿éÏÂµÄº¯Êý
+match,searchÖ»Æ¥ÅäÃ¿Ò»¸ö·ûºÏ½á¹û,group()µÈ¼Ûgroup(0),group(1,2)È¡µÚÒ»¸öÓëµÚ¶þ¸ö×éºÅ
 
 
 ×Ü½á
@@ -116,6 +117,8 @@ crontabÖÐ²»ÄÜ³öÏÖ%
 >> /logs.log 2>&1
 Ê¹ÓÃcrondÊ±Ä¬ÈÏÊä³öÎÄ¼þ¾¶Îªµ±Ç°ÓÃ»§Â·¾¶£¬Ö´ÐÐÕßÎªroot
 ·½·¨export PATH=$PATH:/usr/local/bin && cd /home && /usr/local/bin/python
+²»·¢ÓÊ¼þÔÚcrontab¿ªÍ·Ìí¼ÓMAILTO=""
+pythonÎÄ¼þÔÚcrontabÏÂloggingÎÞ·¨Êä³öÊ±£¬¿ÉÏÈcdÕÒÂ·¾¶ÏÂ£¬ÔÙÖ´ÐÐ¸ÃÎÄ¼þ
 
 ÈÕÖ¾Ò»¹²·Ö³É5¸öµÈ¼¶£¬´ÓµÍµ½¸ß·Ö±ðÊÇ£ºDEBUG INFO WARNING ERROR CRITICAL
 yieldÀàËÆreturn£¬º¯ÊýÖ´ÐÐÖÁyield¸Õ·µ»Ø£¬ÏÂ´Îµü´ú½ô½ÓyieldºóÖ´ÐÐ
