@@ -67,7 +67,8 @@ except未捕获异常且无其它异常才执行else
 url打不开时可以需要某个请求头，如X-Requested-With：XMLHttpRequest
 args=(,)字典时，若参数只有一个要注意逗号，否则会出现字符串被切割为元组
 dir(module_name)来查看 模块下的函数
-match,search只匹配每一个符合结果,group()等价group(0),group(1,2)取第一个与第二个组号
+match,search只匹配每一个符合结果,group()等价group(0)以元组返回所有组结果,group(1,2)取第一个与第二个组号
+findall()将正则依次往后循环匹配，出现a|^(abd)时匹配到a时那么直接返回组内结果即'',就是当或中组内还没匹配其它先匹配到则组内返回''
 
 
 总结
