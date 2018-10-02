@@ -1,13 +1,14 @@
 # -*- coding: utf8 -*-
-from functools import wraps
-from flask import Flask, make_response
-# from flask_script import Manager
 import sys
 import time
 import socket
 import platform
-from multiprocessing import Process, Queue
 import subprocess
+from functools import wraps
+# from flask_script import Manager
+from werkzeug.routing import Rule
+from flask import Flask, make_response
+from multiprocessing import Process, Queue
 
 
 def allow_cross_domain(fun):
@@ -19,12 +20,50 @@ def allow_cross_domain(fun):
         allow_headers = u"Referer,Accept,Origin,User-Agent"
         rst.headers[u'Access-Control-Allow-Headers'] = allow_headers
         return rst
-    
     return wrapper_fun
 
 
-app = Flask(__name__)
+class CIRule(Rule):
+    def compile(self):
+        Rule.compile(self)  # 设置不加/，实际匹配有无/都可匹配到
+        self._regex = re.compile(re.sub(u"([^)])\$", u"\g<1>/?$", self._regex.pattern),  # 忽略url中大小写
+                                 re.UNICODE | re.IGNORECASE)
+        print self._regex.pattern
+
+
+class CIFlask(Flask):
+    url_rule_class = CIRule
+
+
+app = CIFlask(__name__)
+
+
+@app.before_request
+def before_request():
+    # 可检查权限
+    pass
 some_queue = Queue()
+
+
+def respose_json(data, status):
+    if status == 200 or status == 204:
+        pass
+    elif status == 500:
+        data = {u"timestamp": int(time.time()), u"status": status, u"message": data, u"path": u"/",
+                u"error": u"Internal Server Error"}
+    else:
+        data = {u"timestamp": int(time.time()), u"status": status, u"message": data, u"path": u"/",
+                u"error": u"Bad Request"}
+    ret_data = json.dumps(data, ensure_ascii=False)
+    # if status == 500 or status == 408 or status == 204 or status == 400:
+    # else:
+    return ret_data
+
+
+@app.route(u'/post', methods=[u'POST'])  # 创建运营人员
+@allow_cross_domain
+def post_request():
+    pass
 
 
 @app.route(u'/api/update', methods=[u'POST', u'GET'])
@@ -38,11 +77,11 @@ def doc_sent_score():
     #     status = False
     #     msg = u'Failed to parse'
     #     print(u"data failed to parse with the reason", e)
-	# request.method = u"GET":
-	# request.args.get()
+    #  request.method = u"GET":
+    # request.args.get()
     try:
         print 0
-    except:
+    except RuntimeError:
         return u"operate error"
     return u"operate ok"
 
@@ -69,7 +108,7 @@ def get_ip(net_card=u"eth0"):
         # outip = socket.inet_ntoa(fcntl.ioctl(sk.fileno(), 0x8915, struct.pack('256s', "lo"[:15]))[20:24])
         inip = socket.inet_ntoa(
             fcntl.ioctl(sk.fileno(), 0x8915, struct.pack(  # pack only accepts bytes
-                unicode('256s').encode(u"utf-8"), unicode(net_card[:15]).encode(u"utf-8")))[20:24])  #2unicode,3str
+                u'256s'.encode(u"utf-8"), unicode(net_card[:15]).encode(u"utf-8")))[20:24])  # 2unicode,3str
     return inip
 
 
@@ -78,6 +117,14 @@ def start_flaskapp(queue):
     some_queue = queue
     ip = get_ip()
     app.run(host=ip, port=20018, debug=False, threaded=True)
+
+    # from gevent.wsgi import WSGIServer
+    # http_server = WSGIServer(app, host=ip, port=20019)
+    # http_server.serve_forever()
+
+    # import wsgiserver
+    # server = wsgiserver.WSGIServer(app, host=ip, port=20019)
+    # server.start()
 
 
 def main():
