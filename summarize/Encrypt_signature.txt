@@ -1,0 +1,20 @@
+RSA非对称加密算法.
+SHA安全哈希算法,又散列算法.
+SHA MD属于摘要算法.
+
+RSA:
+公钥用于加密,解密(区别于私钥解密又称验签);
+私钥解密,加密(区别于公钥加密又称签名);
+实现签名时通常配合摘要算法(由于消息内容过长,非对称算法耗时较长).
+
+PC1发送msg至PC2加密+签名(亦可仅加密或签名,已互交换公钥)
+FROM PC1:
+PC2公钥(加密)msg>ciphertext
+ciphertext摘要算法>摘要
+PC1私钥(签名)摘要>signature
+send ciphertext+signature
+TO PC2:
+PC1公钥(验签)signature>摘要
+摘要==ciphertext摘要算法
+PC2私钥(解密)ciphertext>msg
+
