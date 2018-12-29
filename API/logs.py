@@ -12,11 +12,11 @@ class Logs:
     LEVELS = ('INFO', 'ERROR', "WARNING")
     LOG_INSTANCE = None
     SENTRY_INSTANCE = None
-    args_config = ""
+    ARGS_CONFIG = ""
 
     def __init__(self, *args):
         print('init Logs,sys.path:', sys.path)
-        Logs.args_config = args[1]
+        Logs.ARGS_CONFIG = args[1]
         if not os.path.isdir(Logs.PATH):
             os.makedirs(Logs.PATH, 0o777, True)
 
@@ -57,7 +57,7 @@ def logs(fn):
         session_flag, args_c = "", ""
         try:
             result = fn(*args, **kwargs)
-            if "SESSION_COOKIE_NAME" in Logs.args_config:
+            if "SESSION_COOKIE_NAME" in Logs.ARGS_CONFIG:
                 session_flag = id(session.__getattr__("on_update"))
 
             if "create_app" == name:
