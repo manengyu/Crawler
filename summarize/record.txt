@@ -1,85 +1,86 @@
-python whl��http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
-whl and gz��https://pypi.org/project
-ע��
+python whl包http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
+whl and gz包https://pypi.org/project
+注意
 # -*-coding:utf-8-*-
-.replace('\r\n', '')����.replace('\n', '')��������ֻʣ���һ��
-replace()�����¶���
-requests����ʱ��ֵ�ж����ѱ��Ƴ�
-����payload����ʱ����ʽΪdata=json.dumps({})
-map(fun,����)funѭ�������ڲ����ϣ�ͨ��fun��lambda
-reduce(fun,����)fun���������������ϣ��ظ������ڽ������һ������
-raise ErrorName()ֱ���׳��쳣, �������쳣ʱ����()
-assert expression[,arg] ��expressionΪFalse�׳��쳣��arg
-&ֱ�ӽ����ݵ�����������������
-r = requests.session() r.proxies���ã�Ҫд��get()��
-* **��Ϊ�ɱ������*������Ԫ�鴫�룬**�������ֵ䴫��
-�ֵ�items()����Ԫ���б�[(key,val),],iteritems()����Ԫ���б�������
-^��λ���
-json��ʽ����Ϊ˫���ţ��Ҳ��ܺ���u��unicode���ͣ�����json.dumps()ת��
-rsttip(u'1.')ȥ��β������.��1,ѭ��ƥ��.1
-ȫ�ֱ����ں�������������ֱ���ں�����ʹ�õ������޸ģ���������global�������޸ģ��ں���if�»ᱨ�﷨��
-to_excel()����xlsʱ�漰������ܳ�����Ч��ʹ��xlsx����
-�ֵ�ȡֵʱ�����޴˼�ʱ[]����KeyError����get()Ĭ�Ϸ���None,get("b",1)��������Ĭ��ֵΪ1
-python2��urllib2���3��urllib.request,3��urllib����urllib.request, urllib.parse, urllib.error
-MySQLdb�﷨����ProgrammingError(��������)����ֵ�ظ�IntegrityError�����ṹĬ��ֵ���ȵȲ�������OperationalError
-��������쳣ʱ������except(ValueError,TypeError)
-д�ӿ�ʱ���쳣�ﲻ����continue,������Ӧ��ʱ
-�滻������re.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
-urllib.unquote(args)������Ϊ��Ϊunicode���շ���ԭ�ַ������ٽ��룬�ɶ�ν��룬weibo��api����,
-�б�����ʽ����ʽ[],���ҵ�һ��for,����for��if��for��û��(��������)������forǰif��û��
-pandas�ϲ�pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
-pandasȡ����shape[0],����shape[1],������append()
-dataframe�鿴Ԫ������ company_list[company_list.company_name==''[&]].index.tolist()[0]
-dataframe�½�df=pandas.DataFrame({'a':[1,2]}),ȡֵdf[:1]['a'][0]��df.iloc[0]['a']
-string indices must be integers��˼�ַ�������������Ϊ���ͣ�ͨ�����ַ���jsonδʹ��loads()ֱ��ȡֵ����
-*����Content-TypeΪapplication/x-www-form-urlencoded; charset=UTF-8ʱ�轫���������url��ʽ��������������󲻵����ݣ�
-��Ϊmultipart/form-data; boundary=---...������������ʽ�ύ
-ʹ��cursor.fetchall()��ȡ���ʱ���α��ѵ�����������ȡ�ڶ���ʱ�޽��
-�ӿڴ���url����ʱ����unquote�����������ڱ���Ϊutf-8���ٽ⣬����ֱ�ӽ�unicode
-�ж�Ϊ��ʱ��unicode(str)==u"",u"None",u"NaN",u"nan"
-����ƥ��ĳ�����ʻ����(?:(?!item\")(?!�����б�).)*?
-�������ȫ�ֱ������ֲ��޸�Ӱ��ȫ�ֵ����ݣ����漰��Ӧ����ͳһ�޸Ļ������ļ���(jieba�����ֵ䣬Ӱ�������ļ�jieba��ʹ��)
-�ر�ע�ش������ã�����ʱ�䣬���ȵȱ�������֤��һ����ȫ���޸ģ���������������޸ı𴦵���bug���ң�
-python�������������������ô��ݣ����ɱ�����൱�ڴ�ֵ�������ַ���Ԫ�飩���޸ĺ�ԭֵ�ı�
-.contents��ȡ�������ÿ��������Ϊһ������
+.replace('\r\n', '')而非.replace('\n', '')，否则结果只剩最后一行
+replace()返回新对象
+requests请求时数值中逗号已被移除,post时注意是否需str型
+返回json中含中文时，使用json.dumps([{}], ensure_ascii=False)
+请求payload参数时，格式为data=json.dumps({})
+map(fun,参数)fun循环作用在参数上，通常fun用lambda
+reduce(fun,参数)fun作用在两个参数上，重复作用在结果与下一个参数
+raise ErrorName()直接抛出异常, 捕获多个异常时需用()
+assert expression[,arg] 若expression为False抛出异常或arg
+&直接将数据当二进制来进行运算
+r = requests.session() r.proxies无用，要写在get()里
+* **都为可变参数，*参数当元组传入，**参数当字典传入
+字典items()返回元组列表[(key,val),],iteritems()返回元组列表迭代器
+^按位异或
+json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
+rsttip(u'1.')去除尾部包含.和1,循环匹配.1
+全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改，在函数if下会报语法错
+to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
+字典取值时，当无此键时[]返加KeyError错误，get()默认返回None,get("b",1)可以设置默认值为1
+python2中urllib2变成3中urllib.request,3中urllib包含urllib.request, urllib.parse, urllib.error
+MySQLdb语法错误ProgrammingError(表不存在)，键值重复IntegrityError，表结构默认值长度等操作错误OperationalError
+处理多个异常时，可以except(ValueError,TypeError)
+写接口时，异常里不能有continue,否则响应超时
+替换非中文re.subn(u"[^\u4e00-\u9fa5]", u"%", text)[0]
+urllib.unquote(args)若参数为已为unicode，刚返回原字符串不再解码，可多次解码，weibo，api碰到,
+列表生成式表达式[],先找第一个for,再找for后if或for或没有(从左至右)，再找for前if或没有
+pandas合并pd.merge(args[0], args[2], how='left', left_index='True', right_index='True', on='')
+pandas取行数shape[0],列数shape[1],联合用append()
+dataframe查看元素索引 company_list[company_list.company_name==''[&]].index.tolist()[0]
+dataframe新建df=pandas.DataFrame({'a':[1,2]}),取值df[:1]['a'][0]或df.iloc[0]['a']
+string indices must be integers意思字符串的索引必须为整型，通常是字符串json未使用loads()直接取值出现
+*请求Content-Type为application/x-www-form-urlencoded; charset=UTF-8时需将参数编码成url形式（以数组可能请求不到数据）
+若为multipart/form-data; boundary=---...刚以数据组形式提交
+使用cursor.fetchall()获取结果时，游标已到结果集最后，再取第二次时无结果
+接口处理url数据时，用unquote解码两次且在编码为utf-8后再解，避免直接解unicode
+判断为空时，unicode(str)==u"",u"None",u"NaN",u"nan"
+正则不匹配某个单词或词组(?:(?!item\")(?!档案列表).)*?
+代码避免全局变量，局部修改影响全局的内容，若涉及到应放在统一修改或处配置文件中(jieba加载字典，影响所有文件jieba的使用)
+特别注重代码重用，尤其时间，长度等变量（保证改一处，全部修改，否则很容易忘记修改别处导致bug难找）
+python函数变量传递属于引用传递（不可变对象相当于传值如整型字符型元组），修改后原值改变
+.contents获取所有子项，每个子项作为一个整体
 sorted({}.items(), key=operator.itemgetter(1))
-\b�����˸�(ʵ�����ý���ǰλ�������滻Ϊ�գ������е��ʱ߽�Ҳ��ƥ��Ŀ�)
-html����ʾԴ���ǩ.replace(u"<", u"&lt;").replace(u">", u"&gt;")
-��/ʵ��__dict__���������ʵ������ת��Ϊ�ֵ�
-�ַ������ܳ���32767
-�쳣����ΧҪ��ȷ�����ܲ�̫
-pandas.read_sql()��������SELECT��������޷���ɾ��
-pandasȡ����������Ȼ��Ϊdataframe����df[df[u'borrower'].isin([0])]
-ord�鿴ASCII,chr�鿴�ַ�
-a = b = []ʱ����b.append(1)��ab��Ϊ[1],��b=[1],��aΪ[],bΪ[1]
-���ݿ���������������һ�������з��㲶���쳣
-base64ͼƬ��ʽ����ʱ��ģʽ������b�����ƣ�������ģ��ͼƬ
-�ֵ�����sorted(d.items(),key = lambda x:x[1],reverse = True)
+\b常称退格(实际作用将当前位置内容替换为空，正则中单词边界也是匹配的空)
+html中显示源码标签.replace(u"<", u"&lt;").replace(u">", u"&gt;")
+类/实例__dict__将类变量或实例变量转换为字典
+字符串不能超过32767
+异常捕获范围要精确，不能不太
+pandas.read_sql()仅能用于SELECT语句或表，无法增删改
+pandas取出条件行依然作为dataframe对象df[df[u'borrower'].isin([0])]
+ord查看ASCII,chr查看字符
+a = b = []时，若b.append(1)则ab都为[1],若b=[1],则a为[],b为[1]
+数据库操作，网络请求放一个函数中方便捕获异常
+base64图片格式保存时打开模式中需用b二进制，否则变成模糊图片
+字典排序sorted(d.items(),key = lambda x:x[1],reverse = True)
 sorted(d.items(),key = operator.itemgetter(1))
 sorted(zip(d.values(),d.keys()))
-Ϊ��֤����������⣬����Ӧ�����Զ��ύ
-and���ȼ�����or,����and���࣬��������or����
-GIL:Python2��1000�ֽں��л��̣߳�Python3��15�����л��߳�;
-GIL����IO�ܼ����߳�����Ч�ʣ��Լ����ܼ������Ͳ�����������ڵ��߳�
-requestsʹ��proxiesʱ������ַ��http/httpsҪ�����ip����һ�£�����������Ч
-ʹ������https����ipʱ����ֱ��ܾ�����
-exceptδ�����쳣���������쳣��ִ��else
-url�򲻿�ʱ������Ҫĳ������ͷ����X-Requested-With��XMLHttpRequest
-args=(,)�ֵ�ʱ��������ֻ��һ��Ҫע�ⶺ�ţ����������ַ������и�ΪԪ��
-dir(module_name)���鿴 ģ���µĺ���
-match,searchֻƥ��ÿһ�����Ͻ��,group()�ȼ�group(0)��Ԫ�鷵����������,group(1,2)ȡ��һ����ڶ������
-findall()��������������ѭ��ƥ�䣬����a|^(abd)ʱƥ�䵽aʱ��ôֱ�ӷ������ڽ����'',���ǵ��������ڻ�ûƥ��������ƥ�䵽�����ڷ���''
+为保证数据完整入库，事务应避免自动提交
+and优先级高于or,先算and两侧，算完再算or两侧,返回至确定为止那个值
+GIL:Python2中1000字节后切换线程，Python3中15毫秒切换线程;
+GIL仅对IO密集型线程提升效率，对计算密集型线型不升反降相对于单线程
+requests使用proxies时请求网址的http/https要与代理ip保持一致，否则设置无效
+使用匿名https代理ip时会出现被拒绝访问
+except未捕获异常且无其它异常才执行else
+url打不开时可以需要某个请求头，如X-Requested-With：XMLHttpRequest
+args=(,)字典时，若参数只有一个要注意逗号，否则会出现字符串被切割为元组
+dir(module_name)来查看 模块下的函数
+match,search只匹配每一个符合结果,group()等价group(0)以元组返回所有组结果,group(1,2)取第一个与第二个组号
+findall()将正则依次往后循环匹配，出现a|^(abd)时匹配到a时那么直接返回组内结果即'',就是当或中组内还没匹配其它先匹配到则组内返回''
+python函数，类都作为对象处理，初始化时存在关键字参数，下次再调用该对象不传此参时参数地址不变（若恰为可变参数，刚结果在原基础上发生变化）
 
 
-�ܽ�
-sql�ַ���ƴ��ע��ת����unicode
-pd���ؽ��ʱע���ʱ��None if DataFrame.empty else DataFrame.iloc[0]
-�ļ���������ģ�����ظ�
-��������˼��������Ϣ�������ԭ��
+总结
+sql字符串拼接注意转换成unicode
+pd返回结果时注意空时，None if DataFrame.empty else DataFrame.iloc[0]
+文件名不能与模块名重复
+找问题先思考报错信息可能造成原因
 
-
-��ʽ��
-%����C���ԣ�format��{} {}��Ϊ��ʱĬ��Ϊ0
+格式化
+%用类C语言，format用{} {}中为空时默认为0
 '%s %d-%d' % ('hello', 7, 1)
 '{0} {1}:{2}'.format('hello', '1', '7')
 '%.3f' % 1.234567869
@@ -88,125 +89,88 @@ for i in range(5):
 ...  '%.*f' % (i, 1.234234234234234)
 for i in range(5):  
 ...   '{0:.{1}f}'.format(1 / 3.0, i)
-%-2s��ʾռ�����ַ�
-{0:a<2}��ʾ����������ַ���������a���Ĭ���ÿո����,^����,>�Ҷ���
-format����һ��ʵ�οɶ��ʹ��
-ʱ�����timestamp = time.time()
-��ת�ṹ����struct_time = time.localtime(timestamp)
-�ṹת��ʽ����time.strftime("%a, %d %b %Y %H:%M:%S +0000", struct_time)  #�� �� ��
-��ʽ��ת�ṹ����time.strptime(struct_time�� "%a, %d %b %Y %H:%M:%S +0000")
-�ṹ��ת����timestamp = time.mktime(struct_time)
+%-2s表示占两个字符
+{0:a<2}表示左对齐两个字符，不足用a填充默认用空格填充,^居中,>右对齐
+format优势一个实参可多次使用
+时间戳：timestamp = time.time()
+戳转结构化：struct_time = time.localtime(timestamp)
+结构转格式化：time.strftime("%a, %d %b %Y %H:%M:%S +0000", struct_time)  #周 日 月
+格式化转结构化：time.strptime(struct_time， "%a, %d %b %Y %H:%M:%S +0000")
+结构化转戳：timestamp = time.mktime(struct_time)
 datetime
-datetime��date����תʱ�����time.mktime(var.timetuple())
-���㱾��һ���ڣ�datetime.date.today() - datetime.timedelta(days=now.weekday())
+datetime和date类型转时间戳：time.mktime(var.timetuple())
+计算本周一日期：datetime.date.today() - datetime.timedelta(days=now.weekday())
 
 yum install vixie-cron
 yum install crontabs
-chkconfig crond on��������
-crond:(5�λ�6�λ�7��)
-�� �� ʱ �� �� �� ��
-5�������꣬6������,?��ʾ������ֵ�޹ؽ�Ҫֻ����������ʹ��
-����ʱ1���գ�2��һ���е�0���գ�1��һ��ʱע�⣩
-*/5 * * * * ���� >> /a.log 2>&1  # ÿ����ִ��һ��,��־ȫ�����a.log
-04,34 * * * *  # ��Сʱ��04��34����ִ��
-0 06 * * *  #��������6��ִ��
-/dev/null ��ʾ���豸�ļ�
-0 ��ʾstdin��׼����
-1 ��ʾstdout��׼���
-2 ��ʾstderr��׼����
-crontab�в��ܳ���%
+chkconfig crond on开机启动
+crond:(5参或6参或7参)
+秒 分 时 日 月 周 年
+5参无秒年，6参无年,?表示不设置值无关紧要只能在月周中使用
+星期时1周日，2周一（有的0周日，1周一用时注意）
+*/5 * * * * 命令 >> /a.log 2>&1  # 每五钟执行一次,日志全输出到a.log
+04,34 * * * *  # 第小时的04和34分钟执行
+0 06 * * *  #第天上午6点执行
+/dev/null 表示空设备文件
+0 表示stdin标准输入
+1 表示stdout标准输出
+2 表示stderr标准错误
+crontab中不能出现%
 >> /logs.log 2>&1
-ʹ��crondʱĬ������ļ���Ϊ��ǰ�û�·����ִ����Ϊroot
-����export PATH=$PATH:/usr/local/bin && cd /home && /usr/local/bin/python
-�����ʼ���crontab��ͷ����MAILTO=""
-python�ļ���crontab��logging�޷����ʱ������cd��·���£���ִ�и��ļ�
+使用crond时默认输出文件径为当前用户路径，执行者为root
+方法export PATH=$PATH:/usr/local/bin && cd /home && /usr/local/bin/python
+不发邮件在crontab开头添加MAILTO=""
+python文件在crontab下logging无法输出时，可先cd找路径下，再执行该文件
 
-��־һ���ֳ�5���ȼ����ӵ͵��߷ֱ��ǣ�DEBUG INFO WARNING ERROR CRITICAL
-yield����return������ִ����yield�շ��أ��´ε�������yield��ִ��
-�ɵ�������ӵ��__iter__����������˵����forѭ������
-������ӵ��next��__next__��__iter__����������󣬶��巽ʽ��һ��������yield��ʱ����������
-���룬ʱ���ת����http://tool.chinaz.com/Tools/unixtime.aspx
-lxml.fromstring(�����unicode���ͣ��������ʱ�õ������׳��ֱ��벻��Ӧ)
-python����phantomjsִ��jsʱ����λԪ��ֻ���ڵ�һ��Ԫ�ػ����ϲ�����һ����
+日志一共分成5个等级，从低到高分别是：DEBUG INFO WARNING ERROR CRITICAL
+yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
+可迭代对象拥有__iter__方法，或者说能用for循环对象
+迭代器拥有next或__next__和__iter__方法特殊对象，定义方式：一（），二yield此时属于生成器
+编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
+lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编码不对应)
+python利用phantomjs执行js时，定位元素只能在第一个元素基础上查找下一个如
 u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
+xpath转字符串str(list(map(lambda s: bytes.decode(html.tostring(s)), html.fromstring(text, "lxml").xpath("//input[@type=\"hidden\"]"))))
+etree.XML(需str),分级匹配时xpath("./div")
 Mac(CR-\r) Linux(LF-\n) Windows(CRLF-\r\n)
 
-https://juejin.im/post/599e14875188251240632702
-gitԶ�ֿ̲�������
-����һ
-git clone http://...[[.git] myrepository]
-������
-git init
-git remote add origin http://...git# �����ؿ���Զ�˿����
-git pull origin master
+BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。当你发布使用了BSD协议的代码，或者以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件：
+1.如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。
+2.如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。
+3.不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。
+BSD代码鼓励代码共享，但需要尊重代码作者的著作权。BSD由于允许使用者修改和重新发布代码，也允许使用或在BSD代码上开发商业软件发布和销 售，因此是对商业集成很友好的协议。
+很多的公司企业在选用开源产品的时候都首选BSD协议，因为可以完全控制这些第三方的代码，在必要的时候可以修改或者 二次开发
 
-git pull�ȼ�git fetch + git merge��ȡ�����ϲ�(�ϲ�ʱ�г�ͻ��Ҫ�ֶ������ͻ)
-git merge dev�ϲ�dev��֧����ǰ��֧
-git log --graph --pretty=oneline --abbrev-commit�鿴��֧�ϲ�ͼ
-
-������Կ
-git config --global user.name "name"
-git config --global user.email "xx@xx.com"
-ssh-keygen -t rsa -C "xx@xx.com"
-�������Ϊע��������ʶ�û����ݶ���
-��ĳ����Ŀʹ�õ����û�������git config����
-���ssh keyʱ����.ssh���½�config�ļ�
-Host github
-HostName github.com
-User manengyu@qq.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa
-
-Host gitlab
-HostName 192.168.8.15
-User manengyu@qq.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_gitlab
-ʹ����������˽Կ
-ssh-agent
-ssh-add ~/.ssh/rsa������not open a connectionʱWindows:eval `ssh-agent`,CentOS:exec ssh-agent bash��
-ssh-add -l
-
-
-
-
-BSD��ԴЭ����һ������ʹ���ߺܴ����ɵ�Э�顣�������ɵ�ʹ�ã��޸�Դ���룬Ҳ���Խ��޸ĺ�Ĵ�����Ϊ��Դ����ר�������ٷ��������㷢��ʹ����BSDЭ��Ĵ��룬������BSDЭ�����Ϊ���������ο����Լ��Ĳ�Ʒʱ����Ҫ��������������
-1.����ٷ����Ĳ�Ʒ�а���Դ���룬����Դ�����б������ԭ�������е�BSDЭ�顣
-2.����ٷ�����ֻ�Ƕ��������/����������Ҫ�����/�������ĵ��Ͱ�Ȩ�����а���ԭ�������е�BSDЭ�顣
-3.�������ÿ�Դ���������/�������ֺ�ԭ����Ʒ���������г��ƹ㡣
-BSD����������빲��������Ҫ���ش������ߵ�����Ȩ��BSD��������ʹ�����޸ĺ����·������룬Ҳ����ʹ�û���BSD�����Ͽ�����ҵ������������ �ۣ�����Ƕ���ҵ���ɺ��Ѻõ�Э�顣
-�ܶ�Ĺ�˾��ҵ��ѡ�ÿ�Դ��Ʒ��ʱ����ѡBSDЭ�飬��Ϊ������ȫ������Щ�������Ĵ��룬�ڱ�Ҫ��ʱ������޸Ļ��� ���ο���
-
-�����һ������ɿ�����һ������,��Ҫô�����ı�ִ��,Ҫô��ȫ��ִ�С��������Ծͽ�ԭ����
-IO��������http://www.cnblogs.com/fanzhidongyzby/p/4098546.html
+如果把一个事务可看作是一个程序,它要么完整的被执行,要么完全不执行。这种特性就叫原子性
+IO操作类型http://www.cnblogs.com/fanzhidongyzby/p/4098546.html
 
 ip http://881free.com/  http://www.xdaili.cn/freeproxy.html
 https http://mp.weixin.qq.com/s/9BkJ90CE6sNuUXJjiwHlGg http://www.jianshu.com/p/072a657337ae
 get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 
-һ��9*9
+一行9*9
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
 print "\n".join([" ".join(['%d*%d=%2-d'%(i,j, i*j) for j in range(1, i+1)]) for i in range(1, 10)])
 
 python3
-print����
+print中文
 import io
 import sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8'
-��������
+新增功能
 [k for k in {}.keys() & [1,2]]
-mydict = {1:3,2:4}# &��ʾ����k in [1,2],True����k
+mydict = {1:3,2:4}# &表示运算k in [1,2],True返回k
 [k: mydict[k] for k in mydict.keys() & [1,2]]
-�б��н�������.intersection(list2)
-��2����
+列表有交集方法.intersection(list2)
+与2区分
 MySQLdb-PyMySQL
 urlib.unquote()-urllib.parse.unquote()
-3����iteritems(),iterkeys(),itervalues(),has_key()
-2ת3ʱ(print>print(),unicode>str,Exception,e>Exception as e,MySQLdb>pymysql)
+3中无iteritems(),iterkeys(),itervalues(),has_key()
+2转3时(print>print(),unicode>str,Exception,e>Exception as e,MySQLdb>pymysql)
 
-�����ڱ���ʱ��������ȫ��ת�����ڴ��ַ��ţ������Ƴ���������Ѳ����ڣ���ɵ�ַ�����ַַ�������Ӧ
+程序在编译时变量名将全部转换成内存地址编号，二进制程序变量名已不存在，变成地址编号与址址内容相对应
 
-appץ��fiddler,upd������wireshark
+app抓包fiddler,upd包可用wireshark
 shili
 https://github.com/adafruit/Adafruit_Python_DHT
 http://www.devstore.cn/essay/essayInfo/9430.html
@@ -215,7 +179,7 @@ https://sourceforge.net/projects/pywin32
 python-docx
 https://python-docx.readthedocs.io/en/latest/
 
-python�����ȷ��ز����Ӻ��������ٻص���ʱ����
+python函数先返回参数加函数对象再回调耗时任务
 def profile_update(inputs):
     #take updates and update the database 
     def post_processing_task():
@@ -223,20 +187,22 @@ def profile_update(inputs):
     return ("it worked", post_processing_task)
 	
 questions:
-����̵��ýӿ�ѵ��ģ�Ϳ�ס���в���ȥ
-windows����β鿴python�������Ľ���
-flask�ӿ�get, post���ݵ��ύ
+多进程调用接口训练模型卡住进行不下去
+windows下如何查看python所启动的进程
+flask接口get, post数据的提交
 
-# -*-coding:utf-8-*-�����ļ�����
-'��'  # ��Ϊutf-8
-u'��'  # ��Ϊunicode
+# -*-coding:utf-8-*-用于文件编码
+'我'  # 编为utf-8
+u'我'  # 编为unicode
 import sys
 reload(sys)
-sys.setdefaultencoding(u"utf-8")����pythonϵͳ�ַ���ת��ʱ����
-*linux��̨��ӡ������unicodeʱ�������������У�����ascii���룬�������(��־��ò���print,��logging)
-sys.stdout_encoding������룬�������б����й�
-��������unicode����pythonĬ�ϻ����unicode������
+sys.setdefaultencoding(u"utf-8")用于python系统字符串转换时编码
+*linux后台打印含中文unicode时，若不加这三行，会以ascii编码，结果报错(日志最好不用print,用logging)
+sys.stdout_encoding输出编码，与命令行编码有关
+二进制与unicode运算python默认换算成unicode来运算
 
-Commands out of sync; you can't run this command nowִ��������ѯδ���ؽ�����ֺ������pythonҪ���������з���
+Commands out of sync; you can't run this command now执行语句仅查询未返回结果含分号情况，python要求有请求有返回
 
-
+pipreqs
+pip freeze > requirements.txt
+pip install -r requirements.txt -i https://pypi.doubanio.com/simple
