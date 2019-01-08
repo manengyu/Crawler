@@ -1,0 +1,6 @@
+flask
+app.url_map.strict_slashes = False  # 忽略斜杠
+Sentry(app, dsn="", logging=True, level=logging.WARNING)
+https设置后无法通过http请求
+app中无ssl_context='adhoc'，https+verify=False|True可收到请求，乱码
+有ssl_context='adhoc'，https+客verify=False正确请求，https+客verify=True无法请求
