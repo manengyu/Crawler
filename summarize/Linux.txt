@@ -1,59 +1,59 @@
- ÃüÁî
-grep ËÑË÷
-ps -ef | grep java±íÊ¾²é¿´ËùÓĞ½ø³ÌÀï CMD ÊÇ java µÄ½ø³ÌĞÅÏ¢
-eÏÔÊ¾ËùÓĞ½ø³Ì,»·¾³±äÁ¿
-fÈ«¸ñÊ½
-ps -aux | grepÏÔÊ¾ËùÓĞ×´Ì¬(a:ÏÔÊ¾ËùÓĞ³ÌĞò u:ÒÔÓÃ»§ÎªÖ÷µÄ¸ñÊ½À´ÏÔÊ¾ x:ÏÔÊ¾ËùÓĞ³ÌĞò£¬²»ÒÔÖÕ¶Ë»úÀ´Çø·Ö)
-netstat -ap|grep 8090²é¿´¶Ë¿Ú±»Õ¼ÓÃµÄ½ø³Ì
-lsof -i:¶Ë¿ÚºÅ»ònetstat -tunlp|grep ¶Ë¿ÚºÅ
-jobs -l²é¿´µ±Ç°ÖÕ¶ËÉúĞ§µÄºóÌ¨½ø³Ì(-l£ºÏÔÊ¾½ø³ÌºÅ£» -p£º½öÈÎÎñ¶ÔÓ¦µÄÏÔÊ¾½ø³ÌºÅ£» -n£ºÏÔÊ¾ÈÎÎñ×´Ì¬µÄ±ä»¯£» -r£º½öÊä³öÔËĞĞ×´Ì¬£¨running£©µÄÈÎÎñ£» -s£º½öÊä³öÍ£Ö¹×´Ì¬£¨stoped£©µÄÈÎÎñ)
-fg %nÈÃ±àºÅn£¨·Çpid£©½ø³Ìµ÷ÖÁÇ°Ì¨
-bg %n½«ºóÌ¨ÈÎÎñ»½ĞÑ,ÔÚºóÌ¨ÔËĞĞ
-ctrl + z ¿ÉÒÔ½«Ò»¸öÕıÔÚÇ°Ì¨Ö´ĞĞµÄÃüÁî·Åµ½ºóÌ¨£¬²¢ÇÒÔİÍ£
-±àÂë¼°locale
+ å‘½ä»¤
+grep æœç´¢
+ps -ef | grep javaè¡¨ç¤ºæŸ¥çœ‹æ‰€æœ‰è¿›ç¨‹é‡Œ CMD æ˜¯ java çš„è¿›ç¨‹ä¿¡æ¯
+eæ˜¾ç¤ºæ‰€æœ‰è¿›ç¨‹,ç¯å¢ƒå˜é‡
+få…¨æ ¼å¼
+ps -aux | grepæ˜¾ç¤ºæ‰€æœ‰çŠ¶æ€(a:æ˜¾ç¤ºæ‰€æœ‰ç¨‹åº u:ä»¥ç”¨æˆ·ä¸ºä¸»çš„æ ¼å¼æ¥æ˜¾ç¤º x:æ˜¾ç¤ºæ‰€æœ‰ç¨‹åºï¼Œä¸ä»¥ç»ˆç«¯æœºæ¥åŒºåˆ†)
+netstat -ap|grep 8090æŸ¥çœ‹ç«¯å£è¢«å ç”¨çš„è¿›ç¨‹
+lsof -i:ç«¯å£å·æˆ–netstat -tunlp|grep ç«¯å£å·
+jobs -læŸ¥çœ‹å½“å‰ç»ˆç«¯ç”Ÿæ•ˆçš„åå°è¿›ç¨‹(-lï¼šæ˜¾ç¤ºè¿›ç¨‹å·ï¼› -pï¼šä»…ä»»åŠ¡å¯¹åº”çš„æ˜¾ç¤ºè¿›ç¨‹å·ï¼› -nï¼šæ˜¾ç¤ºä»»åŠ¡çŠ¶æ€çš„å˜åŒ–ï¼› -rï¼šä»…è¾“å‡ºè¿è¡ŒçŠ¶æ€ï¼ˆrunningï¼‰çš„ä»»åŠ¡ï¼› -sï¼šä»…è¾“å‡ºåœæ­¢çŠ¶æ€ï¼ˆstopedï¼‰çš„ä»»åŠ¡)
+fg %nè®©ç¼–å·nï¼ˆépidï¼‰è¿›ç¨‹è°ƒè‡³å‰å°
+bg %nå°†åå°ä»»åŠ¡å”¤é†’,åœ¨åå°è¿è¡Œ
+ctrl + z å¯ä»¥å°†ä¸€ä¸ªæ­£åœ¨å‰å°æ‰§è¡Œçš„å‘½ä»¤æ”¾åˆ°åå°ï¼Œå¹¶ä¸”æš‚åœ
+ç¼–ç åŠlocale
 locale
 vi /etc/sysconfig/i18n(zh_CN.UTF-8,en_US.UTF-8)
-mv -f(mv dir²»ÒÆ¶¯dir,mv dir/ÒÆ¶¯dir)
+mv -f(mv dirä¸ç§»åŠ¨dir,mv dir/ç§»åŠ¨dir)
 rm -rf
 
 
 kill -9 [PID]
-9±íÊ¾Ç¿ÆÈ½ø³ÌÁ¢¼´Í£Ö¹
-ÅúÁ¿É±ËÀps -ef|grep firefox|grep -v grep|awk '{print "kill -9 " $2}' |sh
+9è¡¨ç¤ºå¼ºè¿«è¿›ç¨‹ç«‹å³åœæ­¢
+æ‰¹é‡æ€æ­»ps -ef|grep firefox|grep -v grep|awk '{print "kill -9 " $2}' |sh
 
-linux³£ÓÃÏÂÔØÃüÁîwget,curl(²»Ö§³Ö¶àÏß³Ì£¬µ«¿ÉÍ¬Ê±ÏÂ¶à¸öÎÄ¼ş)£¬axel(Ö§³Ö¶àÏß³Ì)
-ls | wc -w²é¿´µ±Ç°Ä¿Â¼ÏÂÎÄ¼ş¼°ÎÄ¼ş¼ĞÊı£¨-l£©
-ls | wc -c(²é¿´µ±Ç°Ä¿Â¼¼°×ÓÄ¿Â¼×Ö½ÚÊı)
-ls -lha(lÒÔÁĞ±íÏêÏ¸ĞÅÏ¢ÏÔÊ¾£¬a-all,h-human-readable)
-wc -[c×Ö½ÚÊı»ò--bytes|lĞĞÊı|wµ¥´ÊÊı|m×Ö·ûÊı»ò--chars]
-ls -l|grep "^d"|wc -lµ±Ç°Ä¿Â¼ÏÂÄ¿Â¼Êı
-ls -lR|grep "^-"|wc -lµ±Ç°Ä¿Â¼ÏÂ¼°×ÓÄ¿Â¼ÏÂÎÄ¼şÊı
+linuxå¸¸ç”¨ä¸‹è½½å‘½ä»¤wget,curl(ä¸æ”¯æŒå¤šçº¿ç¨‹ï¼Œä½†å¯åŒæ—¶ä¸‹å¤šä¸ªæ–‡ä»¶)ï¼Œaxel(æ”¯æŒå¤šçº¿ç¨‹)
+ls | wc -wæŸ¥çœ‹å½“å‰ç›®å½•ä¸‹æ–‡ä»¶åŠæ–‡ä»¶å¤¹æ•°ï¼ˆ-lï¼‰
+ls | wc -c(æŸ¥çœ‹å½“å‰ç›®å½•åŠå­ç›®å½•å­—èŠ‚æ•°)
+ls -lha(lä»¥åˆ—è¡¨è¯¦ç»†ä¿¡æ¯æ˜¾ç¤ºï¼Œa-all,h-human-readable)
+wc -[cå­—èŠ‚æ•°æˆ–--bytes|lè¡Œæ•°|wå•è¯æ•°|må­—ç¬¦æ•°æˆ–--chars]
+ls -l|grep "^d"|wc -lå½“å‰ç›®å½•ä¸‹ç›®å½•æ•°
+ls -lR|grep "^-"|wc -lå½“å‰ç›®å½•ä¸‹åŠå­ç›®å½•ä¸‹æ–‡ä»¶æ•°
 
-LinuxÈ¨ÏŞ
+Linuxæƒé™
 groupadd name
 useradd -g groupname usernaem
-chgrp root ./abc.py  # ¸Ä±äµ±Ç°Ä¿Â¼ËùÊô×éÎªroot
-chown R root ./abc.py  # ¸Ä±äµ±Ç°Ä¿Â¼¼°ÏÂËùÓĞÎÄ¼şºÍÄ¿Â¼ËùÊô×éÎªroot
+chgrp root ./abc.py  # æ”¹å˜å½“å‰ç›®å½•æ‰€å±ç»„ä¸ºroot
+chown R root ./abc.py  # æ”¹å˜å½“å‰ç›®å½•åŠä¸‹æ‰€æœ‰æ–‡ä»¶å’Œç›®å½•æ‰€å±ç»„ä¸ºroot
 chmod
 -rwxrw-r--. 1 root root 1314 Feb 2 09:39 abc.py
--ÎÄ¼ş£¬dÄ¿Â¼£¬lÁ´½Ó
-rwx¶ÁĞ´Ö´ĞĞ£¬r4w2x1
-1Á¬½ÓµÄÎÄ¼şÊı£¬Õı³£ÎÄ¼şÎª1£¬Ä¿Â¼ÎªÄ¿Â¼ÏÂÎÄ¼şÊı
-rootÓÃ»§
-root×é
-1314´óĞ¡×Ö½Ú£¬ls -lhÏÔÊ¾Îªk,m
-Feb 2 09:39 ×îºóĞŞ¸ÄÊ±¼ä
-Ê¾Àı
-chmod u=rwx£¬g=5£¬o=rx abc.py  # oÎªÆäËü×éÀïµÄÓÃ»§
-chmod a+r abc.py  # ¸øËùÓĞÓÃ»§Ìí¼Ó¶ÁÈ¨ÏŞ
+-æ–‡ä»¶ï¼Œdç›®å½•ï¼Œlé“¾æ¥
+rwxè¯»å†™æ‰§è¡Œï¼Œr4w2x1
+1è¿æ¥çš„æ–‡ä»¶æ•°ï¼Œæ­£å¸¸æ–‡ä»¶ä¸º1ï¼Œç›®å½•ä¸ºç›®å½•ä¸‹æ–‡ä»¶æ•°
+rootç”¨æˆ·
+rootç»„
+1314å¤§å°å­—èŠ‚ï¼Œls -lhæ˜¾ç¤ºä¸ºk,m
+Feb 2 09:39 æœ€åä¿®æ”¹æ—¶é—´
+ç¤ºä¾‹
+chmod u=rwxï¼Œg=5ï¼Œo=rx abc.py  # oä¸ºå…¶å®ƒç»„é‡Œçš„ç”¨æˆ·
+chmod a+r abc.py  # ç»™æ‰€æœ‰ç”¨æˆ·æ·»åŠ è¯»æƒé™
 
-free -m²é¿´ÄÚ´æ
-cat /proc/versionÏµÍ³ÏêÇé
-uname -aÏµÍ³ÓÃ»§
-uname -rÏµÍ³ÄÚºË
-ÄÚ´æ½âÊÍ£ºhttps://www.cnblogs.com/sunny3096/p/7474594.html
-buffer»º³å(A buffer is something that has yet to be "written" to disk)
-cache»º´æ(A cache is something that has been "read" from the disk and stored for later use)
+free -mæŸ¥çœ‹å†…å­˜
+cat /proc/versionç³»ç»Ÿè¯¦æƒ…
+uname -aç³»ç»Ÿç”¨æˆ·
+uname -rç³»ç»Ÿå†…æ ¸
+å†…å­˜è§£é‡Šï¼šhttps://www.cnblogs.com/sunny3096/p/7474594.html
+bufferç¼“å†²(A buffer is something that has yet to be "written" to disk)
+cacheç¼“å­˜(A cache is something that has been "read" from the disk and stored for later use)
                                       total         used        free      shared       buffers       cached
 Mem:                                 255268       238332       16936           0         85540       126384
 -/+ buffers/cache:                                 26408      228860
@@ -62,59 +62,59 @@ total1 = used1 + free1
 total1 = used2 + free2
 used1  = buffers1 + cached1 + used2
 free2  = buffers1 + cached1 + free1
-total1´ÓOSÏµÍ³½Ç¶È¿´£¬total2´ÓÓ¦ÓÃ³ÌĞò½Ç¶È¿´
+total1ä»OSç³»ç»Ÿè§’åº¦çœ‹ï¼Œtotal2ä»åº”ç”¨ç¨‹åºè§’åº¦çœ‹
 
-/dev/null ±íÊ¾¿ÕÉè±¸ÎÄ¼ş
-0 ±íÊ¾stdin±ê×¼ÊäÈë
-1 ±íÊ¾stdout±ê×¼Êä³ö
-2 ±íÊ¾stderr±ê×¼´íÎó
-command 1>a 2>&1Óëcommand 1>a 2>a»¹ÊÇÓĞÇø±ğµÄ£¬Çø±ğ¾ÍÔÚÓÚÇ°ÕßÖ»´ò¿ªÒ»´ÎÎÄ¼şa£¬ºóÕß»á´ò¿ªÎÄ¼şÁ½´Î£¬²¢µ¼ÖÂstdout±»stderr¸²¸Ç¡£
-catÓÃÓÚ´´½¨£¬ºÏ²¢£¬²é¿´Õû¸öÎÄ¼ş
-<<EOFÒÔEOF×÷Îª±ê×¼ÊäÈë½áÊø·û(¿ÉÁíĞĞÖ¸¶¨)
-cat>a<<EOF´´½¨aÎÄ¼şÒÔ±ê×¼ÊäÈëĞ´ÈëÄÚÈİÒÔEOF½áÊø
-cat>>a<<EOFÏòaÎÄ¼ş×·»ØÄÚÈİ»ò£¨cat<<EOF>>a£©
-nohupÓÃÍ¾£º²»¹Ò¶ÏµØÔËĞĞÃüÁî¡£ &ÓÃÍ¾£ºÔÚºóÌ¨ÔËĞĞ nohup Command [ Arg ¡­ ] [¡¡& ]
-Èç¹ûÖ±½Óµã»÷¹Ø±ÕÖÕ¶ËµÄ°´Å¥£¬¶ÏµôµÄsession»áÍ¨ÖªnohupÒ»Æğ¹Ø±Õ£¬±£³Ö³ÌĞòÒ»Ö±ºóÌ¨ÔËĞĞ¿ÉÓÃexitÍË³ö
+/dev/null è¡¨ç¤ºç©ºè®¾å¤‡æ–‡ä»¶
+0 è¡¨ç¤ºstdinæ ‡å‡†è¾“å…¥
+1 è¡¨ç¤ºstdoutæ ‡å‡†è¾“å‡º
+2 è¡¨ç¤ºstderræ ‡å‡†é”™è¯¯
+command 1>a 2>&1ä¸command 1>a 2>aè¿˜æ˜¯æœ‰åŒºåˆ«çš„ï¼ŒåŒºåˆ«å°±åœ¨äºå‰è€…åªæ‰“å¼€ä¸€æ¬¡æ–‡ä»¶aï¼Œåè€…ä¼šæ‰“å¼€æ–‡ä»¶ä¸¤æ¬¡ï¼Œå¹¶å¯¼è‡´stdoutè¢«stderrè¦†ç›–ã€‚
+catç”¨äºåˆ›å»ºï¼Œåˆå¹¶ï¼ŒæŸ¥çœ‹æ•´ä¸ªæ–‡ä»¶
+<<EOFä»¥EOFä½œä¸ºæ ‡å‡†è¾“å…¥ç»“æŸç¬¦(å¯å¦è¡ŒæŒ‡å®š)
+cat>a<<EOFåˆ›å»ºaæ–‡ä»¶ä»¥æ ‡å‡†è¾“å…¥å†™å…¥å†…å®¹ä»¥EOFç»“æŸ
+cat>>a<<EOFå‘aæ–‡ä»¶è¿½å›å†…å®¹æˆ–ï¼ˆcat<<EOF>>aï¼‰
+nohupç”¨é€”ï¼šä¸æŒ‚æ–­åœ°è¿è¡Œå‘½ä»¤ã€‚ &ç”¨é€”ï¼šåœ¨åå°è¿è¡Œ nohup Command [ Arg â€¦ ] [ã€€& ]
+å¦‚æœç›´æ¥ç‚¹å‡»å…³é—­ç»ˆç«¯çš„æŒ‰é’®ï¼Œæ–­æ‰çš„sessionä¼šé€šçŸ¥nohupä¸€èµ·å…³é—­ï¼Œä¿æŒç¨‹åºä¸€ç›´åå°è¿è¡Œå¯ç”¨exité€€å‡º
 
-[hw]clock --set --date="06/19/18 14:55"ĞŞ¸ÄÓ²¼şÊ±¼ä
-date -s 06/19/18¼°date -s 14:20:50ĞŞ¸ÄÏµÍ³Ê±¼ä
-[hw]clock --hctosys(Ó²¼şÍ¬²½ÏµÍ³),--systohc(ÏµÍ³Í¬²½Ó²¼ş)
-shutdown -h¹Ø»ú£¬now£¨Á¢¿Ì£©£¬+5£¨5·ÖÖÓºó£©£¬10£º30£¨Ê®µã°ë¹Ø»ú£©
-shutdown -cÈ¡Ïû¹Ø»ú
-windowsÏÂ
-shutdown -s¹Ø»ú£¬-t 00£¨Á¢¿Ì£©£¬-t 60£¨1·ÖÖÓºó£©£¬
-at 10:30 shutdown -s£¨Ê®µã°ë¹Ø»ú£©
-shutdown -aÈ¡Ïû¹Ø»ú
+[hw]clock --set --date="06/19/18 14:55"ä¿®æ”¹ç¡¬ä»¶æ—¶é—´
+date -s 06/19/18åŠdate -s 14:20:50ä¿®æ”¹ç³»ç»Ÿæ—¶é—´
+[hw]clock --hctosys(ç¡¬ä»¶åŒæ­¥ç³»ç»Ÿ),--systohc(ç³»ç»ŸåŒæ­¥ç¡¬ä»¶)
+shutdown -hå…³æœºï¼Œnowï¼ˆç«‹åˆ»ï¼‰ï¼Œ+5ï¼ˆ5åˆ†é’Ÿåï¼‰ï¼Œ10ï¼š30ï¼ˆåç‚¹åŠå…³æœºï¼‰
+shutdown -cå–æ¶ˆå…³æœº
+windowsä¸‹
+shutdown -så…³æœºï¼Œ-t 00ï¼ˆç«‹åˆ»ï¼‰ï¼Œ-t 60ï¼ˆ1åˆ†é’Ÿåï¼‰ï¼Œ
+at 10:30 shutdown -sï¼ˆåç‚¹åŠå…³æœºï¼‰
+shutdown -aå–æ¶ˆå…³æœº
 
 nohup(https://www.cnblogs.com/MYSQLZOUQI/p/5283761.html)
-nohupºöÂÔsighupĞÅºÅ(Ò»¸ökillĞÅºÅ£¬±àºÅÎª1)£¬Terminal¹Ø±ÕÊ±¾Í·¢ËÍÁËÕâ¸öĞÅºÅ¸øsar
-Ò»°ãlinux×÷Îª·şÎñÆ÷£¬ºÜÉÙ³öÏÖ¹ÒÆğÇé¿ö£¬ÕâÑùÒ»À´nohup¶Ô¹ÒÆğÎŞĞ§£¬½ö½öÖ±µ½Êä³öÁ÷µÄ×÷ÓÃ
-&ÎŞ±ê×¼Êä³ö,nohupÎŞ±ê×¼ÊäÈë£¬Í¨³£½áºÏÊ¹ÓÃ
-Ç°Ì¨½ø³Ì£º×èÈûshell½ø³Ì£¬¿ÉÒÔÓÃ»§½»»¥
-ºóÌ¨½ø³Ì£º²»×èÈûshell½ø³Ì£¬ÎŞ·¨ÓëÓÃ»§½»»¥(ÊØ»¤½ø³ÌÊÇÌØÊâµÄºóÌ¨½ø³Ì)
-Ç°Ì¨ÔËĞĞÊ±²»Òª°´ctrl+c
+nohupå¿½ç•¥sighupä¿¡å·(ä¸€ä¸ªkillä¿¡å·ï¼Œç¼–å·ä¸º1)ï¼ŒTerminalå…³é—­æ—¶å°±å‘é€äº†è¿™ä¸ªä¿¡å·ç»™sar
+ä¸€èˆ¬linuxä½œä¸ºæœåŠ¡å™¨ï¼Œå¾ˆå°‘å‡ºç°æŒ‚èµ·æƒ…å†µï¼Œè¿™æ ·ä¸€æ¥nohupå¯¹æŒ‚èµ·æ— æ•ˆï¼Œä»…ä»…ç›´åˆ°è¾“å‡ºæµçš„ä½œç”¨
+&æ— æ ‡å‡†è¾“å‡º,nohupæ— æ ‡å‡†è¾“å…¥ï¼Œé€šå¸¸ç»“åˆä½¿ç”¨
+å‰å°è¿›ç¨‹ï¼šé˜»å¡shellè¿›ç¨‹ï¼Œå¯ä»¥ç”¨æˆ·äº¤äº’
+åå°è¿›ç¨‹ï¼šä¸é˜»å¡shellè¿›ç¨‹ï¼Œæ— æ³•ä¸ç”¨æˆ·äº¤äº’(å®ˆæŠ¤è¿›ç¨‹æ˜¯ç‰¹æ®Šçš„åå°è¿›ç¨‹)
+å‰å°è¿è¡Œæ—¶ä¸è¦æŒ‰ctrl+c
 
-ĞİÃß£º½«ÄÚ´æÖĞµÄÊı¾İ±£´æÓÚÓ²ÅÌÖĞ£¬ËùÓĞÉè±¸¶¼Í£Ö¹¹¤×÷
-¹ÒÆğ(´ı»ú):½«µ±Ç°´¦ÓÚÔËĞĞ×´Ì¬µÄÊı¾İ±£´æÔÚÄÚ´æÖĞ£¬»úÆ÷Ö»¶ÔÄÚ´æ¹©µç£¬¶øÓ²ÅÌ¡¢ÆÁÄ»ºÍCPUµÈ²¿¼şÔòÍ£Ö¹¹©µç
+ä¼‘çœ ï¼šå°†å†…å­˜ä¸­çš„æ•°æ®ä¿å­˜äºç¡¬ç›˜ä¸­ï¼Œæ‰€æœ‰è®¾å¤‡éƒ½åœæ­¢å·¥ä½œ
+æŒ‚èµ·(å¾…æœº):å°†å½“å‰å¤„äºè¿è¡ŒçŠ¶æ€çš„æ•°æ®ä¿å­˜åœ¨å†…å­˜ä¸­ï¼Œæœºå™¨åªå¯¹å†…å­˜ä¾›ç”µï¼Œè€Œç¡¬ç›˜ã€å±å¹•å’ŒCPUç­‰éƒ¨ä»¶åˆ™åœæ­¢ä¾›ç”µ
 
-¿ªÆô¶Ë¿Ú
-·½·¨Ò»/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+å¼€å¯ç«¯å£
+æ–¹æ³•ä¸€/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 /etc/init.d/iptables save
 service iptables restart 
-·½·¨¶şvi /etc/sysconfig/iptables
+æ–¹æ³•äºŒvi /etc/sysconfig/iptables
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
-¹Ø±Õ¶Ë¿Ú
-·½·¨Ò»/sbin/iptables -I INPUT -p tcp --dport 80 -j DROP
+å…³é—­ç«¯å£
+æ–¹æ³•ä¸€/sbin/iptables -I INPUT -p tcp --dport 80 -j DROP
 /etc/init.d/iptables save
 service iptables restart
-·½·¨¶şvi /etc/sysconfig/iptables
+æ–¹æ³•äºŒvi /etc/sysconfig/iptables
 A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
-½öÔÊĞí¹Ì¶¨ip·ÃÎÊÄ³¸ö¶Ë¿Ú
+ä»…å…è®¸å›ºå®šipè®¿é—®æŸä¸ªç«¯å£
 -A INPUT -s 111.111.111.111/32 -p tcp -m tcp --dport 80 -j ACCEPT
 
-head -n 2 filename(ÏÔÊ¾ÎÄ¼şÇ°Á½ĞĞ)
-tail -n -3 filename(ÏÔÊ¾ÎÄ¼şºóÈıĞĞ£¬+3µÚÈıĞĞÖÁ×îºóÒ»ĞĞ)
-sed -n "2,3p" filename(ÏÔÊ¾ÎÄ¼ş2ÖÁ3ĞĞ)
+head -n 2 filename(æ˜¾ç¤ºæ–‡ä»¶å‰ä¸¤è¡Œ)
+tail -n -3 filename(æ˜¾ç¤ºæ–‡ä»¶åä¸‰è¡Œï¼Œ+3ç¬¬ä¸‰è¡Œè‡³æœ€åä¸€è¡Œ)
+sed -n "2,3p" filename(æ˜¾ç¤ºæ–‡ä»¶2è‡³3è¡Œ)
 awk https://www.cnblogs.com/emanlee/p/3327576.html
 
 
@@ -122,20 +122,29 @@ repo
 http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.8.1/
 https://people.centos.org/hughesjr/chromium/
 
-²é¿´ÎïÀícpu¸öÊı£ºcat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
-²é¿´Âß¼­cpu¸öÊı£ºcat /proc/cpuinfo | grep "processor" | wc -l
-²é¿´ÎïÀícpuºËÊı£ºcat /proc/cpuinfo | grep "cpu cores"
-²é¿´ÎïÀícpuÖĞÂß¼­cpu¸öÊı£ºcat /proc/cpuinfo | grep "siblings"
-Âß¼­cpu¸öÊı=ÎïÀícpu¸öÊı*ÎïÀícpuºËÊı*ÎïÀícpuÖĞÂß¼­cpu¸öÊı
-¸üĞÂgcc
+æŸ¥çœ‹ç‰©ç†cpuä¸ªæ•°ï¼šcat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
+æŸ¥çœ‹é€»è¾‘cpuä¸ªæ•°ï¼šcat /proc/cpuinfo | grep "processor" | wc -l
+æŸ¥çœ‹ç‰©ç†cpuæ ¸æ•°ï¼šcat /proc/cpuinfo | grep "cpu cores"
+æŸ¥çœ‹ç‰©ç†cpuä¸­é€»è¾‘cpuä¸ªæ•°ï¼šcat /proc/cpuinfo | grep "siblings"
+é€»è¾‘cpuä¸ªæ•°=ç‰©ç†cpuä¸ªæ•°*ç‰©ç†cpuæ ¸æ•°*ç‰©ç†cpuä¸­é€»è¾‘cpuä¸ªæ•°
+æ›´æ–°gcc
 
 awk
 grep 'abc' | awk '{print $0$1$2$3$4$5$6}'
-awk '/print/{print $0}' filename  Æ¥ÅäÊ±Ê¼Ä©ÓÃ/
-×¢ÊÍ
+awk '/print/{print $0}' filename  åŒ¹é…æ—¶å§‹æœ«ç”¨/
+æ³¨é‡Š
 1,2s/^/#/g
 1,2s/^#//g
 1,2s#^#//#g
 1,2s#^//##g
 
-²Ù×÷ÏµÍ³Ê·£ºhttp://muchong.com/html/200603/213109.html
+æ“ä½œç³»ç»Ÿå²ï¼šhttp://muchong.com/html/200603/213109.html
+
+ubuntu TestEditorä¹±ç ä¸­æ–‡
+gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"
+
+docker
+docker ps
+docker logs id
+docker build ./
+docker run -p 80:8080
