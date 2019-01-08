@@ -118,7 +118,7 @@ python a.py -a 12 -b 33
 python a.py -a=12 -b=33
 
 def check_illegal(text):  # ç§»é™¤éæ³•å­—ç¬¦
-    illegal = ["v", "-", "x", "y", "%", "\\", "/", "í ½í¸‚", "í ½í°’", "í ½í¸¹", "í ¼í¾‰", "í ½í°”", "í ½í±‰", "í ½í°·"]
+    illegal = ["v", "-", "x", "y", "%", "\\", "/", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"]
     for k in illegal:
         if k in text:
             text = text.replace(k, "")
@@ -267,7 +267,8 @@ def push_json(data):
 	return requests.post(u"http://192.168.21.62:5000/yuqing/upt_senti", data=data).text
 	
 cookieå­—å…¸è½¬ä¸ºå­—ç¬¦ä¸²ç±»å‹
-cookie = [item["name"] + "=" + item["value"] for item in self.r.get_cookies()]cookiestr = ';'.join(item for item in cookie)
+cookie = [item["name"] + "=" + item["value"] for item in self.r.get_cookies()]
+cookiestr = ';'.join(item for item in cookie)
 
 try:  # ç½‘é¡µè§£ç 
 	if chardet.detect(con)[u"encoding"].upper() in [u"GB2312", u"GBK"]:
@@ -299,3 +300,9 @@ def image_joint(self, image_list, opt):  # opt= vertical ,horizontal é€‰æ‹©æ°´å¹
 		else:
 			y += height[count - 1]
 	return new_img
+
+# è¯»å–å›¾ç‰‡url
+f = open(u"a.jpg", u"wb")
+f.write(reqs.get(image_url).content)
+f.close()
+captchimage = input(u"image:")
