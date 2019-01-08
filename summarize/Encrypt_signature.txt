@@ -18,3 +18,9 @@ PC1公钥(验签)signature>摘要
 摘要==ciphertext摘要算法
 PC2私钥(解密)ciphertext>msg
 
+Crypto库
+pip3 install Crypto==1.4.1
+pip3 install pycryptodome==3.6.6
+Python27\Lib\site-packages下将crypto文件夹改为Crypto
+密钥有开始结束标志无需base64解码，解密后要base64编码
+sha摘要及base64编码参数都为字节
