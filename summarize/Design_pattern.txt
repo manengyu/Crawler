@@ -1,13 +1,27 @@
-���ݽṹ���㷨�����ģʽ���ع�����������
+数据结构、算法、设计模式、重构、软件工程
 http://blog.csdn.net/lovelion/article/details/17517213
-��һְ��ԭ�� ��Single Responsiblity Principle SRP��
-����ԭ��Open Closed Principle��OCP��
-���ϴ���ԭ��Liskov Substitution Principle��LSP��
-������תԭ��Dependency Inversion Principle��DIP��
-�ӿڸ���ԭ��Interface Segregation Principle��ISP��
-�ϳ�/�ۺϸ���ԭ��Composite/Aggregate Reuse Principle��CARP��
-��С֪ʶԭ��Principle of Least Knowledge��PLK��Ҳ�е����ط���
-����ģʽ
-�򵥹���ģʽ������һ�������࣬�����Ը��ݲ����Ĳ�ͬ���ز�ͬ��ʵ������������ʵ��ͨ�������й�ͬ�ĸ��ࡣ
-��������ģʽ������һ�����ڴ�������Ľӿڣ��������������һ����ʵ��������������ģʽ��һ�����ʵ�����ӳٵ������ࡣ
-���󹤳�ģʽ���ṩһ������һϵ����ػ��໥��������Ľӿڣ�������ָ�����Ǿ�����ࡣ
+单一职责原则 （Single Responsiblity Principle SRP）
+开闭原则（Open Closed Principle，OCP）
+里氏代换原则（Liskov Substitution Principle，LSP）
+依赖倒转原则（Dependency Inversion Principle，DIP）
+接口隔离原则（Interface Segregation Principle，ISP）
+合成/聚合复用原则（Composite/Aggregate Reuse Principle，CARP）
+最小知识原则（Principle of Least Knowledge，PLK，也叫迪米特法则）
+工厂模式
+简单工厂模式：定义一个工厂类，它可以根据参数的不同返回不同的实例，被创建的实例通常都具有共同的父类。
+工厂方法模式：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。
+抽象工厂模式：提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。
+
+监听器不断发出请求来监听是否变化
+注册监听将所需执行代码添加进监听器
+观察者模式：观察者-目标者（监听器）
+发布订阅模式：订阅者-调度中心（监听发布者变化）-发布者（监听器）
+
+时间戳13位
+money单位分
+Date存时间，At存时间戳
+异常无需处理捕获过细，全局加异常日志即可
+python函数，类都作为对象处理，初始化时存在关键字参数，下次再调用该对象不传此参时参数地址不变（若恰为可变参数，刚结果在原基础上发生变化）
+双装饰器时signal.SIGALRM失效（双装饰器有待研究，连续加有效，两个函数连续加无效）
+请求若有ip参数，带上保证防止因高频被封
+pymongo连接池与flask结合时会阻塞产生并发超时，采用flask_pymongodb代替
