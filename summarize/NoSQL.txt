@@ -1,46 +1,54 @@
 MongoDB
-Êı¾İ±£´æÔÚ´ÅÅÌ£¬¾­³£¶ÁÈ¡µÄÊı¾İ»á¼ÓÔØµ½ÄÚ´æ
+æ•°æ®ä¿å­˜åœ¨ç£ç›˜ï¼Œç»å¸¸è¯»å–çš„æ•°æ®ä¼šåŠ è½½åˆ°å†…å­˜
 
 Redis (http://www.runoob.com/redis/redis-hashes.html)
-Êı¾İ´æÔÚÄÚ´æ£¬¿É¶¨Ê±Ïò´ÅÅÌĞ´ÈëÊı¾İ,´æ´¢·ÖÎªÄÚ´æ´æ´¢¡¢´ÅÅÌ´æ´¢ºÍlogÎÄ¼şÈı²¿·Ö
-»ùÓÚÄÚ´æµÄÊı¾İ½á¹¹·şÎñÆ÷
-°²×°£ºhttps://github.com/MSOpenTech/redis/releases
-winÆô¶¯ÓëµÇÂ¼
+æ•°æ®å­˜åœ¨å†…å­˜ï¼Œå¯å®šæ—¶å‘ç£ç›˜å†™å…¥æ•°æ®,å­˜å‚¨åˆ†ä¸ºå†…å­˜å­˜å‚¨ã€ç£ç›˜å­˜å‚¨å’Œlogæ–‡ä»¶ä¸‰éƒ¨åˆ†
+åŸºäºå†…å­˜çš„æ•°æ®ç»“æ„æœåŠ¡å™¨
+å®‰è£…ï¼šhttps://github.com/MSOpenTech/redis/releases
+winå¯åŠ¨ä¸ç™»å½•
 redis-server
-redis-cli.exe -h 127.0.0.1 -p 6379 -a password(Ô¶¶ËÊ±¼ÓÃÜÂë)
-ÉèÖÃ¼üÖµ¶ÔSET myKey abc
-È¡³ö¼üÖµ¶ÔGET myKey
-¼üÃüÁî£º
-ÃüÁî£ºDEL/DUMP/EXIST key
-ÉèÖÃ¹ıÆÚÊ±¼äEXPIRE key seconds£¨EXPIREAT key Ê±¼ä´Á£©£¬PEXPIRE/PEXPIREºÁÃëÎªµ¥Î»
-ÒÆ³ıkey¹ıÆÚÊ±¼äPERSIST key
-Ê£Óà¹ıÆÚÊ±¼äTTL keyÃëÎªµ¥Î»£¨PTTL keyºÁÃë£©
+redis-cli.exe -h 127.0.0.1 -p 6379 -a password(è¿œç«¯æ—¶åŠ å¯†ç )
+è®¾ç½®é”®å€¼å¯¹SET myKey abc
+å–å‡ºé”®å€¼å¯¹GET myKey
+é”®å‘½ä»¤ï¼š
+å‘½ä»¤ï¼šDEL/DUMP/EXIST key
+è®¾ç½®è¿‡æœŸæ—¶é—´EXPIRE key secondsï¼ˆEXPIREAT key æ—¶é—´æˆ³ï¼‰ï¼ŒPEXPIRE/PEXPIREæ¯«ç§’ä¸ºå•ä½
+ç§»é™¤keyè¿‡æœŸæ—¶é—´PERSIST key
+å‰©ä½™è¿‡æœŸæ—¶é—´TTL keyç§’ä¸ºå•ä½ï¼ˆPTTL keyæ¯«ç§’ï¼‰
 MOVE key db
 RENAME key newkey
-TYPE key(keyËù´¢ÖµÀàĞÍ)
-×Ö·û´®ÃüÁî£º
+TYPE key(keyæ‰€å‚¨å€¼ç±»å‹)
+å­—ç¬¦ä¸²å‘½ä»¤ï¼š
 GETRANGE key start end
 GETSET key value
 GETBIT key offset
 MGET key1 [key2,key3,,,]
 SETBIT key offset value
-SETEX key seconds value(PSETEXÒÔºÁÃëÎªµ¥Î»)
-SETNX key value(½öÔÚkey²»´æÔÚÊ±´´½¨)
+SETEX key seconds value(PSETEXä»¥æ¯«ç§’ä¸ºå•ä½)
+SETNX key value(ä»…åœ¨keyä¸å­˜åœ¨æ—¶åˆ›å»º)
 SETRANGE key offset value
 STRLEN key
 MSET key1 value1 [key2 value2 ,,,]
-MSETNX key1 value1 [key2 value2 ,,,](½öÔÚkey²»´æÔÚÊ±´´½¨)
-INCR key(keyËù´æÖµÔö1)
-INCRBY key increment(keyËù´æÖµ¼ÓÉÏÖ¸¶¨Öµ)
-INCRBYFLOAT key increment(keyËù´æÖµ¼Ó¸¡µãĞÍÖµ)
-DECR key(keyËù´æÖµ¼õ1)
-DECRBY key decrement(keyËù´æÖµ¼õÈ¥Ö¸¶¨Öµ)
-APPEND key value(Èç¹ûkey´æÔÚÇÒËùÔÚÖµÎªstring,×·¼Óvalue)
+MSETNX key1 value1 [key2 value2 ,,,](ä»…åœ¨keyä¸å­˜åœ¨æ—¶åˆ›å»º)
+INCR key(keyæ‰€å­˜å€¼å¢1)
+INCRBY key increment(keyæ‰€å­˜å€¼åŠ ä¸ŠæŒ‡å®šå€¼)
+INCRBYFLOAT key increment(keyæ‰€å­˜å€¼åŠ æµ®ç‚¹å‹å€¼)
+DECR key(keyæ‰€å­˜å€¼å‡1)
+DECRBY key decrement(keyæ‰€å­˜å€¼å‡å»æŒ‡å®šå€¼)
+APPEND key value(å¦‚æœkeyå­˜åœ¨ä¸”æ‰€åœ¨å€¼ä¸ºstring,è¿½åŠ value)
 
-
- 
 
 MemCache
-Êı¾İ´æÔÚÄÚ´æ
-°²×°£ºhttp://blog.csdn.net/barrydiu/article/details/3936270
-ÉèÖÃÖ÷´Ó·şÎñÆ÷£ºhttp://www.cnblogs.com/yuanermen/archive/2011/05/19/2051153.html
+æ•°æ®å­˜åœ¨å†…å­˜
+å®‰è£…ï¼šhttp://blog.csdn.net/barrydiu/article/details/3936270
+è®¾ç½®ä¸»ä»æœåŠ¡å™¨ï¼šhttp://www.cnblogs.com/yuanermen/archive/2011/05/19/2051153.html
+
+
+mongodb-python
+from bson.objectid import ObjectId
+db.user.insert_one({})
+db.user.delete_one({u"_id": ObjectId(uid)})
+db.order.update_one({"_id": ObjectId("")}, {$set: {"extension.0.0.remark":"first"}});
+db.user.find_one({u"_id": ObjectId(uid)})
+db.user.find({}).skip(5).limit(5)
+.sort([("createdAt", -1)]).limit(1)
