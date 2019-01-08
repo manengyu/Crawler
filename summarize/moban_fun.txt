@@ -306,3 +306,16 @@ f = open(u"a.jpg", u"wb")
 f.write(reqs.get(image_url).content)
 f.close()
 captchimage = input(u"image:")
+
+web service url需加?WSDL
+from requests import Session
+from zeep import Client
+from zeep.transports import Transport
+session = Session()    # 这里是因为url是https，不然不需要transport
+session.verify = False
+transport = Transport(session=session)
+url = ''
+client = Client(url, transport=transport)
+req = client.service.LoginUserData(LoginName=u"", Password=u"", UniqueId=u"")
+mylogin_key = client.service.Login({u"":u"", u"Password":u"", u"UniqueId":u"", u"ShareSuper": False, u"IsAdministrator": False, u"FirstLogin": False})[u""]
+print client.service.SingleCheck({u"Name": u"", u"CitizId": u""}, mylogin_key)
