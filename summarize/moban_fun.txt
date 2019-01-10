@@ -322,4 +322,4 @@ print client.service.SingleCheck({u"Name": u"", u"CitizId": u""}, mylogin_key)
 
 def get_nobase64(data):
     import re
-    return re.sub(r"[\d\w+/]{100,}", "hidden", "{}".format(data))
+    return re.sub(r"[\d\w=+/]{100,}", "hidden", "{}".format(data))
