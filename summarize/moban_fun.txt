@@ -319,3 +319,7 @@ client = Client(url, transport=transport)
 req = client.service.LoginUserData(LoginName=u"", Password=u"", UniqueId=u"")
 mylogin_key = client.service.Login({u"":u"", u"Password":u"", u"UniqueId":u"", u"ShareSuper": False, u"IsAdministrator": False, u"FirstLogin": False})[u""]
 print client.service.SingleCheck({u"Name": u"", u"CitizId": u""}, mylogin_key)
+
+def get_nobase64(data):
+    import re
+    return re.sub(r"[\d\w+/]{100,}", "hidden", "{}".format(data))
