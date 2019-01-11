@@ -24,3 +24,16 @@ pip3 install pycryptodome==3.6.6
 Python27\Lib\site-packages下将crypto文件夹改为Crypto
 密钥有开始结束标志无需base64解码，解密后要base64编码
 sha摘要及base64编码参数都为字节
+
+PyJWT==1.6.4
+cryptography==2.3
+def generate_token(sub):
+    import io
+    import jwt
+    f = io.open(u"../assets/rsa/private.pem")
+    key = f.read()
+    f.close()
+    payload = {
+        "sub": sub
+    }
+    return jwt.encode(payload, key, algorithm="")
