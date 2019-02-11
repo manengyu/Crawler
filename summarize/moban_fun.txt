@@ -307,6 +307,15 @@ f.write(reqs.get(image_url).content)
 f.close()
 captchimage = input(u"image:")
 
+# judge image valid, return if invalid
+from io import BytesIO  # py2 from StringIO import StringIO
+from PIL import Image
+try:
+    fp = Image.open(BytesIO(image_bytes))
+    fp.colse()
+except OSError:
+    return ""
+
 web service url需加?WSDL
 from requests import Session
 from zeep import Client
