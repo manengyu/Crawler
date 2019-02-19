@@ -1,12 +1,16 @@
-def search_file(rootdir):  # ËÑË÷ÎÄ¼ş¼Ğunicode ur"D:\20170818"
+def search_file(rootdir):  # æœç´¢æ–‡ä»¶å¤¹unicode ur"D:\20170818"
     import os
     import os.path
     search_reault = {}
-    for parent, dirnames, filenames in os.walk(rootdir):  # Èı¸ö²ÎÊı£º·Ö±ğ·µ»Ø1.¸¸Ä¿Â¼ 2.ËùÓĞÎÄ¼ş¼ĞÃû×Ö£¨²»º¬Â·¾¶£© 3.ËùÓĞÎÄ¼şÃû×Ö
+    for parent, dirnames, filenames in os.walk(rootdir):  # ä¸‰ä¸ªå‚æ•°ï¼šåˆ†åˆ«è¿”å›1.çˆ¶ç›®å½• 2.æ‰€æœ‰æ–‡ä»¶å¤¹åå­—ï¼ˆä¸å«è·¯å¾„ï¼‰ 3.æ‰€æœ‰æ–‡ä»¶åå­—
         search_reault[parent] = {'dir': [], 'file': []}
-        for dirname in dirnames:  # ÎÄ¼ş¼ĞĞÅÏ¢
+        for dirname in dirnames:  # æ–‡ä»¶å¤¹ä¿¡æ¯
             search_reault[parent]['dir'].append(dirname)
-        for filename in filenames:  # ÎÄ¼şĞÅÏ¢
+        for filename in filenames:  # æ–‡ä»¶ä¿¡æ¯
             search_reault[parent]['file'].append(filename)
             # os.rename(os.path.join(parent, filename), os.path.join(parent, urllib.unquote(filename.encode('utf-8'))))  # rename
     return search_reault  # {path: {'dir': [], 'file': []},...}
+
+os.path.realpath(__file__)  # è·å–å½“å‰æ–‡ä»¶__file__çš„è·¯å¾„
+os.path.dirname(os.path.realpath(__file__))  # è·å–å½“å‰æ–‡ä»¶__file__çš„æ‰€åœ¨ç›®å½•
+os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.json")  # æ‹¼æ¥è·¯å¾„
