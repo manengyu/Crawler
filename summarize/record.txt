@@ -55,10 +55,14 @@ ord查看ASCII,chr查看字符
 a = b = []时，若b.append(1)则ab都为[1],若b=[1],则a为[],b为[1]
 数据库操作，网络请求放一个函数中方便捕获异常
 base64图片格式保存时打开模式中需用b二进制，否则变成模糊图片
-字典排序sorted(d.items(),key = lambda x:x[1],reverse = True)
+列表排序sorted(d.items(),key = lambda x:x[1],reverse = True)
 sorted(d.items(),key = operator.itemgetter(1))
 sorted(zip(d.values(),d.keys()))
-列表含字典排序mylist..sort(key=lambda k: (k.get('key', 0)), reverse=True)倒序
+sorted(messages, key=methodcaller('count', '!'))(计算！数量正序)
+列表含字典排序:
+mylist.sort(key=lambda k: (k.get('key', 0)), reverse=True)倒序(返回Ｎone改变原字符串)
+sorted(d.items(),key = lambda x:x.get("key",0))(返回排序结果，不改变原字符串)
+sorted(d.items(),key = operator.attrgetter("key"))
 为保证数据完整入库，事务应避免自动提交
 and优先级高于or,先算and两侧，算完再算or两侧,返回至确定为止那个值
 GIL:Python2中1000字节后切换线程，Python3中15毫秒切换线程;
