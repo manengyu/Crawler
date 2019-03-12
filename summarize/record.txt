@@ -11,13 +11,12 @@ map(fun,参数)fun循环作用在参数上，通常fun用lambda
 reduce(fun,参数)fun作用在两个参数上，重复作用在结果与下一个参数
 raise ErrorName()直接抛出异常, 捕获多个异常时需用()
 assert expression[,arg] 若expression为False抛出异常或arg
-&直接将数据当二进制来进行运算
+&直接将数据当二进制来进行运算,^按位异或
 r = requests.session() r.proxies无用，要写在get()里
 * **都为可变参数，*参数当元组传入，**参数当字典传入
 字典items()返回元组列表[(key,val),],iteritems()返回元组列表迭代器
-^按位异或
 json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
-rsttip(u'1.')去除尾部包含.和1,循环匹配.1
+rstrip(u'1.')去除尾部包含.和1,循环匹配.1
 全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改，在函数if下会报语法错
 to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
 字典取值时，当无此键时[]返加KeyError错误，get()默认返回None,get("b",1)可以设置默认值为1
@@ -43,7 +42,6 @@ string indices must be integers意思字符串的索引必须为整型，通常�
 特别注重代码重用，尤其时间，长度等变量（保证改一处，全部修改，否则很容易忘记修改别处导致bug难找）
 python函数变量传递属于引用传递（不可变对象相当于传值如整型字符型元组），修改后原值改变
 .contents获取所有子项，每个子项作为一个整体
-sorted({}.items(), key=operator.itemgetter(1))
 \b常称退格(实际作用将当前位置内容替换为空，正则中单词边界也是匹配的空)
 html中显示源码标签.replace(u"<", u"&lt;").replace(u">", u"&gt;")
 类/实例__dict__将类变量或实例变量转换为字典
@@ -70,12 +68,12 @@ GIL仅对IO密集型线程提升效率，对计算密集型线型不升反降相
 requests使用proxies时请求网址的http/https要与代理ip保持一致，否则设置无效
 使用匿名https代理ip时会出现被拒绝访问
 except未捕获异常且无其它异常才执行else
-url打不开时可以需要某个请求头，如X-Requested-With：XMLHttpRequest
+url打不开时可能需要某个请求头，如X-Requested-With：XMLHttpRequest
 args=(,)字典时，若参数只有一个要注意逗号，否则会出现字符串被切割为元组
 dir(module_name)来查看 模块下的函数
 match,search只匹配每一个符合结果,group()等价group(0)以元组返回所有组结果,group(1,2)取第一个与第二个组号
 findall()将正则依次往后循环匹配，出现a|^(abd)时匹配到a时那么直接返回组内结果即'',就是当或中组内还没匹配其它先匹配到则组内返回''
-python函数，类都作为对象处理，初始化时存在关键字参数，下次再调用该对象不传此参时参数地址不变（若恰为可变参数，刚结果在原基础上发生变化）
+python函数，类都作为对象处理，初始化时存在关键字参数，下次再调用该对象不传此参时参数地址不变（若恰为可变参数，新结果在原基础上发生变化）
 if all any and or while判断真假时注意业务0为真，而判断结果为假
 
 
@@ -157,6 +155,7 @@ get post:https://juejin.im/entry/599eb96ef265da24722fc15b
 一行9*9
 for a in [reduce(lambda x, y: x + y, ['{1}*{0}={2:<2} '.format(i, j, i*j) for j in range(1, i+1)]) for i in range(1, 10)]: print a
 print "\n".join([" ".join(['%d*%d=%2-d'%(i,j, i*j) for j in range(1, i+1)]) for i in range(1, 10)])
+print("\n".join([" ".join([f'{j}*{i}={i*j: <2}' for j in range(1, i+1)]) for i in range(1, 10)]))
 
 python3
 print中文
