@@ -53,3 +53,4 @@ db.user.find_one({u"_id": ObjectId(uid)})
 db.user.find({}).skip(5).limit(5)
 .sort([("createdAt", -1)]).limit(1)
 db.collection.aggregate({"$unwind":"$transactions"}, {"$match":{"transactions.payload": {"$in": [300]}}},  {"$group": {"_id": "$_id", "transactions":{'$push': "$transactions"}}})  # 数组按条件筛选，文档被拆分
+randint(0,2) NumberInt(_rand()*10%3)
