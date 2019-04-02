@@ -24,6 +24,7 @@ pip3 install pycryptodome==3.6.6
 Python27\Lib\site-packages下将crypto文件夹改为Crypto
 密钥有开始结束标志无需base64解码，解密后要base64编码
 sha摘要及base64编码参数都为字节
+DES:pyDes==2.0.1
 
 PyJWT==1.6.4
 cryptography==2.3
@@ -37,3 +38,50 @@ def generate_token(sub):
         "sub": sub
     }
     return jwt.encode(payload, key, algorithm="")
+    
+    def aesencrypt(raw_data, aes_key):  # aes加密
+    BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
+    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
+    encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
+    result = base64.b64encode(encrypted)  # base64 encode
+    return result
+
+
+from Crypto.Hash import SHA
+from Crypto.Cipher import AES
+from Crypto.PublicKey import RSA
+from Crypto.Signature import PKCS1_v1_5
+
+def aesdecrypt(en_data, aes_key):  # 把加密的数据，用base64  decode，再用aes解密
+    unpad = lambda s: s[0:-ord(s[-1])]
+    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
+    result2 = base64.b64decode(en_data)
+    decrypted = unpad(cipher.decrypt(result2))
+    return decrypted
+
+
+def ras_decrypt(privateKey, encrpyt_des):  # 解密des密钥成明文
+    from Crypto.Cipher import PKCS1_v1_5 as Cipher_pkcs1_v1_5
+    rsakey = RSA.importKey(base64.b64decode(privateKey))  # 导入读取到的私钥
+    cipher = Cipher_pkcs1_v1_5.new(rsakey)  # 生成对象
+    text = cipher.decrypt(base64.b64decode(encrpyt_des), u"ERROR")
+    return base64.b64encode(text)
+
+
+def rsa_sign(privateKey, encrData):  # RSA 签名
+    private_keyBytes = base64.b64decode(privateKey)
+    priKey = RSA.importKey(private_keyBytes)
+    signer = PKCS1_v1_5.new(priKey)
+    hash_obj = SHA.new(encrData)  # .encode(u'utf-8')
+    signature = base64.b64encode(signer.sign(hash_obj))
+    return signature
+
+
+def rsa_verify(publicKey, signature, encrData):  # RSA 验签
+    public_keyBytes = base64.b64decode(publicKey)
+    pubKey = RSA.importKey(public_keyBytes)
+    h = SHA.new(encrData.encode(u'utf-8'))
+    verifier = PKCS1_v1_5.new(pubKey)
+    return verifier.verify(h, base64.b64decode(signature))
+
