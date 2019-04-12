@@ -37,22 +37,32 @@ def generate_token(sub):
     payload = {
         "sub": sub
     }
-    return jwt.encode(payload, key, algorithm="")
-    
-    def aesencrypt(raw_data, aes_key):  # aes加密
-    BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
-    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
-    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
-    encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
-    result = base64.b64encode(encrypted)  # base64 encode
-    return result
+    return bytes.decode(jwt.encode(payload, key, algorithm="RS256"))
 
+
+def decode_base64(headers):
+    import base64
+    str_encode = headers[u"authorization"].split(u".")[1]
+    str_user = bytes.decode(base64.b64decode(str_encode + "=" * (-len(str_encode) % 4))).replace(u"true", u"True")
+    return eval(str_user)
+decode_base64(request.headers)
+ 
 
 from Crypto.Hash import SHA
 from Crypto.Cipher import AES
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 
+
+def aesencrypt(raw_data, aes_key):  # aes加密
+    BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
+    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
+    encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
+    result = base64.b64encode(encrypted)  # base64 encode
+    return result
+    
+    
 def aesdecrypt(en_data, aes_key):  # 把加密的数据，用base64  decode，再用aes解密
     unpad = lambda s: s[0:-ord(s[-1])]
     cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
