@@ -1,3 +1,4 @@
+import re
 import os
 import sys
 import logging
@@ -56,10 +57,14 @@ def logs(fn):
     def wrapper(*args, **kwargs):
         session_flag, args_c = "", ""
         try:
-            result = fn(*args, **kwargs)
-            if "SESSION_COOKIE_NAME" in Logs.ARGS_CONFIG:
+            if "SESSION_COOKIE_NAME" in Logs.args_config:
                 session_flag = id(session.__getattr__("on_update"))
-
+            if "create_app" != name:
+                Logs.LOG_INSTANCE['info_logger'].info(
+                    format_msg(session_flag, "阶段开始：{}".format(name),
+                               "参数：{}".format(args),
+                               "字典参数：{}".format(kwargs)))
+            result = fn(*args, **kwargs)
             if "create_app" == name:
                 args_c = dict(result.config)
                 if Logs.LOG_INSTANCE is None:
@@ -69,15 +74,21 @@ def logs(fn):
                         format_msg("启动参数:", get_nopwd(dict(result.config))).replace("'", "\""), level='warning')
                 Logs.LOG_INSTANCE['warning_logger'].warning(format_msg("启动参数:", get_nopwd(args_c)).replace("'", "\""))
                 return result
-
             Logs.LOG_INSTANCE['info_logger'].info(
-                format_msg(session_flag, name, result, args, kwargs))
+                format_msg(session_flag, "阶段结束：{}".format(name),
+                           "返回：{}".format(get_nobase64(result))))
             return result
         except Exception as e:
             if Logs.SENTRY_INSTANCE is not None:
                 Logs.SENTRY_INSTANCE.captureException(exc_info=True, message=format_msg(  # 异常捕获,上传traceback
-                    id(session.__getattr__("on_update")), name, e.args, args, kwargs))
-                Logs.LOG_INSTANCE['error_logger'].error(format_msg(session_flag, name, e.args, args, kwargs))
+                    session_flag, "报错原因：{}".format(e.args),
+                    "\n阶段：{}".format(name),
+                    "\n参数：{}".format(args),
+                    "\n字典参数：{}".format(kwargs)))
+                Logs.LOG_INSTANCE['error_logger'].error(format_msg(session_flag, "报错原因：{}".format(e.args),
+                                                                   "\n阶段：{}".format(name),
+                                                                   "\n参数：{}".format(args),
+                                                                   "\n字典参数：{}".format(kwargs)))
                 # Logs.SENTRY_INSTANCE.captureMessage(format_msg(name, e))  # sentry由消息合并事件,因此需去除参数 msg
             raise e
 
@@ -95,6 +106,10 @@ def get_nopwd(data_dic):
         rnt_dic[k] = "*" if "_PWD" in k else "{}".format(v)
     rnt_dic["start_file_name"] = sys.argv[0]
     return rnt_dic
+
+
+def get_nobase64(data):
+    return re.sub(r"[\d\w=+/]{100,}", "hidden", "{}".format(data))
 
 
 # @logs
