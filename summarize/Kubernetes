@@ -1,0 +1,17 @@
+一个Kubernetes至少3个node>docker0等价pod>container
+service
+
+type:LoadBalancer|NodePort
+
+https://blog.csdn.net/huwh_/article/details/77922093
+Proxy-IP 	代理层公网地址IP，外部访问应用的网关服务器。[实际需要关注的IP]
+Service-IP 	Service的固定虚拟IP，Service-IP是内部，外部无法寻址到
+Node-IP 	容器宿主机的主机IP
+Container-Bridge-IP 	容器网桥（docker0）IP，容器的网络都需要通过容器网桥转发
+Pod-IP 	Pod的IP，等效于Pod中网络容器的Container-IP
+Container-IP 	容器的IP，容器的网络是个隔离的网络空间
+
+host模式 	–net=host 	容器和宿主机共享Network namespace
+container模式 	–net=container:NAME_or_ID 	容器和另外一个容器共享Network namespace。 kubernetes中的pod就是多个容器共享一个Network namespace。
+none模式 	–net=none 	容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair 和网桥连接，配置IP等
+bridge模式 	–net=bridge（默认为该模式）
