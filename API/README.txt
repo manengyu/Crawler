@@ -7,15 +7,19 @@ deactivate
 pip install gunicorn
 gunicorn -w 4 -b 127.0.0.1:8080 wsgi:application
 
-FlaskÓëgunicornÍ¨ÐÅÔ­Àíhttps://zhuanlan.zhihu.com/p/24650254
-Flask ×èÈûÓë·Ç×èÈû
+Flaskä¸Žgunicorné€šä¿¡åŽŸç†https://zhuanlan.zhihu.com/p/24650254
+Flask é˜»å¡žä¸Žéžé˜»å¡ž
 https://www.jianshu.com/p/0a55507f9d9e?open_source=weibo_search
 print requests.post(u"http://127.0.0.1:8000/shuju/caculate/detail", data=json.dumps({u'plat_id': u"1121", u'start_date': u"2018-02-02", u'end_date': u"2018-02-02"})).text
 
-WindowsÏÂ:FlaskÊÇ×èÈûµÄ£¬ÆðÓÃ¶àÏß³ÌÒÀÈ»ÎÞÐ§(·¢ÏÖapp.run('', port=5200, debug=False, threaded=True)¿ÉÊµÏÖÒì²½)£¬¶à½ø³Ì²»Ö§³Ö
+https:
+from werkzeug.serving import make_ssl_devcert
+make_ssl_devcert("server", "localhost")
+
+Windowsä¸‹:Flaskæ˜¯é˜»å¡žçš„ï¼Œèµ·ç”¨å¤šçº¿ç¨‹ä¾ç„¶æ— æ•ˆ(å‘çŽ°app.run('', port=5200, debug=False, threaded=True)å¯å®žçŽ°å¼‚æ­¥)ï¼Œå¤šè¿›ç¨‹ä¸æ”¯æŒ
 
 requests:data,json default value is None.
-httpÖØ¶¨Ïò»á½«postÄ¬ÈÏÉèÎªget(ÇÒ²»»á´øÉÏ²ÎÊý),Flask»á½«²ÎÊýÖµ·ÇNoneµÄÉèÎª'',µ±²ÎÊýÎªjsonÊ±»á³öÏÖ½âÎöÊ§°Ü.
+httpé‡å®šå‘ä¼šå°†posté»˜è®¤è®¾ä¸ºget(ä¸”ä¸ä¼šå¸¦ä¸Šå‚æ•°),Flaskä¼šå°†å‚æ•°å€¼éžNoneçš„è®¾ä¸º'',å½“å‚æ•°ä¸ºjsonæ—¶ä¼šå‡ºçŽ°è§£æžå¤±è´¥.
 now,use requests lib request Flask1.0.2 in python2.7(params {'a':1}):
 is_data>is_redirect>is_jsondumps
 get_json():
