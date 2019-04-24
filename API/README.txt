@@ -15,6 +15,10 @@ print requests.post(u"http://127.0.0.1:8000/shuju/caculate/detail", data=json.du
 https:
 from werkzeug.serving import make_ssl_devcert
 make_ssl_devcert("server", "localhost")
+可通过域名申请crt, key解决请求警告问题
+flask run方法中添加ssl_context=(
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.crt"),
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.key"))
 
 Windows下:Flask是阻塞的，起用多线程依然无效(发现app.run('', port=5200, debug=False, threaded=True)可实现异步)，多进程不支持
 
