@@ -16,3 +16,7 @@ host模式 	–net=host 	容器和宿主机共享Network namespace
 container模式 	–net=container:NAME_or_ID 	容器和另外一个容器共享Network namespace。 kubernetes中的pod就是多个容器共享一个Network namespace。
 none模式 	–net=none 	容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair 和网桥连接，配置IP等
 bridge模式 	–net=bridge（默认为该模式）
+
+获取client ip:
+采用LoadBalancer模式，并设置属性externalTrafficPolicy: Local，将域名解析至公网ip
+flask启动时注意http|https对应容器指定的port
