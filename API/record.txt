@@ -4,3 +4,7 @@ Sentry(app, dsn="", logging=True, level=logging.WARNING)
 https设置后无法通过http请求
 app中无ssl_context='adhoc'，https+verify=False|True可收到请求，乱码
 有ssl_context='adhoc'，https+客verify=False正确请求，https+客verify=True无法请求
+ssl_context=(
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.crt"),
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.key"))
+添加指定hostname或域名的crt与key后，访问https可避免弹出不信任证书，此时可通过域名解析将http定向至https
