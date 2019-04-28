@@ -1,22 +1,22 @@
-������ϵͳ������Դ����͵��ȵ�һ��������λ
-�߳���CPU���Ⱥͷ��ɵĻ�����λ
-setDaemon(True) �����߳�����Ϊ�ػ��̣߳���ʾ����Ҫ�����߳�����ʱ���ÿ��Ǹ��߳̿�ֱ������(����Ĭ��ΪFalseʱ����)
-.join()�����������̵߳ģ��ɼӲ���t��λ�룬��ʾ���߳���ִ��t������̲߳��ܱ����ѣ����Ӳ�����ζ���߳���ȴ����߳̽���
-�ڽ�����join()��������������
-�̳߳�from threadpool import ThreadPool
+进程是系统进行资源分配和调度的一个独立单位
+线程是CPU调度和分派的基本单位
+setDaemon(True) 将该线程设置为守护线程，表示不重要，主线程线束时不用考虑该线程可直接销毁(否则默认为False时不可)
+.join()用来阻塞主线程的，可加参数t单位秒，表示该线程需执行t秒后主线程才能被唤醒，不加参数意味主线程需等待该线程结束
+在进程中join()用来阻塞父进程
+线程池from threadpool import ThreadPool
 from multiprocessing.pool import ThreadPool
-from multiprocessing.dummy import Pool as ThreadPool  # �̳߳�
-���̳�from multiprocessing import Pool
-���̼�ͨ����ͨ��Queue��Pipes��ʵ�ֵ�
-���̳ش���ָ���������ʱ���̱��������½�
-���̳��ý��̶����get()����ȡ����ֵ,��ʱ���̽��������̣߳����Ƚ����̶����������б������̻߳���ʱͳһ��get()��ȡ
-CPUÿִ��100�ֽ��룬���������Զ��ͷ�GIL��
-threading.Lock���ε���acquire()���γ�����
-threading.RLock acquire()�ɶ�ε��õ�����release()�ɶԳ���
-LockΪֵ��1��Semaphore���ź�����
-���kill��ppid,��pid��ppidĬ��תΪ1
-���̳���apply()��������(˳��ִ�йٷ��������,��ͬapply_async().get())��apply_async()�첽������
-������ʱ���̴��������У����������ж���Ҫʱ�䣬��ʼ�������������߳�����ִ��������룬����join��ȴ�����
+from multiprocessing.dummy import Pool as ThreadPool  # 线程池
+进程池from multiprocessing import Pool
+进程间通信是通过Queue、Pipes等实现的
+进程池创建指定完进程数时进程被立即被新建
+进程池用进程对象的get()来获取返回值,此时进程将阻塞主线程，可先将进程对象添加至列表，主线程唤醒时统一用get()获取
+CPU每执行100字节码，解释器就自动释放GIL锁
+threading.Lock两次调用acquire()后将形成死锁
+threading.RLock acquire()可多次调用但必需release()成对出现
+Lock为值是1的Semaphore（信号量）
+如果kill掉ppid,则pid的ppid默认转为1
+进程池中apply()是阻塞的(顺序执行官方建议废弃,等同apply_async().get())，apply_async()异步非阻塞
+非阻塞时进程创建即运行，但创建运行都需要时间，开始创建被调用主线程立刻执行下面代码，出现join则等待结束
 
 
 
@@ -29,19 +29,21 @@ http://blog.csdn.net/u012927281/article/details/51602898
 http://blog.csdn.net/mmc2015/article/details/51873163
 http://blog.csdn.net/laviolette/article/details/51506953
 
-��������������ڣ�����ִ�С�����������С����̻߳����̡�
-���У������������ͬʱִ�С����̡߳�����̣����ְ��������洢���ĺͷֲ�ʽ������Լ����ʽ�ģ���ָ����С�������Ҫ���cpu����CPython�����ڵ����̣����̣߳�����GIL�����޷�ʵ�ֲ��С�
-CPython��GIL����Ӱ���Ŷ��CPU�ϲ��ܽ������̶��̳߳���ʵ�ֲ��С�
+并发：多任务存在，交替执行。概念包含并行。多线程或多进程。
+并行：多任务存在且同时执行。多线程、多进程（这又包括共享存储区的和分布式多机，以及混合式的），指令级并行。并行需要多个cpu，在CPython中由于单进程（多线程）被上GIL，故无法实现并行。
+CPython的GIL仅仅影响着多核CPU上不能将单进程多线程程序实现并行。
 http://ifeve.com
 https://zhuanlan.zhihu.com/p/25377631
 
-a.���CPU���������ܼ������񡣴�ʱҪ����ʹ�ö��̣߳������������ִ��Ч�ʣ�������ܽ��ܣ�����ѹ����ѹ������Ƶ����Ƶ����ͨ���ݣ�������ֻ��ʹһ���������أ��������������á�
-b.����CPU���������ܼ������񡣴�ʱ�������Ѿ���CPU��Դ100%�����ˣ���û��ҪҲ������ʹ�ö��߳�����߼���Ч���ˣ��෴�����Ҫ���˻���������û���Ҫ�ö��̣߳������û�û���Լ�������в�����
-c.����CPU����IO�ܼ�������ʹ�ö��̻߳���Ϊ���˻��������㣬
-d.���CPU����IO�ܼ���������͸�����˵�ˣ�������ʱ��ԭ��һ����
+a.多核CPU——计算密集型任务。此时要尽量使用多线程，可以提高任务执行效率，例如加密解密，数据压缩解压缩（视频、音频、普通数据），否则只能使一个核心满载，而其他核心闲置。
+b.单核CPU——计算密集型任务。此时的任务已经把CPU资源100%消耗了，就没必要也不可能使用多线程来提高计算效率了；相反，如果要做人机交互，最好还是要用多线程，避免用户没法对计算机进行操作。
+c.单核CPU——IO密集型任务，使用多线程还是为了人机交互方便，
+d.多核CPU——IO密集型任务，这就更不用说了，跟单核时候原因一样。
 
-�߳�������
-һ���� ���û�̬�̡߳� �����ں˲��ɼ����ں˲����Ե��ȣ�����һ������˳̻�Э�̡�()
-��һ���� ���ں�̬�̡߳������ں˵��ȣ�Ҳ������������ LWP ��(��ϵͳ�������ڴ��������)
-����˵���̣߳�һ�㲻����ָ���������ں��̣߳���Ϊ�û��߳�һ��ͨ��ʹ��API������ϵͳ���ô������߳̾�Ϊһ��һ�̡߳����磬linuxʹ��clone�������̣߳��Լ�win��ʹ��CreateThread�������̡߳�
+线程有两种
+一种是 “用户态线程” ，对内核不可见，内核不可以调度，现在一般叫做纤程或协程。()
+另一种是 “内核态线程”，由内核调度，也称作轻量进程 LWP 。(在系统保护的内存块中运行)
+现在说的线程，一般不特殊指定，都是内核线程，因为用户线程一般通过使用API或者是系统调用创建的线程均为一对一线程。例如，linux使用clone创建的线程，以及win下使用CreateThread创建的线程。
 https://www.cnblogs.com/wanglulu/p/5522809.html
+
+协程属于线程，可以用来解决优化IO密集型程序，由于CPython存在GIL不能利用多核（多线程也不能），所以采用多进程+协程可解决
