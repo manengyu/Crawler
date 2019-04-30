@@ -1,0 +1,36 @@
+docker
+docker build ./
+
+镜像
+docker search centos
+docker pull dl.dockerpool.com:5000/ubuntu:14.04
+docker push user/test:latest
+docker images
+docker tag dl.dockerpool.com:5000/ubuntu:latest ubuntu:latest
+docker inspect 5506de
+docker inspect -f {{".Architecture"}} 5506de
+docker rmi mysql:latest　
+docker rmi 5506de
+docker save -o ubuntu_14.04.tar ubuntu:14.04
+docker load --input ubuntu_14.04.tar或docker load < ubuntu_14.04.tar
+创建
+docker commit -m "add a new file" -a "Docker Newbee" 5506de test
+cat ubuntu-14.04-x86_64-minimal.tar.gz |docker import - ubuntu:14.04
+
+容器
+docker ps -a -q
+docker create -it ubuntu:latest
+docker run -t -i ubuntu /bin/bash
+docker run ubuntu echo 'hello! world!'
+docker run -p 80:8080
+docker stop [-t]--time[=10] 5506de
+docker start 5506de
+docker restart 5506de
+docker kill
+docker rm 
+进入
+docker attach centos
+docker exec -ti 5506de /bin/bash
+
+日志
+docker logs 5506de
