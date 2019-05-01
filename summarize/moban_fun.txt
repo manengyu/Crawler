@@ -247,6 +247,8 @@ def random_ipv4():
 def random_ipv6():
     return ':'.join(''.join(choice(hexdigits).lower() for _ in range(4)) for _ in range(8))
 
+ip_regex:re.findall(r'([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])', "255.255.255.0")
+
 @staticmethod
 def search_platid(conn_140, platname):  # 根据平台名获取指定平台id
 	select_sql = u"select platid from yuqing.pre_sourcemsg where platname='" + platname + u"' limit 1"  # 文本待缩减
