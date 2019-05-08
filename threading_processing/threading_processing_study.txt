@@ -17,6 +17,7 @@ Lock为值是1的Semaphore（信号量）
 如果kill掉ppid,则pid的ppid默认转为1
 进程池中apply()是阻塞的(顺序执行官方建议废弃,等同apply_async().get())，apply_async()异步非阻塞
 非阻塞时进程创建即运行，但创建运行都需要时间，开始创建被调用主线程立刻执行下面代码，出现join则等待结束
+gevent.sleep(5)
 
 
 
