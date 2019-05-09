@@ -44,7 +44,7 @@ class Logs:
             logs_instance[logger_name].setLevel(i)
         Logs.LOG_INSTANCE = logs_instance
 
-        dsn = args[0] if len(args) > 0 else None
+        dsn = args[0] + "?verify_ssl=0" if len(args) > 0 else None
         if Logs.SENTRY_INSTANCE is None and dsn:
             Logs.SENTRY_INSTANCE = Client(dsn)
             Logs.SENTRY_INSTANCE.logger = Logs.LOG_INSTANCE['error_logger']
