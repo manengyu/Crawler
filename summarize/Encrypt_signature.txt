@@ -67,7 +67,8 @@ def aesencrypt(raw_data, aes_key):  # aes加密
     cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
     encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
     result = base64.b64encode(encrypted)  # base64 encode
-    return result
+    return bytes.decode(result)
+    #  return bytes.decode(b2a_hex(encrypted))
     
     
 def aesdecrypt(en_data, aes_key):  # 把加密的数据，用base64  decode，再用aes解密
