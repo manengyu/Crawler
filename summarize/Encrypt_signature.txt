@@ -54,10 +54,16 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 
 
+def add_to_16(value):
+    while len(value) % 16 != 0:
+        value += '\0'
+    return str.encode(value)
+    
+    
 def aesencrypt(raw_data, aes_key):  # aes加密
     BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
     pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
-    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
+    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
     encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
     result = base64.b64encode(encrypted)  # base64 encode
     return result
@@ -65,9 +71,9 @@ def aesencrypt(raw_data, aes_key):  # aes加密
     
 def aesdecrypt(en_data, aes_key):  # 把加密的数据，用base64  decode，再用aes解密
     unpad = lambda s: s[0:-ord(s[-1])]
-    cipher = AES.new(aes_key, AES.MODE_EAX)  # mod 待验证
+    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
     result2 = base64.b64decode(en_data)
-    decrypted = unpad(cipher.decrypt(result2))
+    decrypted = unpad(cipher.decrypt(result2).decode())
     return decrypted
 
 
