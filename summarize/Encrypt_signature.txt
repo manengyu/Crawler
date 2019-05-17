@@ -62,7 +62,8 @@ def add_to_16(value):
     
 def aesencrypt(raw_data, aes_key):  # aes加密
     BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
-    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+    padding_size = len(raw_data) if len(raw_data) == len(raw_data.encode()) else len(raw_data.encode())  ＃ 兼容中文
+    pad = lambda s: s + (BS - padding_size % BS) * chr(BS - padding_size % BS)
     cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
     encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
     result = base64.b64encode(encrypted)  # base64 encode
