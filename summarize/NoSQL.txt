@@ -84,3 +84,4 @@ def dict_recursion(prefix, params):  # 字典转为mongodb.连接格式
         return dict_rst
     else:
         return {}
+add index db.collection.ensureIndex({field.subfield: 1}, {background: 1})
