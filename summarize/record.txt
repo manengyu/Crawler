@@ -136,6 +136,7 @@ lxml.fromstring(最好是unicode类型，否则解析时用到正则易出现编
 python利用phantomjs执行js时，定位元素只能在第一个元素基础上查找下一个如
 u"""document.querySelectorAll('[change-type="invest"]')[0].getElementsByClassName('pagination-next  ')[0].getElementsByTagName('a')[0].click();"""
 xpath转字符串str(list(map(lambda s: bytes.decode(html.tostring(s)), html.fromstring(text, "lxml").xpath("//input[@type=\"hidden\"]"))))
+匹配标签下所有字符串x.xpath("//html")[0].xpath("string(.)")
 etree.XML(需str),分级匹配时xpath("./div")
 Mac(CR-\r) Linux(LF-\n) Windows(CRLF-\r\n)
 
