@@ -1,0 +1,32 @@
+# -*- coding:utf-8 -*-
+import time
+import requests
+from logs import LOG
+from utils.exception import ServiceCallError
+
+
+class ProxyIP:
+    proxies = select_db()["proxy"]
+    pre_time = time.time()
+    url = ""
+
+    @classmethod
+    def get_proxies(cls):
+        if ProxyIP.proxies != "" and int(time.time()) - ProxyIP.pre_time < 25 * 60:
+            return ProxyIP.proxies
+        resp = requests.get(ProxyIP.url, timeout=10)
+        LOG.info(f'response：{resp.status_code}-{resp.content.decode()}')
+        if resp.status_code != 200 or 111 == resp.json().get("code"):
+            time.sleep(2)
+            return ProxyIP.get_proxies()
+        elif resp.status_code != 200 or True is not resp.json().get("success"):
+            raise ServiceCallError(
+                f"调用 {ProxyIP.url} 服务获取 proxy ip 失败，响应内容："
+                f"{resp.status_code}-{resp.content.decode()}"
+            )
+            pass
+        elif "data" in resp.json():
+            ProxyIP.proxies = {"https": f'https://{resp.json()["data"][0]["ip"]}:{resp.json()["data"][0]["port"]}'}
+            update_db(ProxyIP.proxies)
+        ProxyIP.pre_time = int(time.time())
+        return ProxyIP.proxies
