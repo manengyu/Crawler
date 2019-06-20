@@ -78,6 +78,10 @@ class Crawler:
     
     @staticmethod
     def get_proxies():
+        # print(requests.get("https://pv.sohu.com/cityjson", proxies=get_proxies()).text)
+        
+        # reqs = requests.Session()
+        # reqs.proxies = get_proxies()
         ip = json.loads(requests.get(
                 u"http://.com/api/").content)
         proxies = {  # 每次请求从代理ip中随机产生一个地址
