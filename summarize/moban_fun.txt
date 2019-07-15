@@ -316,12 +316,14 @@ f.close()
 captchimage = input(u"image:")
 
 # judge image valid, return if invalid
+import binascii
 from io import BytesIO  # py2 from StringIO import StringIO
 from PIL import Image
 try:
     fp = Image.open(BytesIO(image_bytes))
     fp.colse()
-except OSError:
+    # Image.open(BytesIO(base64.b64decode(data["base64"])))
+except(OSError, binascii.Error):
     return ""
 
 web service url需加?WSDL
