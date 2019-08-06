@@ -86,3 +86,16 @@ def dict_recursion(prefix, params):  # 字典转为mongodb.连接格式
         return {}
 add index db.collection.ensureIndex({field.subfield: 1}, {background: 1})
 db.getCollection("").distinct("field", {"key" : "value"})
+db.getCollection('').find({"field": {"$in":db.getCollection('').aggregate(
+          {$match: {}},
+　　　　　　{
+　　　　　　　　$group:{_id:"$field",
+                    count:{$sum:1}
+                    }
+　　　　　　},
+          {$match: {count:{$gt:1}}},
+          {
+　　　　　　　　$sort:{count:1}
+          }
+　　　　　　).map(function(el) { return el._id })}})
+          
