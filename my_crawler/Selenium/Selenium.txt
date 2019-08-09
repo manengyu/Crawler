@@ -93,3 +93,7 @@ def get_ch_va():
 	br.quit()
 	display.stop()
 	return content['challenge'], content['validate']
+
+selenium hub:
+版本可用selenium/standalone-chrome:3.141.59-iron
+报错：session deleted because of page crash from tab crashed，解决：挂载/dev/shm:/dev/shm
