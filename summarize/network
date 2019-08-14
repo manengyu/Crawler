@@ -1,0 +1,2 @@
+查看MX纪录是否生效：
+nslookup>set ty=mx>my.com
