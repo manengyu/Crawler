@@ -315,6 +315,8 @@ f.write(reqs.get(image_url).content)
 f.close()
 captchimage = input(u"image:")
 
+data["base64"] =  bytes.decode(base64.b64encode(reqs.get(image_url).content))
+
 # judge image valid, return if invalid
 import binascii
 from io import BytesIO  # py2 from StringIO import StringIO
