@@ -34,3 +34,10 @@ docker exec -ti 5506de /bin/bash
 
 日志
 docker logs 5506de
+
+assign a port mapping in an existing Docker container:
+1) stop the container  
+2) stop docker service (per Tacsiazuma's comment) 
+3) change the file (hostconfig.json and config.v2.json)
+4) restart your docker engine (to flush/clear config caches) 
+5) start the container
