@@ -5,6 +5,7 @@ e显示所有进程,环境变量
 f全格式
 ps -aux | grep显示所有状态(a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分)
 netstat -ap|grep 8090查看端口被占用的进程
+netstat -tunlp|grep 8080
 lsof -i:端口号或netstat -tunlp|grep 端口号
 jobs -l查看当前终端生效的后台进程(-l：显示进程号； -p：仅任务对应的显示进程号； -n：显示任务状态的变化； -r：仅输出运行状态（running）的任务； -s：仅输出停止状态（stoped）的任务)
 fg %n让编号n（非pid）进程调至前台
@@ -144,12 +145,17 @@ ubuntu TestEditor乱码中文
 gsettings set org.gnome.gedit.preferences.encodings candidate-encodings "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"
 
 docker
-docker ps
+docker ps [-a]
+docker images
+docker rm
+docker rmi
 docker logs id
-docker build ./
-docker run -p 80:8080
+docker build -t data_server:v1 -f python.Dockerfile .
+docker run --name date_server -p 80:8080 -d data_server:v1
 
 查看公网ip
 curl ifconfig.me或
 curl cip.cc
 
+tar -zxvf /tmp/etc.tar.gz
+tar -zcvf /tmp/etc.tar /etc
