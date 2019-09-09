@@ -1,48 +1,59 @@
 http://www.runoob.com/nodejs/nodejs-buffer.html
-2009Äê£¬»ùÓÚJavaScriptÓïÑÔºÍGoogleµÄV8ÒýÇæµÄ¿ªÔ´Web·þÎñÆ÷ÏîÄ¿Node.jsÓÉRyanÍÆ³ö.
-Node.jsÊÇÔËÐÐÔÚ·þÎñÆ÷¶ËµÄJavaScript³ÌÐòÔËÐÐ»·¾³¡£
-ÊÂ¼þÇý¶¯Ä£ÐÍ£ºÓÃÊÂ¼þÈ¥Çý¶¯(´¥·¢)³ÌÐòµÄ·¢Éú
-ÊÂ¼þÇý¶¯Ä£ÐÍ´¥·¢³ÌÐò´¦ÀíÄÚÈÝµÄ·½Ê½ÓÐ£º
-1.×ÔÐÐ°ó¶¨¼àÌýÆ÷£¬±àÐ´´¦Àí´úÂë£»
-2.Í¨¹ýÒÑÓÐµÄ¼àÌýÆ÷£¬Ö±½ÓÔÚ»Øµ÷º¯ÊýÄÚ±àÐ´´¦Àí´úÂë¡£
+2009å¹´ï¼ŒåŸºäºŽJavaScriptè¯­è¨€å’ŒGoogleçš„V8å¼•æ“Žçš„å¼€æºWebæœåŠ¡å™¨é¡¹ç›®Node.jsç”±RyanæŽ¨å‡º.
+Node.jsæ˜¯è¿è¡Œåœ¨æœåŠ¡å™¨ç«¯çš„JavaScriptç¨‹åºè¿è¡ŒçŽ¯å¢ƒã€‚
+äº‹ä»¶é©±åŠ¨æ¨¡åž‹ï¼šç”¨äº‹ä»¶åŽ»é©±åŠ¨(è§¦å‘)ç¨‹åºçš„å‘ç”Ÿ
+äº‹ä»¶é©±åŠ¨æ¨¡åž‹è§¦å‘ç¨‹åºå¤„ç†å†…å®¹çš„æ–¹å¼æœ‰ï¼š
+1.è‡ªè¡Œç»‘å®šç›‘å¬å™¨ï¼Œç¼–å†™å¤„ç†ä»£ç ï¼›
+2.é€šè¿‡å·²æœ‰çš„ç›‘å¬å™¨ï¼Œç›´æŽ¥åœ¨å›žè°ƒå‡½æ•°å†…ç¼–å†™å¤„ç†ä»£ç ã€‚
 http://www.cnblogs.com/fanzhidongyzby/p/4098546.html
 
-Í¬²½×èÈûIO£¨Blocking IO£©
-Í¬²½·Ç×èÈûIO£¨Non-blocking IO£©
-IO¶àÂ·¸´ÓÃ£¨IO Multiplexing£©ÓÐÊ±Ò²³ÆÎªÒì²½×èÈûIO£¬JavaÖÐµÄSelectorºÍLinuxÖÐµÄepoll¶¼ÊÇÕâÖÖÄ£ÐÍ,¾­µäµÄReactorÉè¼ÆÄ£Ê½
-Òì²½IO£¨Asynchronous IO£©ÓÐÊ±Ò²³ÆÎªÒì²½·Ç×èÈûIO£¬¾­µäµÄProactorÉè¼ÆÄ£Ê½
-Í¬²½ºÍÒì²½µÄ¸ÅÄîÃèÊöµÄÊÇÓÃ»§Ïß³ÌÓëÄÚºËµÄ½»»¥·½Ê½£ºÍ¬²½ÊÇÖ¸ÓÃ»§Ïß³Ì·¢ÆðIOÇëÇóºóÐèÒªµÈ´ý»òÕßÂÖÑ¯ÄÚºËIO²Ù×÷Íê³Éºó²ÅÄÜ¼ÌÐøÖ´ÐÐ£»¶øÒì²½ÊÇÖ¸ÓÃ»§Ïß³Ì·¢ÆðIOÇëÇóºóÈÔ¼ÌÐøÖ´ÐÐ£¬µ±ÄÚºËIO²Ù×÷Íê³Éºó»áÍ¨ÖªÓÃ»§Ïß³Ì£¬»òÕßµ÷ÓÃÓÃ»§Ïß³Ì×¢²áµÄ»Øµ÷º¯Êý¡££¨ÓÃ»§Ïß³ÌÊÇ·ñ¿ÉÒÔ¸ÉÆäËüÊÂÇé£¬ÐÐÎª·½Ê½£©
-×èÈûºÍ·Ç×èÈûµÄ¸ÅÄîÃèÊöµÄÊÇÓÃ»§Ïß³Ìµ÷ÓÃÄÚºËIO²Ù×÷µÄ·½Ê½£º×èÈûÊÇÖ¸IO²Ù×÷ÐèÒª³¹µ×Íê³Éºó²Å·µ»Øµ½ÓÃ»§¿Õ¼ä£»¶ø·Ç×èÈûÊÇÖ¸IO²Ù×÷±»µ÷ÓÃºóÁ¢¼´·µ»Ø¸øÓÃ»§Ò»¸ö×´Ì¬Öµ£¬ÎÞÐèµÈµ½IO²Ù×÷³¹µ×Íê³É¡££¨ÓÃ»§Ïß³ÌÊÇ·ñ±»ÄÚºË×èÈû£¬×´Ì¬£© 
-IO£ºhttps://segmentfault.com/a/1190000007692223
-IOÎªÖ÷´æ´¢Æ÷¼´ÄÚ´æÓëÍâ²¿Éè±¸(°üÀ¨´ÅÅÌ¡¢ÍøÂç¡¢Íø¿¨¡¢Íâ²¿´æ´¢Éè±¸)¼äÊäÈëÊä³ö
-³ÌÐò(Í¨³£ÓÃ»§Ó¦ÓÃ)Óë³ÌÐò(ÏµÍ³ÄÚºË)¼äÍ¨ÐÅ(Êý¾ÝÁ÷´«Êä)¾­¹ýÍøÂçIOÀ´ÊµÏÖ
+åŒæ­¥é˜»å¡žIOï¼ˆBlocking IOï¼‰
+åŒæ­¥éžé˜»å¡žIOï¼ˆNon-blocking IOï¼‰
+IOå¤šè·¯å¤ç”¨ï¼ˆIO Multiplexingï¼‰æœ‰æ—¶ä¹Ÿç§°ä¸ºå¼‚æ­¥é˜»å¡žIOï¼ŒJavaä¸­çš„Selectorå’ŒLinuxä¸­çš„epolléƒ½æ˜¯è¿™ç§æ¨¡åž‹,ç»å…¸çš„Reactorè®¾è®¡æ¨¡å¼
+å¼‚æ­¥IOï¼ˆAsynchronous IOï¼‰æœ‰æ—¶ä¹Ÿç§°ä¸ºå¼‚æ­¥éžé˜»å¡žIOï¼Œç»å…¸çš„Proactorè®¾è®¡æ¨¡å¼
+åŒæ­¥å’Œå¼‚æ­¥çš„æ¦‚å¿µæè¿°çš„æ˜¯ç”¨æˆ·çº¿ç¨‹ä¸Žå†…æ ¸çš„äº¤äº’æ–¹å¼ï¼šåŒæ­¥æ˜¯æŒ‡ç”¨æˆ·çº¿ç¨‹å‘èµ·IOè¯·æ±‚åŽéœ€è¦ç­‰å¾…æˆ–è€…è½®è¯¢å†…æ ¸IOæ“ä½œå®ŒæˆåŽæ‰èƒ½ç»§ç»­æ‰§è¡Œï¼›è€Œå¼‚æ­¥æ˜¯æŒ‡ç”¨æˆ·çº¿ç¨‹å‘èµ·IOè¯·æ±‚åŽä»ç»§ç»­æ‰§è¡Œï¼Œå½“å†…æ ¸IOæ“ä½œå®ŒæˆåŽä¼šé€šçŸ¥ç”¨æˆ·çº¿ç¨‹ï¼Œæˆ–è€…è°ƒç”¨ç”¨æˆ·çº¿ç¨‹æ³¨å†Œçš„å›žè°ƒå‡½æ•°ã€‚ï¼ˆç”¨æˆ·çº¿ç¨‹æ˜¯å¦å¯ä»¥å¹²å…¶å®ƒäº‹æƒ…ï¼Œè¡Œä¸ºæ–¹å¼ï¼‰
+é˜»å¡žå’Œéžé˜»å¡žçš„æ¦‚å¿µæè¿°çš„æ˜¯ç”¨æˆ·çº¿ç¨‹è°ƒç”¨å†…æ ¸IOæ“ä½œçš„æ–¹å¼ï¼šé˜»å¡žæ˜¯æŒ‡IOæ“ä½œéœ€è¦å½»åº•å®ŒæˆåŽæ‰è¿”å›žåˆ°ç”¨æˆ·ç©ºé—´ï¼›è€Œéžé˜»å¡žæ˜¯æŒ‡IOæ“ä½œè¢«è°ƒç”¨åŽç«‹å³è¿”å›žç»™ç”¨æˆ·ä¸€ä¸ªçŠ¶æ€å€¼ï¼Œæ— éœ€ç­‰åˆ°IOæ“ä½œå½»åº•å®Œæˆã€‚ï¼ˆç”¨æˆ·çº¿ç¨‹æ˜¯å¦è¢«å†…æ ¸é˜»å¡žï¼ŒçŠ¶æ€ï¼‰ 
+IOï¼šhttps://segmentfault.com/a/1190000007692223
+IOä¸ºä¸»å­˜å‚¨å™¨å³å†…å­˜ä¸Žå¤–éƒ¨è®¾å¤‡(åŒ…æ‹¬ç£ç›˜ã€ç½‘ç»œã€ç½‘å¡ã€å¤–éƒ¨å­˜å‚¨è®¾å¤‡)é—´è¾“å…¥è¾“å‡º
+ç¨‹åº(é€šå¸¸ç”¨æˆ·åº”ç”¨)ä¸Žç¨‹åº(ç³»ç»Ÿå†…æ ¸)é—´é€šä¿¡(æ•°æ®æµä¼ è¾“)ç»è¿‡ç½‘ç»œIOæ¥å®žçŽ°
 https://www.zhihu.com/question/19732473
-ÐÂÀí½â(ÉÏÃæÎªÍøÉÏ¶àÊý´íÎóÀí½â£¬ÌÖÂÛÒì²½Ê±Ò»¶¨ÏÈÏà¶ÔÓÚÄ³Ò»·½Ãæ£¬¶ÔÓÚLinux½Ó¿ÚÍ¬Òì²½ÈçÏÂ)£º
-×èÈû·Ç×èÈû¶¼ÊôÓÚÍ¬²½£¬Çø±ðÔÚÓÚÊÇ·ñÁ¢¼´·µ»Ø
-Í¬²½ÓëÒì²½Çø±ðÓÚÊÇ·ñ¿ÉÒÔ×öÆäËüÊÂÇé(ÓÉÓÚÐÐÎª¾ö¶¨×´Ì¬£¬Òì²½Ò»¶¨´¦ÓÚÎ´¹ÒÆð×´Ì¬£¬Òò¶øÍ¬²½´¦ÓÚ¹ÒÆð×´Ì¬¡£)
-Í¬²½°üÀ¨blocking, nonblocking£¬I/O multiplexing(ÓÖ³ÆÊÂ¼þÇý¶¯)£¬signal-driven I/O
-Òì²½°üÀ¨Linux AIO,Windows IOCP,.NET BeginInvoke/EndInvoke
+æ–°ç†è§£(ä¸Šé¢ä¸ºç½‘ä¸Šå¤šæ•°é”™è¯¯ç†è§£ï¼Œè®¨è®ºå¼‚æ­¥æ—¶ä¸€å®šå…ˆç›¸å¯¹äºŽæŸä¸€æ–¹é¢ï¼Œå¯¹äºŽLinuxæŽ¥å£åŒå¼‚æ­¥å¦‚ä¸‹)ï¼š
+é˜»å¡žéžé˜»å¡žéƒ½å±žäºŽåŒæ­¥ï¼ŒåŒºåˆ«åœ¨äºŽæ˜¯å¦ç«‹å³è¿”å›ž
+åŒæ­¥ä¸Žå¼‚æ­¥åŒºåˆ«äºŽæ˜¯å¦å¯ä»¥åšå…¶å®ƒäº‹æƒ…(ç”±äºŽè¡Œä¸ºå†³å®šçŠ¶æ€ï¼Œå¼‚æ­¥ä¸€å®šå¤„äºŽæœªæŒ‚èµ·çŠ¶æ€ï¼Œå› è€ŒåŒæ­¥å¤„äºŽæŒ‚èµ·çŠ¶æ€ã€‚)
+åŒæ­¥åŒ…æ‹¬blocking, nonblockingï¼ŒI/O multiplexing(åˆç§°äº‹ä»¶é©±åŠ¨)ï¼Œsignal-driven I/O
+å¼‚æ­¥åŒ…æ‹¬Linux AIO,Windows IOCP,.NET BeginInvoke/EndInvoke
 
 
-jsµ÷ÊÔ
+jsè°ƒè¯•
 http://blog.csdn.net/whchina/article/details/51240898
 chrome
-µã»÷{}ÃÀ»¯£¬µ«ÃÀ»¯¹ýºóÎÞ·¨±à¼­´úÂë(¿ÉÒÔÔÚÃÀ»¯´¦ÏÈÔñ´úÂëÔÚÎ´ÃÀ»¯´¦ËÑË÷µ½£¬±à¼­)
-debugger:///VM1772Îªchromeä¯ÀÀÆ÷µÄÐéÄâ»úÖ´ÐÐºóµÄ½Å±¾¡£Í¨³£¶¼ÊÇeval()µÄ´úÂë
-ÔÚÏßÖ´ÐÐjs
+ç‚¹å‡»{}ç¾ŽåŒ–ï¼Œä½†ç¾ŽåŒ–è¿‡åŽæ— æ³•ç¼–è¾‘ä»£ç (å¯ä»¥åœ¨ç¾ŽåŒ–å¤„å…ˆæ‹©ä»£ç åœ¨æœªç¾ŽåŒ–å¤„æœç´¢åˆ°ï¼Œç¼–è¾‘)
+debugger:///VM1772ä¸ºchromeæµè§ˆå™¨çš„è™šæ‹Ÿæœºæ‰§è¡ŒåŽçš„è„šæœ¬ã€‚é€šå¸¸éƒ½æ˜¯eval()çš„ä»£ç 
+åœ¨çº¿æ‰§è¡Œjs
 https://tool.lu
 
 
-I/O ÃÜ¼¯ÐÍÓë CPU ÃÜ¼¯ÐÍ½ø³ÌµÄ±È½Ï
-I/O ÃÜ¼¯ÐÍ½ø³ÌËùÖ´ÐÐµÄ I/O ²Ù×÷±ÈÖ´ÐÐµÄ´¦Àí²Ù×÷¸ü¶à¡£CPU ÃÜ¼¯ÐÍµÄ½ø³ÌËùÖ´ÐÐµÄ´¦Àí²Ù×÷±È I/O ²Ù×÷¸ü¶à¡£Linux 2.6 µÄµ÷¶ÈÆ÷Êµ¼ÊÉÏ¸ü¼ÓÆ«°® I/O ÃÜ¼¯ÐÍµÄ½ø³Ì£¬ÒòÎªËüÃÇÍ¨³£»á·¢ÆðÒ»¸ö I/O ²Ù×÷£¬È»ºó½øÐÐ×èÈû£¬Õâ¾ÍÒâÎ¶×ÅÆäËû¹¤×÷¶¼¿ÉÒÔÔÚÁ½ÕßÖ®¼äÓÐÐ§µØ½»´í½øÐÐ¡£
+I/O å¯†é›†åž‹ä¸Ž CPU å¯†é›†åž‹è¿›ç¨‹çš„æ¯”è¾ƒ
+I/O å¯†é›†åž‹è¿›ç¨‹æ‰€æ‰§è¡Œçš„ I/O æ“ä½œæ¯”æ‰§è¡Œçš„å¤„ç†æ“ä½œæ›´å¤šã€‚CPU å¯†é›†åž‹çš„è¿›ç¨‹æ‰€æ‰§è¡Œçš„å¤„ç†æ“ä½œæ¯” I/O æ“ä½œæ›´å¤šã€‚Linux 2.6 çš„è°ƒåº¦å™¨å®žé™…ä¸Šæ›´åŠ åçˆ± I/O å¯†é›†åž‹çš„è¿›ç¨‹ï¼Œå› ä¸ºå®ƒä»¬é€šå¸¸ä¼šå‘èµ·ä¸€ä¸ª I/O æ“ä½œï¼Œç„¶åŽè¿›è¡Œé˜»å¡žï¼Œè¿™å°±æ„å‘³ç€å…¶ä»–å·¥ä½œéƒ½å¯ä»¥åœ¨ä¸¤è€…ä¹‹é—´æœ‰æ•ˆåœ°äº¤é”™è¿›è¡Œã€‚
 
 
 
 
-		CPU[ÃÜ¼¯ÐÍ]
+		CPU[å¯†é›†åž‹]
 
-¶à½ø³Ì				  ×èÈû
-¶àÏß³Ì			  Í¬²½
-					  ·Ç×èÈû
-		IO[ÃÜ¼¯ÐÍ]	
-				  Òì²½
+å¤šè¿›ç¨‹				  é˜»å¡ž
+å¤šçº¿ç¨‹			  åŒæ­¥
+					  éžé˜»å¡ž
+		IO[å¯†é›†åž‹]	
+				  å¼‚æ­¥
+				  
+				  
+
+https://www.highcharts.com.cn/docs/range-series
+https://echarts.baidu.com/examples/index.html
+https://cdnjs.com/libraries/echarts
+// å¼•å…¥Echarts
+import Echarts from 'echarts' 
+Vue.prototype.echarts = Echarts 
+Vue.use(Echarts)
+this.echarts.init(document.getElementById('echarts'))
