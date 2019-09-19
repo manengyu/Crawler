@@ -344,3 +344,6 @@ print client.service.SingleCheck({u"Name": u"", u"CitizId": u""}, mylogin_key)
 def get_nobase64(data):
     import re
     return re.sub(r"[\d\w=+/]{100,}", "hidden", "{}".format(data))
+    
+# dict sort and concat
+reduce(lambda x, y: (f"{x[0]}{x[1]}{y[0]}{y[1]}", ""), sorted(params.items(), key=lambda x: x[0]))[0]
