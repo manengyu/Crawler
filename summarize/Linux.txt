@@ -40,6 +40,8 @@ chmod
 -文件，d目录，l链接
 rwx读写执行，r4w2x1
 1连接的文件数，正常文件为1，目录为目录下文件数
+filesystem read only:1.ntfsfix /dev/your_drive,2.reboot
+
 root用户
 root组
 1314大小字节，ls -lh显示为k,m
