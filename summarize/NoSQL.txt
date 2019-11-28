@@ -53,6 +53,9 @@ db.user.find_one({u"_id": ObjectId(uid)})
 db.user.find({}).skip(5).limit(5)
 .sort([("createdAt", -1)]).limit(1)
 db.collection.aggregate({"$unwind":"$transactions"}, {"$match":{"transactions.payload": {"$in": [300]}}},  {"$group": {"_id": "$_id", "transactions":{'$push': "$transactions"}}})  # 数组按条件筛选，文档被拆分
+db.collection.aggregate([{"$match": {"createdAt": {"$gt": 123}}},
+                         {"$group": {"_id": "$phone", "count": {"$sum": 1}}},
+                         {"$match": {"count": {"$gt": 123}}}])
 randint(0,2) NumberInt(_rand()*10%3)
 {"new_name": {"$toString": "$_id"}}
 {"new_name": {"$convert": {"input": "$_id", "to": "objectId", "onError": "Cannot $convert to objectId"}}
