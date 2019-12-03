@@ -52,6 +52,7 @@ db.order.update_one({"_id": ObjectId("")}, {$set: {"extension.0.0.remark":"first
 db.user.find_one({u"_id": ObjectId(uid)})
 db.user.find({}).skip(5).limit(5)
 .sort([("createdAt", -1)]).limit(1)
+{_id: {$gt: ObjectId(uid)}}替代skip
 db.collection.aggregate({"$unwind":"$transactions"}, {"$match":{"transactions.payload": {"$in": [300]}}},  {"$group": {"_id": "$_id", "transactions":{'$push': "$transactions"}}})  # 数组按条件筛选，文档被拆分
 db.collection.aggregate([{"$match": {"createdAt": {"$gt": 123}}},
                          {"$group": {"_id": "$phone", "count": {"$sum": 1}}},
