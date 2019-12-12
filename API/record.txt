@@ -8,3 +8,9 @@ ssl_context=(
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.crt"),
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.key"))
 添加指定hostname或域名的crt与key后，访问https可避免弹出不信任证书，此时可通过域名解析将http定向至https
+
+使用flask_restful返204时，存在bug响应头内容长非0导致网关及某些浏览器超时
+from flask import make_response
+resp = make_response('', 204)
+resp.headers['Content-Length'] = 0
+return resp
