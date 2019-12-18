@@ -1,2 +1,8 @@
 查看MX纪录是否生效：
 nslookup>set ty=mx>my.com
+
+
+未备案域名走https会出现：
+SSL_ERROR_SYSCALL in connection
+无法建立安全链接
+意外终止链接
