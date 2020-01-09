@@ -6,3 +6,9 @@ nslookup>set ty=mx>my.com
 SSL_ERROR_SYSCALL in connection
 无法建立安全链接
 意外终止链接
+
+
+网关不存在，连接拒绝
+网关连接中挂掉，连接中断
+网关存在，服务不存在502
+网关存在，服务连接中挂掉503
