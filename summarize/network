@@ -8,7 +8,10 @@ SSL_ERROR_SYSCALL in connection
 意外终止链接
 
 
-网关不存在，连接拒绝
-网关连接中挂掉，连接中断
+网关不存在，连接拒绝CONNECTIONREFUSED
+网关连接中挂掉，连接中断关闭连接异常
 网关存在，服务不存在502
 网关存在，服务连接中挂掉503
+
+域名未解析，UNKNOWNHOST
+域名解析至不可用IP，CONNECTIONTIMEOUT
