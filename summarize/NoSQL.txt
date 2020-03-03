@@ -76,7 +76,34 @@ db.fetch.find().forEach(
   });
 #  mongo关联查询
 db.order.aggregate([{"$match":{"extension.from.name": {"$eq": ""}}}, {"$lookup":{"from":"suborder", "let":{"order_id":{"$toString":"$_id"}}, "pipeline":[{"$match":{"$expr":{"$and":[{"$eq":["$superId","$$order_id"]}]}}}], "as":"suborder"}}, {"$project": {"createdBy": 0, "suborder.updatedAt":0} }]);
-def dict_recursion(prefix, params):  # 字典转为mongodb.连接格式
+#  mongo数组取最后一个
+db.getCollection("workorder").aggregate({$project:{
+"extension.type": 1,
+"createdAt": 1,
+"timeline":{“$slice”:["$extension.timeline", -1]}}})
+#  mongo比值为查询条件（细化字符比较$strcasecmp）,差$subtract,和$add,积$multiply,除$divide,余$mod
+db.getCollection("order").aggregate([
+    {
+        "$match": {
+						"createdAt": {"$gte": 1569859200, "$lt": 1582732800}
+        }
+    },
+    {
+        "$project": {
+            "createdAt": 1,
+            "cmpValue": {
+                "$cmp": ["$extension.grant.confirmedAt", "$createdAt"]
+            }
+        }
+    },
+    {
+        "$match": {
+            "cmpValue": 1
+        },
+    }
+])
+# 字典转为mongodb.连接格式
+def dict_recursion(prefix, params):  
     if isinstance(params, dict):
         dict_rst = {}
         for key, value in params.items():
