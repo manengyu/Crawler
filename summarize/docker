@@ -41,3 +41,9 @@ assign a port mapping in an existing Docker container:
 3) change the file (hostconfig.json and config.v2.json)
 4) restart your docker engine (to flush/clear config caches) 
 5) start the container
+
+
+docker build -t myServer:v1 -f python.Dockerfile .
+docker run --name server1 -p 80:8080 -d myServer:v1 -v /data:/data
+docker cp /www 96f7f14e99ab:/www
+docker cp 96f7f14e99ab:/www /www
