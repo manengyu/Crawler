@@ -292,6 +292,10 @@ except(UnicodeDecodeError, IndexError):
 	con = u""
 				
 #图片拼接
+import io, base64
+from PIL import Image
+# im  b64解码后
+image_joint([Image.open(io.BytesIO(im)), Image.open(io.BytesIO(im))])
 def image_joint(self, image_list, opt):  # opt= vertical ,horizontal 选择水平显示拼接的图像，或者垂直拼接
 	width, height = [], []
 	for i in image_list:
@@ -307,7 +311,12 @@ def image_joint(self, image_list, opt):  # opt= vertical ,horizontal 选择水�
 			x += width[count - 1]
 		else:
 			y += height[count - 1]
-	return new_img
+	#return new_img
+	from io import BytesIO
+	buffered = BytesIO()
+	new_img.save(buffered, format="PNG")
+	im = buffered.getvalue()
+	return im  # b64解码后
 
 # 读取图片url
 f = open(u"a.jpg", u"wb")
