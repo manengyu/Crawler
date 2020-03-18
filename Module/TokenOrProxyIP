@@ -30,3 +30,5 @@ class ProxyIP:
             update_db(ProxyIP.proxies)
         ProxyIP.pre_time = int(time.time())
         return ProxyIP.proxies
+
+# https://www.xicidaili.com/wn/
