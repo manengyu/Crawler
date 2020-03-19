@@ -81,6 +81,8 @@ db.getCollection("workorder").aggregate({$project:{
 "extension.type": 1,
 "createdAt": 1,
 "timeline":{“$slice”:["$extension.timeline", -1]}}})
+# mongo 数组更新
+db.getCollection("workorder").updateMany({"_id": ObjectId(id), f"extension.mission.data.{i}.header": {"$exists": True}}, {"$set": {f"extension.mission.data.{i}.$.isCompleted": 1}})
 #  mongo比值为查询条件（细化字符比较$strcasecmp）,差$subtract,和$add,积$multiply,除$divide,余$mod
 db.getCollection("order").aggregate([
     {
