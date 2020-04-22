@@ -214,3 +214,7 @@ Commands out of sync; you can't run this command now执行语句仅查询未返�
 pipreqs
 pip freeze > requirements.txt
 pip install -r requirements.txt -i https://pypi.doubanio.com/simple
+
+取余运算在计算商值向0方向舍弃小数位(遵循尽可能让商大的原则),取余算出来的余数符号一定和被除数相同
+取模运算在计算商值向负无穷方向舍弃小数位(遵循尽可能让商小的原则),取模算出来的余数符号一定和除数相同
+C/C++, C#, JAVA, PHP中%取余，python中%取模
