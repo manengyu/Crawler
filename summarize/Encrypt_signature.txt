@@ -60,20 +60,20 @@ def add_to_16(value):
     return str.encode(value)
     
     
-def aesencrypt(raw_data, aes_key):  # aes加密
+def aesencrypt(raw_data, aes_key, aes_iv):  # aes加密
     BS = AES.block_size  # 加密时使用的key，只能是长度16,24和32的字符串
     padding_size = len(raw_data) if len(raw_data) == len(raw_data.encode()) else len(raw_data.encode())  ＃ 兼容中文
-    pad = lambda s: s + (BS - padding_size % BS) * chr(BS - padding_size % BS)
-    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
-    encrypted = cipher.encrypt(pad(raw_data).encode(u"utf-8"))  # aes加密
+    pad = (lambda s: s + (BS - padding_size % BS) * chr(BS - padding_size % BS)).encode(u"utf-8")
+    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX, aes_iv.encode())  # mod 待验证
+    encrypted = cipher.encrypt(pad(raw_data))  # aes加密
     result = base64.b64encode(encrypted)  # base64 encode
     return bytes.decode(result)
     #  return bytes.decode(b2a_hex(encrypted))
     
     
-def aesdecrypt(en_data, aes_key):  # 把加密的数据，用base64  decode，再用aes解密
+def aesdecrypt(en_data, aes_key, aes_iv):  # 把加密的数据，用base64  decode，再用aes解密
     unpad = lambda s: s[0:-ord(s[-1])]
-    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX)  # mod 待验证
+    cipher = AES.new(add_to_16(aes_key), AES.MODE_EAX, aes_iv.encode())  # mod 待验证
     result2 = base64.b64decode(en_data)
     decrypted = unpad(cipher.decrypt(result2).decode())
     return decrypted
@@ -103,3 +103,39 @@ def rsa_verify(publicKey, signature, encrData):  # RSA 验签
     verifier = PKCS1_v1_5.new(pubKey)
     return verifier.verify(h, base64.b64decode(signature))
 
+from cryptography.hazmat.primitives import padding
+from cryptography.hazmat.primitives.ciphers import algorithms
+
+def pkcs7_padding(data):
+    if not isinstance(data, bytes):
+        data = data.encode()
+    padder = padding.PKCS7(algorithms.AES.block_size).padder()
+    padded_data = padder.update(data) + padder.finalize()
+    return padded_data
+
+def pkcs7_unpadding(padded_data):
+    unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+    data = unpadder.update(padded_data)
+    try:
+        uppadded_data = data + unpadder.finalize()
+    except ValueError:
+        raise Exception('无效的加密信息!')
+    else:
+        return uppadded_data
+              
+from urllib import parse        
+def genSignString(parser):
+    uri_str = ''
+    for key in sorted(parser.keys()):
+        if key == 'sign':
+            continue
+        # uri_str += "%s=%s&" % (key, parse.quote(str(parser[key]), safe=''))
+        uri_str += "%s=%s&" % (key, str(parser[key]))
+    # sign_str = uri_str + 'app_key=' + parser['app_key']
+    sign_str = uri_str.rstrip("&")
+    return sign_str
+ 
+def sha256(sha_str):
+    encode_str = parse.quote(sha_str.encode())
+    res_str = hashlib.sha256(encode_str.encode())  # sha1, md5
+    return res_str.hexdigest()  # .upper()
