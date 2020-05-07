@@ -84,6 +84,7 @@ def ras_decrypt(privateKey, encrpyt_des):  # 解密des密钥成明文
     rsakey = RSA.importKey(base64.b64decode(privateKey))  # 导入读取到的私钥
     cipher = Cipher_pkcs1_v1_5.new(rsakey)  # 生成对象
     text = cipher.decrypt(base64.b64decode(encrpyt_des), u"ERROR")
+    # decrypted = bytes.decode(cipher.decrypt(result2))
     return base64.b64encode(text)
 
 
