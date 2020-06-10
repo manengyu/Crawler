@@ -20,3 +20,7 @@ bridge模式 	–net=bridge（默认为该模式）
 获取client ip:
 采用LoadBalancer模式，并设置属性externalTrafficPolicy: Local，将域名解析至公网ip
 flask启动时注意http|https对应容器指定的port
+
+kubectl create secret docker-registry -n $namespace registrysecret --docker-server=123.com --docker-username='' --docker-password='' --docker-email='123@123.com'
+kubectl get secret -n $namespace
+kubectl delete secret -n $namespace
