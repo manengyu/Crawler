@@ -1,0 +1,21 @@
+auth_user not exist:
+增大内存
+
+sentry upgrade
+
+alter role sentry superuser;
+
+sentry createuser --superuser
+
+Oops! Something went wrong:
+sentry shell
+from sentry.models import Project
+from sentry.receivers.core import create_default_projects
+create_default_projects([Project])
+
+sentry_increment_project_counter(integer, integer) does not exist:
+su postgres
+psql
+\d
+\c
+create or replace function sentry_increment_project_counter( project bigint, delta int) returns int as $$ declare new_val int; begin loop update sentry_projectcounter set value = value + delta where project_id = project returning value into new_val; if found then return new_val; end if; begin insert into sentry_projectcounter(project_id, value) values (project, delta) returning value into new_val; return new_val; exception when unique_violation then end; end loop; end $$ language plpgsql;
