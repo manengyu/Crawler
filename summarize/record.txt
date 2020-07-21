@@ -16,6 +16,7 @@ r = requests.session() r.proxies无用，要写在get()里
 * **都为可变参数，*参数当元组传入，**参数当字典传入
 字典items()返回元组列表[(key,val),],iteritems()返回元组列表迭代器
 json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
+json.dumps()会将元组转换成列表
 rstrip(u'1.')去除尾部包含.和1,循环匹配.1
 全局变量在函数外声明，可直接在函数内使用但不能修改，函数内用global声明可修改，在函数if下会报语法错
 to_excel()导出xls时涉及编码可能出现无效，使用xlsx即可
@@ -77,6 +78,7 @@ python函数，类都作为对象处理，初始化时存在关键字参数，�
 if all any and or while判断真假时注意业务0为真，而判断结果为假
 set与dict去重效率相当要高于for,可使用C实现的pandas效率约十倍于set或dict
 python运行文件所在目录即项目根目录，本地IDE需将此目录设为根目录解决导入路径相关问题
+js转json时会将.0格式浮点转为整型
 
 
 总结
