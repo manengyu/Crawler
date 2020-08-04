@@ -15,5 +15,5 @@ Degrees.cookie["Hm_lvt_"] = str(int(time.time()))
 Degrees.cookie["Hm_lpvt_"] = str(int(time.time()))
 for k, v in A.items():
     tmp += f"{k}={v};"
-tmp.strip(";")
+tmp = tmp.strip(";")
 reqs.headers["cookie"] = tmp
