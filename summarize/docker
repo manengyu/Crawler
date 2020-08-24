@@ -51,3 +51,6 @@ docker cp /www 96f7f14e99ab:/www
 docker cp /www 96f7f14e99ab:/www
 
 docker login timeout需使用iptables开放本机80，443端口
+本地镜像推送到远端：
+docker tag abc:8906 r.ewezx.com/abc:8906
+docker push r.ewezx.com/abc:8906
