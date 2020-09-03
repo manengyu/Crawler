@@ -114,7 +114,8 @@ service iptables restart
 A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
 仅允许固定ip访问某个端口
 -A INPUT -s 111.111.111.111/32 -p tcp -m tcp --dport 80 -j ACCEPT
-iptables -I INPUT -p tcp  --dport 80 -J ACCEPT && iptables -I OUTPUT -p tcp --dport 80 -J ACCEPT
+iptables -I INPUT -p tcp  --dport 80 -j ACCEPT && iptables -I OUTPUT -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT && iptables -I OUTPUT -p tcp --dport 443 -j ACCEPT
 iptables  -nL
 systemctl  status  firewalld
 tcpdump -i eth0 -nn port 80 and src host 47.110.80.221
