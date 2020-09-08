@@ -148,3 +148,10 @@ md5.digest()二进制
 md5.hexdigest()十六进制
 import binascii
 t = binascii.a2b_hex('05c12a287334386c94131ab8aa00d08a')  # 十六转二
+
+def getHmacSHA256Str(key, data):
+    import hmac
+    import base64
+    from hashlib import sha256
+    signature = hmac.new(base64.b64decode(key), data.encode(), digestmod=sha256).digest()
+    return bytes.decode(base64.b64encode(signature))
