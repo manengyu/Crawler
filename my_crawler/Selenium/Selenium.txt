@@ -97,3 +97,5 @@ def get_ch_va():
 selenium hub:
 版本可用selenium/standalone-chrome:3.141.59-iron
 报错：session deleted because of page crash from tab crashed，解决：挂载/dev/shm:/dev/shm
+
+使用IE时安全设置里，安全模式要保持一致
