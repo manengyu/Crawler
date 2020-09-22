@@ -67,6 +67,33 @@ def main(sheet, file_path, user_name):  # 表格左上角为（0，0），文件
     new_workbook, sheet_amount, sheet_amount_7, sheet_api, sheet_top20, sheet_all, sheet_error_url = init_xls()
     save_xls(file_path, new_workbook)
 
+# openpyxl==2.6.2
+def flask_xls():
+    import openpyxl
+    from io import BytesIO
+    from flask import make_response
+    workbook = openpyxl.Workbook()
+    sheet = workbook.active
+    fields = ["", "", "", "", "", "", "", "", "", "", "创建时间", "", "", ""]
+    for f in range(0, len(fields)):
+        sheet.cell(1, f + 1, fields[f])
+    row_offset = 1
+
+    for row, i in enumerate(resList):
+        sheet.cell(row_offset + row + 1, 1, str(i["_id"]))
+        sheet.cell(row_offset + row + 1, 1).hyperlink = f""
+        sheet.cell(row_offset + row + 1, 2, i])
+        sheet.cell(row_offset + row + 1, 3, i)
+        sheet.cell(row_offset + row + 1, 4, str(time.strftime("%Y-%m-%d", time.localtime(i.get("dueDate"))) if i.get("dueDate") else ""))
+
+    bio = BytesIO()
+    workbook.save(bio)
+    bio.seek(0)
+    response = make_response(bio.getvalue())
+    bio.close()
+    response.headers['Content-Type'] = 'application/vnd.ms-excel'  # 文件类型
+    response.headers['Content-Disposition'] = f"attachment;filename*=UTF-8''{time.strftime('%Y%m%d', time.localtime(time.time()))}.xlsx"
+    return response
 
 # 测试函数
 if __name__ == u"__main__":
