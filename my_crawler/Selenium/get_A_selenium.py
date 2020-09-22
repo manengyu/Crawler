@@ -155,3 +155,16 @@ driver.close()
 driver.quit()
 return rep_bytes, 200, {'Content-Type': "application/pdf",
                                    "Content-Disposition": f"attachment;filename*=UTF-8''{quote(filename)}.pdf"}
+
+driver.save_screenshot("tmp.png")
+time.sleep(2)
+imgelement = driver.find_element_by_xpath('//img')  # 定位验证码
+from PIL import Image
+location = imgelement.location  # 获取验证码x,y轴坐标
+size = imgelement.size  # 获取验证码的长宽
+rangle = (int(location['x']), int(location['y']), int(location['x'] + size['width']),
+      int(location['y'] + size['height']))  # 写成我们需要截取的位置坐标
+i = Image.open("tmp.png")  # 打开截图
+frame4 = i.crop(rangle)  # 使用Image的crop函数，从截图中再次截取我们需要的区域
+frame4.save('tmp.jpg')
+
