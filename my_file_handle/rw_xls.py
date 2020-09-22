@@ -53,6 +53,15 @@ def init_xls():
     return new_workbook, sheet_amount, sheet_amount_7, sheet_api, sheet_top20, sheet_all, sheet_error_url
 
 
+def init_xls(title=None, sheet=None, new_workbook=None):
+    if not new_workbook:
+        new_workbook = xlwt.Workbook()
+    sheet = new_workbook.add_sheet(sheet or u"sheet1")
+    for jj in range(0, len(title)):
+        sheet.write(0, jj, title[jj])
+    return new_workbook, sheet
+    
+    
 def write_xls(sheet, nu,  *args):
     for i in range(len(args)):
         sheet.write(nu+1, i, args[i])  # 存在标题，所以+1
@@ -69,6 +78,31 @@ def main(sheet, file_path, user_name):  # 表格左上角为（0，0），文件
 
 # openpyxl==2.6.2
 def flask_xls():
+    with open("./batch.xls", 'wb') as f:
+        f.write(data)
+    wb = xlrd.open_workbook("./batch.xls")
+    sheet1 = wb.sheet_by_index(0)
+    rowNum = sheet1.nrows
+    batchtolist = list()
+
+    title = [sheet1.row_values(0)[0], sheet1.row_values(0)[1], sheet1.row_values(0)[2], "是否一致"]
+    for i in range(rowNum - 1):
+        batchtolist.append([sheet1.row_values(i + 1)[0], sheet1.row_values(i + 1)[1], sheet1.row_values(i + 1)[2]])
+
+    for i in batchtolist:
+        response = get_data("identity", rm_space(i[0]), rm_space(i[1]), None, None, None, None, None, None,
+                                    source)
+        i.append(json.loads(response.text)["isMatch"] if response.status_code == 200 else "无法核查")
+
+    new_workbook, sheet = init_xls(title=title)
+    for n, i in enumerate(batchtolist):
+        write_xls(sheet, n, i)
+        
+    bio = BytesIO()
+    new_workbook.save(bio)
+    bio.seek(0)
+    return bio
+
     import openpyxl
     from io import BytesIO
     from flask import make_response
