@@ -37,6 +37,7 @@ js相关
 将chromedriver.exe驱动程序放在chrome.exe同目录下，并加入至path变量中，便可运行selenium程序无需再指定驱动路径
 getElementsByTagName()
 getElementById()
+driver.execute_script("window.open('http://www..com')")
 
 phantomjs
 http://npm.taobao.org/dist/phantomjs/
@@ -68,6 +69,8 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 br = webdriver.Firefox()
 br.get('http://www.python.org')
+# br.add_cookie({'name': 'JSEESIONID', 'value': '07DA4C93F94FD619474B4C54D526110C'}) # add_cookie一定要在get url后
+# br.switch_to.window(driver.window_handles[-1])
 time.sleep(10)  # 要间歇否则获取cookie可能不全
 cookie = [item["name"] + "=" + item["value"] for item in br.get_cookies()]
 Cookie = ';'.join(item for item in cookie)
@@ -99,3 +102,31 @@ selenium hub:
 报错：session deleted because of page crash from tab crashed，解决：挂载/dev/shm:/dev/shm
 
 使用IE时安全设置里，安全模式要保持一致
+chrome版本不同可能导致响应,cookie不一样
+
+def get_driver(did):
+    url_selenium = f"https://.com/selenium/wd/hub"
+    chrome_options = webdriver.ChromeOptions()
+    # chrome_options.add_argument("--auto-open-devtools-for-tabs")
+    # chrome_options.add_argument("'--headless'")
+    # chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+    # chrome_options.add_argument("--unable-javascript")
+    # chrome_options.add_experimental_option('debuggerAddress', '172.16.0.74:9222')
+    # chrome_options.add_argument(f"Cookie=JSEESIONID8af3b805867b7405c8fb4a00ab5f11c3")
+    chrome_options.add_argument("--auto-open-devtools-for-tabs")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled") # 避免selenium屏蔽, driver.execute_script("return navigator.webdriver") undefine
+    chrome_options.add_argument("disable-infobars")
+    prefs = {
+        # "download.prompt_for_download": True,
+        # 'download.default_directory': os.getcwd(),
+        # "plugins.always_open_pdf_externally": True,
+        # 'profile.default_content_settings.popups': 0,  # 设置为0，禁止弹出窗口
+        "profile.managed_default_content_settings.images": 1  # 禁止图片加载
+    }
+    chrome_options.add_experimental_option('prefs', prefs)
+    driver = webdriver.Remote(command_executor=url_selenium, desired_capabilities=chrome_options.to_capabilities(), keep_alive=False)
+    # time.sleep(5)
+    # driver.get(url_report)
+    return driver
+
+driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
