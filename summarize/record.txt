@@ -15,6 +15,7 @@ assert expression[,arg] 若expression为False抛出异常或arg
 r = requests.session() r.proxies无用，要写在get()里
 requests json列表参数要用json=而非data=,另params=无法传输json参数
 * **都为可变参数，*参数当元组传入，**参数当字典传入
+*代表将后面参数进行分散，如*(1,2)等价1，2
 字典items()返回元组列表[(key,val),],iteritems()返回元组列表迭代器
 json格式必须为双引号，且不能含带u的unicode类型，可用json.dumps()转换
 json.dumps()会将元组转换成列表
