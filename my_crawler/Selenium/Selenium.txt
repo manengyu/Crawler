@@ -79,6 +79,8 @@ display.stop()
 请求不到数据时注意请求头，及其它数据
 获取linux无界面浏览器请求头，可以写接口来接受查看请求数据
 Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+标签在iframe下需先切换至iframe,再切回默认driver.switch_to.frame("frametj")，driver.switch_to.default_content()
+弹框确认driver.switch_to.alert.accept()
 
 
 def get_ch_va():
@@ -100,6 +102,7 @@ def get_ch_va():
 selenium hub:
 版本可用selenium/standalone-chrome:3.141.59-iron
 报错：session deleted because of page crash from tab crashed，解决：挂载/dev/shm:/dev/shm
+selenium/standalone-firefox:3.141.59（可避免因chrome被检测）
 
 使用IE时安全设置里，安全模式要保持一致
 chrome版本不同可能导致响应,cookie不一样
@@ -130,3 +133,11 @@ def get_driver(did):
     return driver
 
 driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+def get_driver(url):  # FireFox
+    url_selenium = f"https://.com/selenium/wd/hub"
+    from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+    br = webdriver.Remote(command_executor=url_selenium, desired_capabilities=DesiredCapabilities.FIREFOX)
+    br.get(url)
+    return br
+
