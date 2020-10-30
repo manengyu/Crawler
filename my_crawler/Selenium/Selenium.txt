@@ -81,6 +81,7 @@ display.stop()
 Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
 标签在iframe下需先切换至iframe,再切回默认driver.switch_to.frame("frametj")，driver.switch_to.default_content()
 弹框确认driver.switch_to.alert.accept()
+等待标签显示driver.implicitly_wait(10)
 
 
 def get_ch_va():
