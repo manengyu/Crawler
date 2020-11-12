@@ -134,7 +134,7 @@ python文件在crontab下logging无法输出时，可先cd找路径下，再执�
 
 日志一共分成5个等级，从低到高分别是：DEBUG INFO WARNING ERROR CRITICAL
 yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
-可迭代对象拥有__iter__方法，或者说能用for循环对象
+可迭代对象拥有__iter__方法，或者说能用for循环对象https://nvie.com/posts/iterators-vs-generators/
 迭代器拥有next或__next__和__iter__方法特殊对象，定义方式：一（），二yield此时属于生成器
 生成器第一次一定next()等价send(None)。send()入参为yield r表达式值，返回为继续执行至yield时yield r表达式值
 编码，时间戳转换：http://tool.chinaz.com/Tools/unixtime.aspx
