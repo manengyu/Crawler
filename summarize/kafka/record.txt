@@ -1,0 +1,2 @@
+question:NoBrokersAvailable: NoBrokersAvailable-Kafka Error
+answer: 缺少api_version=(2,2,1)参数
