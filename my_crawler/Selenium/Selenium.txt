@@ -82,6 +82,13 @@ Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
 标签在iframe下需先切换至iframe,再切回默认driver.switch_to.frame("frametj")，driver.switch_to.default_content()
 弹框确认driver.switch_to.alert.accept()
 等待标签显示driver.implicitly_wait(10)
+异步要等待一同显示
+使用tap坐标点击
+adb shell input tap 100,150代替tap方法
+避免识别,需要有user-data-dir参数： C:\Users\keying\AppData\Local\Google\Chrome\Application\chrome.exe --headless --remote-debugging-port=9222 --user-data-dir='/home/luke/chrome-data/' --user-agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3080.5 Safari/537.36'
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 
 
 def get_ch_va():
