@@ -41,5 +41,7 @@ ssh-add -l
 
 创建裸仓库（用于服务器中心仓库）
 git init --bare <repo>
-裸仓库需在.git/config中添加denyCurrentBranch = ignore才可push
+裸仓库需在.git/config中添加以下配置才可push
+[receive]
+    denyCurrentBranch = ignore
 执行git reset --hard后才可看见push代码
