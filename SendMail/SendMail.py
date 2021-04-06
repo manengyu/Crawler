@@ -32,6 +32,9 @@ class SendMail:
         msg.attach(MIMEText(self.body.encode(u"utf-8"), _subtype=u'plain', _charset=u"utf-8"))  #  _subtype=u'html'
 
         server = smtplib.SMTP(u'smtp.exmail.qq.com', 25)
+	# 阿里企业邮箱
+	# server = smtplib.SMTP_SSL("smtp.mxhichina.com", 465)
+    	# server = smtplib.SMTP("smtp.mxhichina.com", 80)
         server.login(u"@.com", u"")
         msg_text = msg.as_string()
         server.sendmail(msg[u'from'], msg[u'to'].split(u",") + msg[u'cc'].split(u","), msg_text)
