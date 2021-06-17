@@ -45,3 +45,6 @@ git init --bare <repo>
 [receive]
     denyCurrentBranch = ignore
 执行git reset --hard后才可看见push代码
+
+windows搭建git服务器：
+使用自带openssh服务+gogs+nssm
