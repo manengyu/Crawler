@@ -33,3 +33,18 @@ r = reqs.get(url, headers={"Accept":"text/html,application/xhtml+xml,application
                             "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
                             "cookie": tmp,
                             })
+
+
+# handle browser cookie
+# # aa = {}
+a = ""
+rtn = ''
+a = a.replace(" ", "").replace(" ", "")
+for i in a.split(";"):
+    rtn += f'document.cookie="{i.strip()}";'
+#     print(i)
+#     ii = i.split("=")
+#     aa[ii[0]] = ii[1]
+# import json
+print(rtn)
+# print(json.dumps(aa))
