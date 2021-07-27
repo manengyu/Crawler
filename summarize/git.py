@@ -47,4 +47,5 @@ git init --bare <repo>
 执行git reset --hard后才可看见push代码
 
 windows搭建git服务器：
+https://gitee.com/wag173/win10_git_server#%E4%BF%AE%E6%94%B9%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9openssh%E9%BB%98%E8%AE%A4shell
 使用自带openssh服务+gogs+nssm
