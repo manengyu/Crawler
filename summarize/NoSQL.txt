@@ -131,6 +131,16 @@ db.getCollection('').find({"field": {"$in":db.getCollection('').aggregate(
 　　　　　　　　$sort:{count:1}
           }
 　　　　　　).map(function(el) { return el._id })}})
+更新一个字段值为另一个字段值：
+db.unique.find().forEach(function(item) {
+    db.unique.update({
+        "_id": item._id
+    }, {
+        "$set": {
+            "updateTime": item.createTime
+        }
+    }, false, true)
+})
 db.grantRolesToUser("test", [{role: "readWrite", db: "cer_test"}])
 db.revokeRolesFromUser("root", [{role: "root", db: "admin"}])
 db.createUser({"user":"root", "pwd":"", roles: [{role: "userAdminAnyDatabase",db:"admin"}]});
