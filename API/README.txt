@@ -19,6 +19,8 @@ make_ssl_devcert("server", "localhost")
 flask run方法中添加ssl_context=(
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.crt"),
         os.path.join(os.path.dirname(os.path.realpath(__file__)), "assert/.key"))
+响应中文乱码：app.config['JSON_AS_ASCII'] = False
+响应支持Flask_RESTful:app.config.update(RESTFUL_JSON=dict(ensure_ascii=False))
 
 Windows下:Flask是阻塞的，起用多线程依然无效(发现app.run('', port=5200, debug=False, threaded=True)可实现异步)，多进程不支持
 
