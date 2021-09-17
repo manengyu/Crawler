@@ -1,0 +1,12 @@
+bat:
+ping -n 60 127.1>nul
+C:
+cd C:\manengyu\project\douyin_crawler\app & python main.py
+
+
+PowerShell:
+cd D:\manengyu\project\proxy | mitmdump --listen-port 55555 -s addons.py
+cd D:\manengyu\project\feigua\app | python main.py
+
+Python:
+subprocess.Popen(f'cd C:\manengyu\project\proxy && mitmdump --listen-port {port} -q -s addons.py', shell=True)
