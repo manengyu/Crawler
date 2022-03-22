@@ -128,6 +128,8 @@ def flask_xls():
     response.headers['Content-Type'] = 'application/vnd.ms-excel'  # 文件类型
     response.headers['Content-Disposition'] = f"attachment;filename*=UTF-8''{time.strftime('%Y%m%d', time.localtime(time.time()))}.xlsx"
     return response
+#     from django.utils.encoding import escape_uri_path
+#     f"attachment; filename={escape_uri_path(filename)}"
 
 # 测试函数
 if __name__ == u"__main__":
