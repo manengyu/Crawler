@@ -14,3 +14,7 @@ from flask import make_response
 resp = make_response('', 204)
 resp.headers['Content-Length'] = 0
 return resp
+
+
+Django
+django_celery_beat中crontab定时周不能为?应*,循环不能数字/2只能*/2,且修改表peroidictask无用，表peroidictask更新会有延迟
