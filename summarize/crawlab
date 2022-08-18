@@ -1,0 +1,29 @@
+https://blog.51cto.com/u_15127574/2666895
+
+git clone https://github.com/nickliqian/crawlab
+
+frontend:
+npm install --global --production windows-build-tools
+(python2添加至环境变量)
+npm install -g node-gyp
+npm install -g yarn
+(
+node -v
+node15<>node-sass5.0+
+node14<>node-sass4.14+
+)
+npm install node-sass@4.14
+cd C:\Users\2230\Desktop\crawlab-master\frontend
+yarn install
+修改配置文件.env.development,ip
+npm run serve   #启动
+npm run build:dev   #开发环境构建
+npm run build:prod   #生产环境构建
+
+backend:
+go env -w GOPROXY=https://goproxy.cn
+go install
+(异常行注释掉即可)
+修改配置文件/conf/config.yml,ip+db ip
+go run main.go
+
