@@ -110,6 +110,9 @@ format优势一个实参可多次使用
 datetime
 datetime和date类型转时间戳：time.mktime(var.timetuple())
 计算本周一日期：datetime.date.today() - datetime.timedelta(days=now.weekday())
+修改datetime时间戳：datetime.datetime.now(tz=timezone('Asia/Shanghai'))
+得到本地时间戳：from tzlocal import get_localzone
+修改全局时间戳：系统环境变量TZ=CST-8或subprocess.Popen(env={**os.environ, 'TZ': 'CST-8'})
 
 yum install vixie-cron
 yum install crontabs
