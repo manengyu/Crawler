@@ -22,6 +22,7 @@ npm run build:dev   #开发环境构建
 npm run build:prod   #生产环境构建
 
 backend:
+安装go( https://studygolang.com/dl )
 go env -w GOPROXY=https://goproxy.cn
 go install
 (异常行注释掉即可)
