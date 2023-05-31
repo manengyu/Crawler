@@ -134,6 +134,13 @@ crontab中不能出现%
 方法export PATH=$PATH:/usr/local/bin && cd /home && /usr/local/bin/python
 不发邮件在crontab开头添加MAILTO=""
 python文件在crontab下logging无法输出时，可先cd找路径下，再执行该文件
+python计算cron下一次执行时间，5参用croniter，7参用crontools、python-crontab
+from croniter import croniter
+croniter(cron, current_time).get_next(datetime.datetime)
+import crontools as ct
+ct.Crontab.parse(cron.replace("?", "*"), seconds_ext=True, years_ext=True).next_fire_time(now=datetime.datetime.now())
+from crontab import CronTab, CronItem
+cron=CronItem("0 1 1 3 5 ? *").schedule(cron.last_run).get_next()
 
 日志一共分成5个等级，从低到高分别是：DEBUG INFO WARNING ERROR CRITICAL
 yield类似return，函数执行至yield刚返回，下次迭代紧接yield后执行
