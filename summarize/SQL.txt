@@ -134,3 +134,11 @@ UPDATE [dbo].[t_test_drug] SET [t_test_drug].field1 = [t_test_drug].field1 + '1'
 设置id字段自增长
 alter table calculate_method drop column id
 alter table calculate_method add id int identity(1,1)
+
+删除重复数据，仅保留一条：
+DELETE FROM douyin.commerce_compass_live_data WHERE id NOT IN (
+SELECT t.min_id FROM (
+  SELECT MIN(id) as min_id FROM douyin.commerce_compass_live_data where live_room_id IS not null GROUP BY live_room_id
+) AS t
+) 
+
