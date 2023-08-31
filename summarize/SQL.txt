@@ -142,3 +142,8 @@ SELECT t.min_id FROM (
 ) AS t
 ) 
 
+删除数据后保持ID连续
+SET @max_id = (SELECT MAX(id) + 1 FROM `dbxg_live_result_tb` );
+SET @sql = CONCAT('ALTER TABLE `dbxg_live_result_tb` AUTO_INCREMENT = ', @max_id);
+PREPARE st FROM @sql;
+EXECUTE st;
